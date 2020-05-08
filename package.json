@@ -24,7 +24,7 @@
     "@types/node": "^13.13.5",
     "@types/supertest": "^2.0.9",
     "errorhandler": "^1.5.1",
-    "jest": "^26.0.1",
+    "jest": "25.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
     "supertest": "^4.0.2",
@@ -34,6 +34,6 @@
   },
   "scripts": {
     "start": "ts-node src/server.ts",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   }
 }
