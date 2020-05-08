@@ -6,7 +6,10 @@ import { json } from 'express'
 import * as helmet from 'helmet'
 import * as logger from 'morgan'
 
-// set instance of express
+// Controllers (route handlers)
+import * as currencyController from './controllers/currency'
+
+// set instance of express/ create server
 const app = express()
 
 // log msg
@@ -18,5 +21,8 @@ app.set('port', process.env.PORT || 3000)
 app.use(helmet())
 app.use(logger(customLogMsg))
 app.use(json())
+
+// App Routes
+app.get('/currency', currencyController.index)
 
 export default app
