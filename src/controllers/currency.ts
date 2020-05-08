@@ -16,7 +16,6 @@ export const index = (req: Request, res: Response) => {
 
 			console.log('Loading currencys from the database...')
 			const currencysDb = await connection.manager.find(Currencys)
-			console.log('Loaded currencys: ', currencysDb)
 			res.json(currencysDb)
 		})
 		.catch((error) => console.log(error))
