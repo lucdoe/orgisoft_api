@@ -10,17 +10,18 @@ app.use(express.json())
 // TO-DO: replace with redis cache
 let refreshTokens = []
 
-const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET
-const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
+const refreshTokenSecret: any = process.env.REFRESH_TOKEN_SECRET
+const accessTokenSecret: any = process.env.ACCESS_TOKEN_SECRET
 
 app.post('/token', (req, res) => {
 	const refreshToken = req.body.token
 
-	if (refreshToken == null) return res.sendStatus(401)
-	if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+	if (refreshToken == null) return res.status(401).send('Unauthorized')
+	if (!refreshTokens.includes(refreshToken))
+		return res.status(403).send('Unauthorized')
 
 	jwt.verify(refreshToken, refreshTokenSecret, (err, user) => {
-		if (err) return res.sendStatus(403)
+		if (err) return res.status(403).send('Unauthorized')
 		const accessToken = generateAccessToken({ name: user.name })
 		res.json({ accessToken })
 	})
@@ -28,7 +29,7 @@ app.post('/token', (req, res) => {
 
 app.delete('/logout', (req, res) => {
 	refreshTokens = refreshTokens.filter((token) => token !== req.body.token)
-	res.sendStatus(204)
+	res.status(204).send('Unauthorized')
 })
 
 app.post('/login', (req, res) => {
@@ -43,7 +44,7 @@ app.post('/login', (req, res) => {
 	res.json({ accessToken, refreshToken })
 })
 
-const generateAccessToken = (user) => {
+const generateAccessToken = (user: string | object | Buffer) => {
 	return jwt.sign(user, accessTokenSecret) // , { expiresIn: '20m' }
 }
 

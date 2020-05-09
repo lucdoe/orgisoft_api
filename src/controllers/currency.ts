@@ -11,12 +11,12 @@ export const index = (req: Request, res: Response) => {
 			currencys.currency = 'TEST'
 			currencys.exchange_rate = 5.32
 			currencys.currency_code = 'TST'
-			await connection.manager.save(currencys)
+			await currencys.save()
 			console.log('Saved a new currencys with id: ' + currencys.currency_id)
 
 			console.log('Loading currencys from the database...')
-			const currencysDb = await connection.manager.find(Currencys)
-			res.json(currencysDb)
+			const allCurrencys = await Currencys.find()
+			res.json(allCurrencys)
 		})
 		.catch((error) => console.log(error))
 }
