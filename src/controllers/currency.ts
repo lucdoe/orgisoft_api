@@ -1,22 +1,21 @@
 import { Request, Response } from 'express'
-import { Currencys } from '../models/Currencys'
-import { createConnection } from 'typeorm'
+import { Currency } from '../models/Currency'
 
-export const index = (req: Request, res: Response) => {
-	// orm/db connection
-	createConnection()
-		.then(async (connection) => {
-			console.log('Inserting a new currency into the database...')
-			const currencys = new Currencys()
-			currencys.currency = 'TEST'
-			currencys.exchange_rate = 5.32
-			currencys.currency_code = 'TST'
-			await currencys.save()
-			console.log('Saved a new currencys with id: ' + currencys.currency_id)
+export const insertCurrency = async (req: Request, res: Response) => {
+	const currency = new Currency()
+	currency.currency = req.body.currency
+	currency.exchange_rate = req.body.exchangeRate
+	currency.currency_code = req.body.currencyCode
+	await currency.save()
+	res.status(200)
+}
 
-			console.log('Loading currencys from the database...')
-			const allCurrencys = await Currencys.find()
-			res.json(allCurrencys)
-		})
-		.catch((error) => console.log(error))
+export const findCurrencys = async (req: Request, res: Response) => {
+	const allCurrencys = await Currency.find()
+	res.status(200).json(allCurrencys)
+}
+
+export const findCurrencyById = async (req: Request, res: Response) => {
+	const currency = await Currency.findOne(req.params.id)
+	res.status(200).json(currency)
 }

@@ -34,6 +34,7 @@
   },
   "scripts": {
     "start": "ts-node src/server.ts",
+    "startAuth": "ts-node authServer/authServer.ts",
     "test": "jest --detectOpenHandles"
   }
 }
