@@ -8,6 +8,7 @@ import * as logger from 'morgan'
 import { createConnection } from 'typeorm'
 // Controllers (route handlers)
 import * as currencyController from './controllers/currency'
+import * as addressController from './controllers/address'
 
 // set instance of express/ create server
 const app = express()
@@ -26,7 +27,9 @@ app.use(json())
 app.post('/currencys', currencyController.insertCurrency)
 app.get('/currencys', currencyController.findCurrencys)
 app.get('/currencys/:id', currencyController.findCurrencyById)
+app.get('/address/:id', addressController.findAddressById)
 
+// start db connection
 createConnection()
 	.then(async (connection) => {
 		console.log('	Database connected')
