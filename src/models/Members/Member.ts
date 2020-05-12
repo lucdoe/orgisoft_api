@@ -13,6 +13,7 @@ import { Position } from './Position'
 import { Status } from './Status'
 import { Membergroup } from './Membergroup'
 import { Membergqualification } from './Memberqualification'
+import { Expense } from '../Expenses/Expense'
 
 @Entity()
 export class Member extends BaseEntity {
@@ -98,4 +99,7 @@ export class Member extends BaseEntity {
 		(memberqualification) => memberqualification.member
 	)
 	memberqualifications!: Membergqualification[]
+
+	@OneToMany((type) => Expense, (expense) => expense.members)
+	expenses!: Expense[]
 }

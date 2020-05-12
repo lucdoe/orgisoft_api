@@ -1,5 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm'
-
+import {
+	Entity,
+	PrimaryGeneratedColumn,
+	Column,
+	BaseEntity,
+	OneToMany,
+} from 'typeorm'
+import { Expense } from './Expense'
 @Entity()
 export class Expensetype extends BaseEntity {
 	@PrimaryGeneratedColumn({
@@ -12,4 +18,7 @@ export class Expensetype extends BaseEntity {
 		length: 50,
 	})
 	expensetype!: string
+
+	@OneToMany((type) => Expense, (expense) => expense.expensetypes)
+	expenses!: Expense[]
 }

@@ -11,7 +11,7 @@ import { Incometype } from './Incometype'
 import { Currency } from '../Currency'
 
 @Entity()
-export class Expense extends BaseEntity {
+export class Income extends BaseEntity {
 	@PrimaryGeneratedColumn({
 		type: 'int',
 	})
@@ -21,13 +21,13 @@ export class Expense extends BaseEntity {
 	@JoinColumn()
 	members!: Member[]
 
-	@ManyToOne((type) => Incometype, (incometype) => incometype.expense)
-	@JoinColumn()
-	incometype!: Incometype[]
-
 	@ManyToOne((type) => Currency, (currency) => currency.expense)
 	@JoinColumn()
 	currency!: Currency[]
+
+	@ManyToOne((type) => Incometype, (incometype) => incometype.expense)
+	@JoinColumn()
+	incometype!: Incometype[]
 
 	@Column({
 		type: 'varchar',
@@ -43,7 +43,7 @@ export class Expense extends BaseEntity {
 	@Column({
 		type: 'date',
 	})
-	dateSpend!: Date
+	dateRecieved!: Date
 
 	@Column({
 		type: 'date',
