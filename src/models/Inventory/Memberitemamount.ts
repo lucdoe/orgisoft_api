@@ -5,30 +5,24 @@ import {
 	BaseEntity,
 	ManyToOne,
 	OneToMany,
-	OneToOne,
 	JoinColumn,
 } from 'typeorm'
-import { Inventoryitem } from '../Inventory/Inventoryitem'
-import { Member } from './Member'
+import { Inventoryitem } from './Inventoryitem'
+import { Member } from '../Members/Member'
 
 @Entity()
 export class Memberitemamount extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id!: number
 
-	@ManyToOne((type) => Member, (member) => member.memberitemamounts)
-	@JoinColumn()
+	@ManyToOne((type) => Member, (member) => member.memberitemamount)
 	member!: Member
 
-	@OneToMany(
+	@ManyToOne(
 		(type) => Inventoryitem,
 		(inventoryitem) => inventoryitem.memberitemamount
 	)
-	@JoinColumn()
-	inventoryitems!: Inventoryitem[]
-
-	@Column({ type: 'date' })
-	date!: Date
+	inventoryitem!: Inventoryitem
 
 	@Column({
 		type: 'int',

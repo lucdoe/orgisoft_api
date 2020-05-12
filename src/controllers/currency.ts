@@ -4,8 +4,8 @@ import { Currency } from '../models/Currency'
 export const insertCurrency = async (req: Request, res: Response) => {
 	const currency = new Currency()
 	currency.currency = req.body.currency
-	currency.exchange_rate = req.body.exchangeRate
-	currency.currency_code = req.body.currencyCode
+	currency.exchangeRate = req.body.exchangeRate
+	currency.currencyCode = req.body.currencyCode
 	await currency.save()
 	res.status(200)
 }

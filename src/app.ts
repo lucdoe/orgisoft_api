@@ -9,6 +9,7 @@ import { createConnection } from 'typeorm'
 // Controllers (route handlers)
 import * as currencyController from './controllers/currency'
 import * as addressController from './controllers/address'
+import * as inventoryController from './controllers/inventory'
 
 // set instance of express/ create server
 const app = express()
@@ -28,6 +29,7 @@ app.post('/currencys', currencyController.insertCurrency)
 app.get('/currencys', currencyController.findCurrencys)
 app.get('/currencys/:id', currencyController.findCurrencyById)
 app.get('/address/:id', addressController.findAddressById)
+app.get('/inventory', inventoryController.findInventoryitems)
 
 // start db connection
 createConnection()

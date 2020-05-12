@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 import { Inventorygroup } from '../Inventory/Inventorygroup'
 import { Expense } from '../Expenses/Expense'
-import { Memberitemamount } from '../Members/Memberitemamount'
+import { Memberitemamount } from './Memberitemamount'
 import { Inventoryplace } from './Inventoryplace'
 
 @Entity()
@@ -27,12 +27,11 @@ export class Inventoryitem extends BaseEntity {
 	inventorygroup!: Inventorygroup
 
 	@OneToOne((type) => Expense)
-	@JoinColumn()
 	expense!: Expense
 
-	@ManyToOne(
+	@OneToMany(
 		(type) => Memberitemamount,
-		(memberitemamount) => memberitemamount.inventoryitems
+		(memberitemamount) => memberitemamount.inventoryitem
 	)
 	memberitemamount!: Memberitemamount
 

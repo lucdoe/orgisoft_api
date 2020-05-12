@@ -15,7 +15,7 @@ import { Membergroup } from './Membergroup'
 import { Memberqualification } from './Memberqualification'
 import { Expense } from '../Expenses/Expense'
 import { Income } from '../Incomes/Income'
-import { Memberitemamount } from './Memberitemamount'
+import { Memberitemamount } from '../Inventory/Memberitemamount'
 
 @Entity()
 export class Member extends BaseEntity {
@@ -112,5 +112,5 @@ export class Member extends BaseEntity {
 		(type) => Memberitemamount,
 		(memberitemamount) => memberitemamount.member
 	)
-	memberitemamounts!: Memberitemamount[]
+	memberitemamount!: Memberitemamount
 }

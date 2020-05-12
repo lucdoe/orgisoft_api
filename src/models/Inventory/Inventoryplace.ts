@@ -4,6 +4,7 @@ import {
 	Column,
 	BaseEntity,
 	OneToMany,
+	JoinColumn,
 } from 'typeorm'
 import { Inventoryitem } from './Inventoryitem'
 
