@@ -20,12 +20,12 @@ export class Memberitemamount extends BaseEntity {
 	@JoinColumn()
 	member!: Member
 
-	@ManyToOne(
+	@OneToMany(
 		(type) => Inventoryitem,
-		(inventoryitem) => inventoryitem.memberitemamounts
+		(inventoryitem) => inventoryitem.memberitemamount
 	)
 	@JoinColumn()
-	inventoryitem!: Inventoryitem
+	inventoryitems!: Inventoryitem[]
 
 	@Column({ type: 'date' })
 	date!: Date

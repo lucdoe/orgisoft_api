@@ -34,7 +34,7 @@ export class Inventoryitem extends BaseEntity {
 		(type) => Memberitemamount,
 		(memberitemamount) => memberitemamount.inventoryitems
 	)
-	memberitemamounts!: Memberitemamount[]
+	memberitemamount!: Memberitemamount
 
 	@ManyToOne(
 		(type) => Inventoryplace,
