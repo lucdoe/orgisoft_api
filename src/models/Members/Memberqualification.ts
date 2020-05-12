@@ -4,8 +4,6 @@ import {
 	Column,
 	BaseEntity,
 	ManyToOne,
-	OneToMany,
-	OneToOne,
 	JoinColumn,
 } from 'typeorm'
 import { Qualification } from './Qualification'

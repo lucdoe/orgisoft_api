@@ -16,16 +16,16 @@ export class Memberitemamount extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id!: number
 
-	@ManyToOne((type) => Member, (member) => member.memberqualifications)
+	@ManyToOne((type) => Member, (member) => member.memberitemamounts)
 	@JoinColumn()
 	member!: Member
 
-	@OneToMany(
+	@ManyToOne(
 		(type) => Inventoryitem,
 		(inventoryitem) => inventoryitem.memberitemamounts
 	)
 	@JoinColumn()
-	inventoryitems!: Inventoryitem[]
+	inventoryitem!: Inventoryitem
 
 	@Column({ type: 'date' })
 	date!: Date

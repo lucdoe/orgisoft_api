@@ -15,6 +15,7 @@ import { Membergroup } from './Membergroup'
 import { Memberqualification } from './Memberqualification'
 import { Expense } from '../Expenses/Expense'
 import { Income } from '../Incomes/Income'
+import { Memberitemamount } from './Memberitemamount'
 
 @Entity()
 export class Member extends BaseEntity {
@@ -106,4 +107,10 @@ export class Member extends BaseEntity {
 
 	@OneToMany((type) => Income, (income) => income.member)
 	incomes!: Income[]
+
+	@OneToMany(
+		(type) => Memberitemamount,
+		(memberitemamount) => memberitemamount.member
+	)
+	memberitemamounts!: Memberitemamount[]
 }
