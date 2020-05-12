@@ -12,7 +12,7 @@ import { Qualification } from './Qualification'
 import { Member } from './Member'
 
 @Entity()
-export class Membergqualification extends BaseEntity {
+export class Memberqualification extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id!: number
 

@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm'
+import {
+	Entity,
+	PrimaryGeneratedColumn,
+	Column,
+	BaseEntity,
+	OneToMany,
+} from 'typeorm'
+import { Member } from './Member'
 
 @Entity()
 export class Position extends BaseEntity {
@@ -10,4 +17,7 @@ export class Position extends BaseEntity {
 		length: '50',
 	})
 	position!: string
+
+	@OneToMany((type) => Member, (member) => member.position)
+	members!: Member[]
 }

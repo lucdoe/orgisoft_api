@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm'
+import {
+	Entity,
+	PrimaryGeneratedColumn,
+	Column,
+	BaseEntity,
+	OneToMany,
+} from 'typeorm'
+import { Inventoryitem } from './Inventoryitem'
 
 @Entity()
 export class Inventorygroup extends BaseEntity {
@@ -12,4 +19,10 @@ export class Inventorygroup extends BaseEntity {
 		length: 50,
 	})
 	inventorygroup!: string
+
+	@OneToMany(
+		(type) => Inventoryitem,
+		(inventoryitem) => inventoryitem.inventorygroup
+	)
+	inventoryitems!: Inventoryitem[]
 }

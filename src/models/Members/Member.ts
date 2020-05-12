@@ -12,7 +12,7 @@ import { Address } from './Address'
 import { Position } from './Position'
 import { Status } from './Status'
 import { Membergroup } from './Membergroup'
-import { Membergqualification } from './Memberqualification'
+import { Memberqualification } from './Memberqualification'
 import { Expense } from '../Expenses/Expense'
 import { Income } from '../Incomes/Income'
 
@@ -27,14 +27,14 @@ export class Member extends BaseEntity {
 	@JoinColumn()
 	address!: Address
 
-	@ManyToOne((type) => Position, (position) => position.position)
-	positions!: Position[]
+	@ManyToOne((type) => Position, (position) => position.members)
+	position!: Position
 
-	@ManyToOne((type) => Status, (status) => status.position)
-	statuses!: Status[]
+	@ManyToOne((type) => Status, (status) => status.members)
+	status!: Status
 
-	@ManyToOne((type) => Membergroup, (Membergroup) => Membergroup.position)
-	Membergroups!: Membergroup[]
+	@ManyToOne((type) => Membergroup, (membergroup) => membergroup.members)
+	membergroup!: Membergroup
 
 	@Column({
 		type: 'varchar',
@@ -96,10 +96,10 @@ export class Member extends BaseEntity {
 	updatedAt!: Date
 
 	@OneToMany(
-		(type) => Membergqualification,
+		(type) => Memberqualification,
 		(memberqualification) => memberqualification.member
 	)
-	memberqualifications!: Membergqualification[]
+	memberqualifications!: Memberqualification[]
 
 	@OneToMany((type) => Expense, (expense) => expense.member)
 	expenses!: Expense[]

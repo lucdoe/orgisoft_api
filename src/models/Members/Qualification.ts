@@ -5,8 +5,7 @@ import {
 	BaseEntity,
 	OneToMany,
 } from 'typeorm'
-import { Membergroup } from './Membergroup'
-import { Membergqualification } from './Memberqualification'
+import { Memberqualification } from './Memberqualification'
 
 @Entity()
 export class Qualification extends BaseEntity {
@@ -23,8 +22,8 @@ export class Qualification extends BaseEntity {
 	description!: string
 
 	@OneToMany(
-		(type) => Membergqualification,
+		(type) => Memberqualification,
 		(memberqualification) => memberqualification.qualification
 	)
-	memberqualifications!: Membergqualification[]
+	memberqualifications!: Memberqualification[]
 }
