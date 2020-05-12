@@ -23,8 +23,9 @@ export class Inventoryitem extends BaseEntity {
 	@Column({ type: 'int' })
 	inventorygroup!: Inventorygroup
 
-	@Column({ type: 'int' })
-	expense!: Expense[]
+	@OneToOne((type) => Expense)
+	@JoinColumn()
+	expense!: Expense
 
 	@Column({ type: 'int' })
 	memberitemamount!: Memberitemamount[]
