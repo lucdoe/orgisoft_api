@@ -17,17 +17,17 @@ export class Income extends BaseEntity {
 	})
 	id!: Number
 
-	@ManyToOne((type) => Member, (member) => member.expense)
+	@ManyToOne((type) => Member, (member) => member.incomes)
 	@JoinColumn()
-	members!: Member[]
+	member!: Member
 
-	@ManyToOne((type) => Currency, (currency) => currency.expense)
+	@ManyToOne((type) => Currency, (currency) => currency.incomes)
 	@JoinColumn()
-	currency!: Currency[]
+	currency!: Currency
 
-	@ManyToOne((type) => Incometype, (incometype) => incometype.expense)
+	@ManyToOne((type) => Incometype, (incometype) => incometype.incomes)
 	@JoinColumn()
-	incometype!: Incometype[]
+	incometype!: Incometype
 
 	@Column({
 		type: 'varchar',

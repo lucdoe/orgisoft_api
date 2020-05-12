@@ -19,6 +19,6 @@ export class Expensetype extends BaseEntity {
 	})
 	expensetype!: string
 
-	@OneToMany((type) => Expense, (expense) => expense.expensetypes)
+	@OneToMany((type) => Expense, (expense) => expense.expensetype)
 	expenses!: Expense[]
 }

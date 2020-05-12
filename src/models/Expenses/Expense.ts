@@ -19,15 +19,15 @@ export class Expense extends BaseEntity {
 
 	@ManyToOne((type) => Member, (member) => member.expenses)
 	@JoinColumn()
-	members!: Member[]
+	member!: Member
 
 	@ManyToOne((type) => Expensetype, (expensetype) => expensetype.expenses)
 	@JoinColumn()
-	expensetypes!: Expensetype[]
+	expensetype!: Expensetype
 
 	@ManyToOne((type) => Currency, (currency) => currency.expenses)
 	@JoinColumn()
-	currency!: Currency[]
+	currency!: Currency
 
 	@Column({
 		type: 'varchar',
