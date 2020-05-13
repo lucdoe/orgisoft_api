@@ -30,7 +30,6 @@ app.use(json())
 
 // App Routes
 app.get('/inventory', authenticate.accessToken, inventoryController.findInventoryitems)
-app.get('/inventory', authenticate.accessToken, inventoryController.findInventoryitems)
 app.get('/finance/incomes', authenticate.accessToken, financeController.findIncomes)
 app.get('/finance/incomes/budget', authenticate.accessToken, financeController.findIncomeBudgets)
 app.get('/finance/expenses', authenticate.accessToken, financeController.findExpenses)
