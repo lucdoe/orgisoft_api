@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 const accessTokenSecret: any = process.env.ACCESS_TOKEN_SECRET
 
-const accessToken = async (req, res, next) => {
+export const accessToken = async (req, res, next) => {
 	try {
 		const authHeader = req.headers['authorization']
 		const token = (await authHeader) && (await authHeader.split(' ')[1])
@@ -19,5 +19,3 @@ const accessToken = async (req, res, next) => {
 		console.log(err)
 	}
 }
-
-exports.accessToken = accessToken

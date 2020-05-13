@@ -4,10 +4,12 @@ import 'reflect-metadata'
 import * as express from 'express'
 import { json } from 'express'
 import * as helmet from 'helmet'
+import * as cors from 'cors'
 import * as logger from 'morgan'
 import { createConnection } from 'typeorm'
 
 // Controllers (route handlers)
+import * as authenticate from './helpers/authenticate'
 import * as inventoryController from './controllers/inventory'
 import * as financeController from './controllers/finance'
 import * as memberController from './controllers/member'
@@ -22,17 +24,18 @@ const customLogMsg =
 // define middleware
 app.set('port', process.env.PORT || 3000)
 app.use(helmet())
+app.use(cors())
 app.use(logger(customLogMsg))
 app.use(json())
 
 // App Routes
-app.get('/inventory', inventoryController.findInventoryitems)
-app.get('/inventory', inventoryController.findInventoryitems)
-app.get('/finance/incomes', financeController.findIncomes)
-app.get('/finance/incomes/budget', financeController.findIncomeBudgets)
-app.get('/finance/expenses', financeController.findExpenses)
-app.get('/finance/expenses/budget', financeController.findExpenseBudgets)
-app.get('/member', memberController.findAllMembers)
+app.get('/inventory', authenticate.accessToken, inventoryController.findInventoryitems)
+app.get('/inventory', authenticate.accessToken, inventoryController.findInventoryitems)
+app.get('/finance/incomes', authenticate.accessToken, financeController.findIncomes)
+app.get('/finance/incomes/budget', authenticate.accessToken, financeController.findIncomeBudgets)
+app.get('/finance/expenses', authenticate.accessToken, financeController.findExpenses)
+app.get('/finance/expenses/budget', authenticate.accessToken, financeController.findExpenseBudgets)
+app.get('/member', authenticate.accessToken, memberController.findAllMembers)
 
 // start db connection
 createConnection()
