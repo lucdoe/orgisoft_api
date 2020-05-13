@@ -19,5 +19,5 @@ export class Position extends BaseEntity {
 	position!: string
 
 	@OneToMany((type) => Member, (member) => member.position)
-	members!: Member[]
+	members!: Member
 }

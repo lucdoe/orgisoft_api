@@ -9,7 +9,7 @@ import {
 	ManyToOne,
 } from 'typeorm'
 import { Inventorygroup } from '../Inventory/Inventorygroup'
-import { Expense } from '../Expenses/Expense'
+import { Expense } from '../Finance/Expenses/Expense'
 import { Memberitemamount } from './Memberitemamount'
 import { Inventoryplace } from './Inventoryplace'
 

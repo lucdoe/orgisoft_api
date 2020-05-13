@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { getConnection } from 'typeorm'
 import { Address } from '../models/Members/Address'
-import { City } from '../models/City'
+import { City } from '../models/Members/City'
 
 export const findAddressById = async (req: Request, res: Response) => {
 	const address = await getConnection()

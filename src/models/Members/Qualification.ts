@@ -25,5 +25,5 @@ export class Qualification extends BaseEntity {
 		(type) => Memberqualification,
 		(memberqualification) => memberqualification.qualification
 	)
-	memberqualifications!: Memberqualification[]
+	memberqualifications!: Memberqualification
 }

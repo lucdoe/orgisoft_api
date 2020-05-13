@@ -19,5 +19,5 @@ export class Membergroup extends BaseEntity {
 	membergroup!: string
 
 	@OneToMany((type) => Member, (member) => member.membergroup)
-	members!: Member[]
+	members!: Member
 }

@@ -6,7 +6,7 @@ import {
 	BaseEntity,
 	ManyToOne,
 } from 'typeorm'
-import { Member } from '../Members/Member'
+import { Member } from '../../Members/Member'
 import { Incometype } from './Incometype'
 import { Currency } from '../Currency'
 

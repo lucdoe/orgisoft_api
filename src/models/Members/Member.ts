@@ -4,7 +4,6 @@ import {
 	Column,
 	OneToOne,
 	OneToMany,
-	JoinColumn,
 	BaseEntity,
 	ManyToOne,
 } from 'typeorm'
@@ -13,8 +12,8 @@ import { Position } from './Position'
 import { Status } from './Status'
 import { Membergroup } from './Membergroup'
 import { Memberqualification } from './Memberqualification'
-import { Expense } from '../Expenses/Expense'
-import { Income } from '../Incomes/Income'
+import { Expense } from '../Finance/Expenses/Expense'
+import { Income } from '../Finance/Incomes/Income'
 import { Memberitemamount } from '../Inventory/Memberitemamount'
 
 @Entity()
@@ -24,8 +23,7 @@ export class Member extends BaseEntity {
 	})
 	id!: Number
 
-	@OneToOne((type) => Address)
-	@JoinColumn()
+	@ManyToOne((type) => Address, (address) => address.member)
 	address!: Address
 
 	@ManyToOne((type) => Position, (position) => position.members)
@@ -100,13 +98,13 @@ export class Member extends BaseEntity {
 		(type) => Memberqualification,
 		(memberqualification) => memberqualification.member
 	)
-	memberqualifications!: Memberqualification[]
+	memberqualifications!: Memberqualification
 
 	@OneToMany((type) => Expense, (expense) => expense.member)
-	expenses!: Expense[]
+	expenses!: Expense
 
 	@OneToMany((type) => Income, (income) => income.member)
-	incomes!: Income[]
+	incomes!: Income
 
 	@OneToMany(
 		(type) => Memberitemamount,

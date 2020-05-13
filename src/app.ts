@@ -6,10 +6,11 @@ import { json } from 'express'
 import * as helmet from 'helmet'
 import * as logger from 'morgan'
 import { createConnection } from 'typeorm'
+
 // Controllers (route handlers)
-import * as currencyController from './controllers/currency'
-import * as addressController from './controllers/address'
 import * as inventoryController from './controllers/inventory'
+import * as financeController from './controllers/finance'
+import * as memberController from './controllers/member'
 
 // set instance of express/ create server
 const app = express()
@@ -25,11 +26,13 @@ app.use(logger(customLogMsg))
 app.use(json())
 
 // App Routes
-app.post('/currencys', currencyController.insertCurrency)
-app.get('/currencys', currencyController.findCurrencys)
-app.get('/currencys/:id', currencyController.findCurrencyById)
-app.get('/address/:id', addressController.findAddressById)
 app.get('/inventory', inventoryController.findInventoryitems)
+app.get('/inventory', inventoryController.findInventoryitems)
+app.get('/finance/incomes', financeController.findIncomes)
+app.get('/finance/incomes/budget', financeController.findIncomeBudgets)
+app.get('/finance/expenses', financeController.findExpenses)
+app.get('/finance/expenses/budget', financeController.findExpenseBudgets)
+app.get('/member', memberController.findAllMembers)
 
 // start db connection
 createConnection()

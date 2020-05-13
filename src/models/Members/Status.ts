@@ -18,5 +18,5 @@ export class Status extends BaseEntity {
 	status!: string
 
 	@OneToMany((type) => Member, (member) => member.status)
-	members!: Member[]
+	members!: Member
 }

@@ -4,7 +4,6 @@ import {
 	Column,
 	BaseEntity,
 	ManyToOne,
-	JoinColumn,
 } from 'typeorm'
 import { Qualification } from './Qualification'
 import { Member } from './Member'
@@ -15,14 +14,12 @@ export class Memberqualification extends BaseEntity {
 	id!: number
 
 	@ManyToOne((type) => Member, (member) => member.memberqualifications)
-	@JoinColumn()
 	member!: Member
 
 	@ManyToOne(
 		(type) => Qualification,
 		(qualification) => qualification.memberqualifications
 	)
-	@JoinColumn()
 	qualification!: Qualification
 
 	@Column({ type: 'date' })

@@ -3,11 +3,12 @@ import {
 	PrimaryGeneratedColumn,
 	Column,
 	OneToOne,
-	JoinColumn,
 	BaseEntity,
+	ManyToOne,
 	OneToMany,
 } from 'typeorm'
-import { City } from '../City'
+import { City } from './City'
+import { Member } from './Member'
 
 @Entity()
 export class Address extends BaseEntity {
@@ -16,8 +17,7 @@ export class Address extends BaseEntity {
 	})
 	id!: Number
 
-	@OneToOne((type) => City)
-	@JoinColumn()
+	@ManyToOne((type) => City)
 	city!: City
 
 	@Column({
@@ -45,4 +45,7 @@ export class Address extends BaseEntity {
 		type: 'date',
 	})
 	updatedAt!: Date
+
+	@OneToMany((type) => Member, (member) => member.address)
+	member!: Member
 }
