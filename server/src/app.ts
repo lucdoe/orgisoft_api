@@ -13,6 +13,7 @@ import * as authenticate from './helpers/authenticate'
 import * as inventoryController from './controllers/inventory'
 import * as financeController from './controllers/finance'
 import * as memberController from './controllers/member'
+import * as testController from './controllers/test'
 
 // set instance of express/ create server
 const app = express()
@@ -30,6 +31,7 @@ app.use(json())
 
 // App Routes
 app.get('/inventory', authenticate.accessToken, inventoryController.findInventoryitems)
+app.get('/', testController.test)
 app.get('/finance/incomes', authenticate.accessToken, financeController.findIncomes)
 app.get('/finance/incomes/budget', authenticate.accessToken, financeController.findIncomeBudgets)
 app.get('/finance/expenses', authenticate.accessToken, financeController.findExpenses)

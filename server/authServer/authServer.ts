@@ -10,8 +10,8 @@ app.use(express.json())
 // TO-DO: replace with redis cache
 let refreshTokens: string[] = []
 
-const refreshTokenSecret: string = process.env.REFRESH_TOKEN_SECRET
-const accessTokenSecret: string = process.env.ACCESS_TOKEN_SECRET
+const refreshTokenSecret: any = process.env.REFRESH_TOKEN_SECRET
+const accessTokenSecret: any = process.env.ACCESS_TOKEN_SECRET
 
 app.post('/token', (req, res) => {
 	const refreshToken: string = req.body.token
@@ -44,7 +44,7 @@ app.post('/login', (req, res) => {
 })
 
 const generateAccessToken = (user: string | object | Buffer): string => {
-	return jwt.sign(user, accessTokenSecret) // , { expiresIn: '20m' }
+	return jwt.sign(user, accessTokenSecret, { expiresIn: '15m' }) //
 }
 
 app.listen(4000, () => {
