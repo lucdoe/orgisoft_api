@@ -1,19 +1,24 @@
-import * as dotenv from 'dotenv'
+import dotenv from 'dotenv'
 dotenv.config()
 import 'reflect-metadata'
-import * as express from 'express'
+import express from 'express'
 import { json } from 'express'
-import * as helmet from 'helmet'
-import * as cors from 'cors'
-import * as logger from 'morgan'
+import helmet from 'helmet'
+import cors from 'cors'
+import logger from 'morgan'
 import { createConnection } from 'typeorm'
 
 // Controllers (route handlers)
-import * as authenticate from './helpers/authenticate'
-import * as inventoryController from './controllers/inventory'
-import * as financeController from './controllers/finance'
-import * as memberController from './controllers/member'
-import * as testController from './controllers/test'
+import { accessToken } from './helpers/authenticate'
+import { findInventoryitems } from './controllers/inventory'
+import {
+	findExpenseBudgets,
+	findExpenses,
+	findIncomeBudgets,
+	findIncomes,
+} from './controllers/finance'
+import { findAllMembers } from './controllers/member'
+import { mest } from './controllers/mest'
 
 // set instance of express/ create server
 const app = express()
@@ -30,18 +35,17 @@ app.use(logger(customLogMsg))
 app.use(json())
 
 // App Routes
-app.get('/inventory', authenticate.accessToken, inventoryController.findInventoryitems)
-app.get('/', testController.test)
-app.get('/finance/incomes', authenticate.accessToken, financeController.findIncomes)
-app.get('/finance/incomes/budget', authenticate.accessToken, financeController.findIncomeBudgets)
-app.get('/finance/expenses', authenticate.accessToken, financeController.findExpenses)
-app.get('/finance/expenses/budget', authenticate.accessToken, financeController.findExpenseBudgets)
-app.get('/member', authenticate.accessToken, memberController.findAllMembers)
+app.get('/', mest)
+app.get('/inventory', accessToken, findInventoryitems)
+app.get('/finance/incomes', findIncomes)
+app.get('/finance/incomes/budget', accessToken, findIncomeBudgets)
+app.get('/finance/expenses', accessToken, findExpenses)
+app.get('/finance/expenses/budget', accessToken, findExpenseBudgets)
+app.get('/member', accessToken, findAllMembers)
 
 // start db connection
 createConnection()
 	.then(async (connection) => {
-		console.log('	Database connected')
 		return connection
 	})
 	.catch((error) => console.log(error))
