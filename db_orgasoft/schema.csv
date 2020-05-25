@@ -1,0 +1,90 @@
+dbms,TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,ORDINAL_POSITION,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,CONSTRAINT_TYPE,REFERENCED_TABLE_SCHEMA,REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME
+mysql,sys,sys_config,variable,1,varchar,128,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,citys,city_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,currencys,currency_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,expensebudgets,expensebudget_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,expensetypes,expensetype_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,incomebudgets,incomebudget_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,inventorygroups,inventorygroup_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,inventoryplaces,inventoryplace_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,membergroups,membergroup_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,positions,position_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,qualifications,qualification_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,statuses,status_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,addresses,address_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,memberitemamounts,memberitemamount_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,memberqualifications,memberqualification_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,members,member_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,incometypes,incometype_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,inventoryitems,inventoryitem_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,expenses,expense_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,incomes,income_id,1,int,NULL,"PRIMARY KEY",NULL,NULL,NULL
+mysql,orgasoft,addresses,city_id,4,int,NULL,"FOREIGN KEY",orgasoft,citys,city_id
+mysql,orgasoft,memberitemamounts,member_id,2,int,NULL,"FOREIGN KEY",orgasoft,members,member_id
+mysql,orgasoft,memberitemamounts,inventoryitem_id,3,int,NULL,"FOREIGN KEY",orgasoft,inventoryitems,inventoryitem_id
+mysql,orgasoft,memberqualifications,member_id,2,int,NULL,"FOREIGN KEY",orgasoft,members,member_id
+mysql,orgasoft,memberqualifications,qualification_id,3,int,NULL,"FOREIGN KEY",orgasoft,qualifications,qualification_id
+mysql,orgasoft,members,address_id,2,int,NULL,"FOREIGN KEY",orgasoft,addresses,address_id
+mysql,orgasoft,members,position_id,3,int,NULL,"FOREIGN KEY",orgasoft,positions,position_id
+mysql,orgasoft,members,status_id,4,int,NULL,"FOREIGN KEY",orgasoft,statuses,status_id
+mysql,orgasoft,members,membergroup_id,5,int,NULL,"FOREIGN KEY",orgasoft,membergroups,membergroup_id
+mysql,orgasoft,inventoryitems,expense_id,3,int,NULL,"FOREIGN KEY",orgasoft,expenses,expense_id
+mysql,orgasoft,inventoryitems,inventorygroup_id,2,int,NULL,"FOREIGN KEY",orgasoft,inventorygroups,inventorygroup_id
+mysql,orgasoft,inventoryitems,inventoryplace_id,5,int,NULL,"FOREIGN KEY",orgasoft,inventoryplaces,inventoryplace_id
+mysql,orgasoft,inventoryitems,memberitemsamount_id,4,int,NULL,"FOREIGN KEY",orgasoft,memberitemamounts,memberitemamount_id
+mysql,orgasoft,expenses,currency_id,4,int,NULL,"FOREIGN KEY",orgasoft,currencys,currency_id
+mysql,orgasoft,expenses,expensetype_id,3,int,NULL,"FOREIGN KEY",orgasoft,expensetypes,expensetype_id
+mysql,orgasoft,expenses,member_id,2,int,NULL,"FOREIGN KEY",orgasoft,members,member_id
+mysql,orgasoft,incomes,currency_id,3,int,NULL,"FOREIGN KEY",orgasoft,currencys,currency_id
+mysql,orgasoft,incomes,incometype_id,4,int,NULL,"FOREIGN KEY",orgasoft,incometypes,incometype_id
+mysql,orgasoft,incomes,member_id,2,int,NULL,"FOREIGN KEY",orgasoft,members,member_id
+mysql,orgasoft,addresses,last_update,6,date,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,addresses,note,5,text,65535,NULL,NULL,NULL,NULL
+mysql,orgasoft,addresses,street,2,varchar,255,NULL,NULL,NULL,NULL
+mysql,orgasoft,addresses,street_number,3,varchar,20,NULL,NULL,NULL,NULL
+mysql,orgasoft,citys,city,2,varchar,150,NULL,NULL,NULL,NULL
+mysql,orgasoft,citys,country,5,varchar,150,NULL,NULL,NULL,NULL
+mysql,orgasoft,citys,country_code,6,varchar,10,NULL,NULL,NULL,NULL
+mysql,orgasoft,citys,postcode,3,varchar,30,NULL,NULL,NULL,NULL
+mysql,orgasoft,citys,state,4,varchar,150,NULL,NULL,NULL,NULL
+mysql,orgasoft,currencys,currency,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,currencys,currency_code,4,varchar,10,NULL,NULL,NULL,NULL
+mysql,orgasoft,currencys,exchange_rate,3,decimal,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,expensebudgets,amount,3,decimal,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,expensebudgets,expensebudget,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,expenses,amount,6,decimal,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,expenses,date_spend,7,date,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,expenses,expense,5,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,expensetypes,expensetype,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,incomebudgets,amount,3,decimal,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,incomebudgets,incomebudget,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,incomes,amount,6,decimal,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,incomes,date_received,7,date,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,incomes,income,5,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,incometypes,incometype,2,varchar,255,NULL,NULL,NULL,NULL
+mysql,orgasoft,inventorygroups,inventorygroup,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,inventoryitems,description,7,text,65535,NULL,NULL,NULL,NULL
+mysql,orgasoft,inventoryitems,inventoryitem,6,varchar,255,NULL,NULL,NULL,NULL
+mysql,orgasoft,inventoryitems,last_update,8,date,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,inventoryplaces,inventoryplace,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,membergroups,membergroup,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,memberitemamounts,amount,4,decimal,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,memberqualifications,date,4,date,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,memberqualifications,passed,5,tinyint,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,birthday,13,date,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,email,11,varchar,255,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,first_name,7,varchar,255,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,gender,12,varchar,20,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,last_name,8,varchar,255,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,last_update,15,date,NULL,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,note,14,text,65535,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,phone_home,10,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,phone_mobile,9,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,members,title,6,varchar,150,NULL,NULL,NULL,NULL
+mysql,orgasoft,positions,position,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,qualifications,description,3,text,65535,NULL,NULL,NULL,NULL
+mysql,orgasoft,qualifications,qualification,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,orgasoft,statuses,status,2,varchar,50,NULL,NULL,NULL,NULL
+mysql,sys,sys_config,set_by,4,varchar,128,NULL,NULL,NULL,NULL
+mysql,sys,sys_config,set_time,3,timestamp,NULL,NULL,NULL,NULL,NULL
+mysql,sys,sys_config,value,2,varchar,128,NULL,NULL,NULL,NULL

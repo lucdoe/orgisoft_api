@@ -44,10 +44,11 @@ app.post('/login', (req, res) => {
 })
 
 const generateAccessToken = (user: string | object | Buffer): string => {
-	return jwt.sign(user, accessTokenSecret, { expiresIn: '15m' }) //
+	return jwt.sign(user, accessTokenSecret)
 }
 
 app.listen(4000, () => {
-	const startUpMessage: string = '	Auth Server running at http://localhost:4000 \n'
+	const startUpMessage: string =
+		'	Auth Server running at http://localhost:4000 \n'
 	console.log(startUpMessage)
 })

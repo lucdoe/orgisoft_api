@@ -1,0 +1,21 @@
+
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (1, 'Macropus rufus', 94228);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (2, 'Ara ararauna', 84647);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (3, 'Hyaena hyaena', 34412);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (4, 'Conolophus subcristatus', 34206);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (5, 'Nannopterum harrisi', 60318);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (6, 'Phalaropus fulicarius', 69830);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (7, 'Vulpes vulpes', 70147);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (8, 'Delphinus delphis', 95319);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (9, 'Bucorvus leadbeateri', 30676);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (10, 'Motacilla aguimp', 76754);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (11, 'Libellula quadrimaculata', 43575);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (12, 'Bison bison', 66337);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (13, 'Chauna torquata', 7150);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (14, 'Paradoxurus hermaphroditus', 83123);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (15, 'Felis rufus', 76837);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (16, 'Phalaropus lobatus', 97759);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (17, 'unavailable', 66848);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (18, 'Phascogale tapoatafa', 71999);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (19, 'Diomedea irrorata', 91341);
+insert into expensebudgets (exbensebudget_id, expensebudget, amount) values (20, 'Stenella coeruleoalba', 62986);

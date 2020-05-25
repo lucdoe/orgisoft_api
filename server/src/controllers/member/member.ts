@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Memberqualification } from '../models/Members/Memberqualification'
+import { Memberqualification } from '../../models/Members/Memberqualification'
 
 export const findAllMembers = async (req: Request, res: Response) => {
 	const allMembers = await Memberqualification.find({

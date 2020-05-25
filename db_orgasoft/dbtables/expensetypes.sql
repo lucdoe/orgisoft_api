@@ -1,0 +1,21 @@
+
+insert into expensetypes (expensetype_id, expensetype) values (1, 'Catharacta skua');
+insert into expensetypes (expensetype_id, expensetype) values (2, 'Callorhinus ursinus');
+insert into expensetypes (expensetype_id, expensetype) values (3, 'Felis chaus');
+insert into expensetypes (expensetype_id, expensetype) values (4, 'Uraeginthus angolensis');
+insert into expensetypes (expensetype_id, expensetype) values (5, 'Madoqua kirkii');
+insert into expensetypes (expensetype_id, expensetype) values (6, 'Naja sp.');
+insert into expensetypes (expensetype_id, expensetype) values (7, 'Loris tardigratus');
+insert into expensetypes (expensetype_id, expensetype) values (8, 'Ursus americanus');
+insert into expensetypes (expensetype_id, expensetype) values (9, 'Macropus fuliginosus');
+insert into expensetypes (expensetype_id, expensetype) values (10, 'Callipepla gambelii');
+insert into expensetypes (expensetype_id, expensetype) values (11, 'Cyrtodactylus louisiadensis');
+insert into expensetypes (expensetype_id, expensetype) values (12, 'Butorides striatus');
+insert into expensetypes (expensetype_id, expensetype) values (13, 'Myrmecophaga tridactyla');
+insert into expensetypes (expensetype_id, expensetype) values (14, 'Dasyurus maculatus');
+insert into expensetypes (expensetype_id, expensetype) values (15, 'Egretta thula');
+insert into expensetypes (expensetype_id, expensetype) values (16, 'Thylogale stigmatica');
+insert into expensetypes (expensetype_id, expensetype) values (17, 'Hippotragus equinus');
+insert into expensetypes (expensetype_id, expensetype) values (18, 'Ploceus rubiginosus');
+insert into expensetypes (expensetype_id, expensetype) values (19, 'Aonyx capensis');
+insert into expensetypes (expensetype_id, expensetype) values (20, 'Uraeginthus angolensis');

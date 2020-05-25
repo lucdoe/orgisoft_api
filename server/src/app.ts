@@ -10,15 +10,16 @@ import { createConnection } from 'typeorm'
 
 // Controllers (route handlers)
 import { accessToken } from './helpers/authenticate'
-import { findInventoryitems } from './controllers/inventory'
 import {
-	findExpenseBudgets,
-	findExpenses,
-	findIncomeBudgets,
-	findIncomes,
-} from './controllers/finance'
-import { findAllMembers } from './controllers/member'
-import { mest } from './controllers/mest'
+	findInventoryitems,
+	findInventoryitemById,
+	findInventoryitemByIdMember,
+} from './controllers/inventory/getInventory'
+import { deleteInventoryitemById } from './controllers/inventory/deleteInventory'
+import {
+	createInventoryitem,
+	updateInventoryitemById,
+} from './controllers/inventory/createInventory'
 
 // set instance of express/ create server
 const app = express()
@@ -34,14 +35,13 @@ app.use(cors())
 app.use(logger(customLogMsg))
 app.use(json())
 
-// App Routes
-app.get('/', mest)
-app.get('/inventory', accessToken, findInventoryitems)
-app.get('/finance/incomes', findIncomes)
-app.get('/finance/incomes/budget', accessToken, findIncomeBudgets)
-app.get('/finance/expenses', accessToken, findExpenses)
-app.get('/finance/expenses/budget', accessToken, findExpenseBudgets)
-app.get('/member', accessToken, findAllMembers)
+// TODO:
+app.post('/inventoryitems', accessToken, createInventoryitem)
+app.post('/inventoryitems/:id', accessToken, updateInventoryitemById)
+app.delete('/inventoryitems/:id', accessToken, deleteInventoryitemById)
+app.get('/inventoryitems', accessToken, findInventoryitems)
+app.get('/inventoryitems/:id', accessToken, findInventoryitemById)
+app.get('/inventoryitems/:id/members', accessToken, findInventoryitemByIdMember)
 
 // start db connection
 createConnection()

@@ -3,15 +3,13 @@ import {
 	PrimaryGeneratedColumn,
 	Column,
 	OneToOne,
-	OneToMany,
-	JoinColumn,
 	BaseEntity,
 	ManyToOne,
 } from 'typeorm'
 import { Inventorygroup } from '../Inventory/Inventorygroup'
 import { Expense } from '../Finance/Expenses/Expense'
-import { Memberitemamount } from './Memberitemamount'
 import { Inventoryplace } from './Inventoryplace'
+import { Member } from '../Members/Member'
 
 @Entity()
 export class Inventoryitem extends BaseEntity {
@@ -26,14 +24,8 @@ export class Inventoryitem extends BaseEntity {
 	)
 	inventorygroup!: Inventorygroup
 
-	@OneToOne((type) => Expense)
-	expense!: Expense
-
-	@OneToMany(
-		(type) => Memberitemamount,
-		(memberitemamount) => memberitemamount.inventoryitem
-	)
-	memberitemamount!: Memberitemamount
+	@ManyToOne((type) => Member, (member) => member.inventoryitems)
+	member!: Member
 
 	@ManyToOne(
 		(type) => Inventoryplace,
@@ -49,7 +41,7 @@ export class Inventoryitem extends BaseEntity {
 	@Column({
 		type: 'text',
 	})
-	description!: string
+	descriptionText!: string
 
 	@Column({
 		type: 'date',

@@ -5,10 +5,12 @@ import {
 	JoinColumn,
 	BaseEntity,
 	ManyToOne,
+	OneToMany,
 } from 'typeorm'
 import { Member } from '../../Members/Member'
 import { Expensetype } from './Expensetype'
 import { Currency } from '../Currency'
+import { Inventoryitem } from '../../Inventory/Inventoryitem'
 
 @Entity()
 export class Expense extends BaseEntity {

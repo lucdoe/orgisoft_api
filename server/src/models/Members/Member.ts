@@ -2,7 +2,6 @@ import {
 	Entity,
 	PrimaryGeneratedColumn,
 	Column,
-	OneToOne,
 	OneToMany,
 	BaseEntity,
 	ManyToOne,
@@ -14,7 +13,7 @@ import { Membergroup } from './Membergroup'
 import { Memberqualification } from './Memberqualification'
 import { Expense } from '../Finance/Expenses/Expense'
 import { Income } from '../Finance/Incomes/Income'
-import { Memberitemamount } from '../Inventory/Memberitemamount'
+import { Inventoryitem } from '../Inventory/Inventoryitem'
 
 @Entity()
 export class Member extends BaseEntity {
@@ -106,9 +105,6 @@ export class Member extends BaseEntity {
 	@OneToMany((type) => Income, (income) => income.member)
 	incomes!: Income
 
-	@OneToMany(
-		(type) => Memberitemamount,
-		(memberitemamount) => memberitemamount.member
-	)
-	memberitemamount!: Memberitemamount
+	@OneToMany((type) => Inventoryitem, (inventoryitem) => inventoryitem.member)
+	inventoryitems!: Inventoryitem
 }

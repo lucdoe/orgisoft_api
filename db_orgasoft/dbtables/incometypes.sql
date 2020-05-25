@@ -1,0 +1,21 @@
+
+insert into incometypes (incometype_id, incometype) values (1, 'Bumetanide');
+insert into incometypes (incometype_id, incometype) values (2, 'Avobenzone, Octinoxate, Octisalate, and Oxybenzone');
+insert into incometypes (incometype_id, incometype) values (3, 'Buspirone hydrochloride');
+insert into incometypes (incometype_id, incometype) values (4, 'Metformin Hydrochloride');
+insert into incometypes (incometype_id, incometype) values (5, 'Alcohol');
+insert into incometypes (incometype_id, incometype) values (6, 'Avena Sativa, Carduus Marianus, Damiana, Galium Aparine, Hamamelis Virginiana, Hepar Bovine, Korean Ginseng, Nuphar Luteum,');
+insert into incometypes (incometype_id, incometype) values (7, 'Paroxetine Hydrochloride');
+insert into incometypes (incometype_id, incometype) values (8, 'acyclovir');
+insert into incometypes (incometype_id, incometype) values (9, 'OXYGEN');
+insert into incometypes (incometype_id, incometype) values (10, 'CAPTORPIL');
+insert into incometypes (incometype_id, incometype) values (11, 'sodium phosphate');
+insert into incometypes (incometype_id, incometype) values (12, 'Petrolatum');
+insert into incometypes (incometype_id, incometype) values (13, 'Nitrofurantoin Monohydrate/Macrocrystalline');
+insert into incometypes (incometype_id, incometype) values (14, 'BENZTROPINE MESYLATE');
+insert into incometypes (incometype_id, incometype) values (15, 'glyburide');
+insert into incometypes (incometype_id, incometype) values (16, 'DEXAMETHASONE SODIUM PHOSPHATE');
+insert into incometypes (incometype_id, incometype) values (17, 'Guaifenesin, Dextromethorphan HBr');
+insert into incometypes (incometype_id, incometype) values (18, 'Dextromethorphan Hydrobromide, Guaifenesin');
+insert into incometypes (incometype_id, incometype) values (19, 'CEFOTAXIME');
+insert into incometypes (incometype_id, incometype) values (20, 'Oxaliplatin');

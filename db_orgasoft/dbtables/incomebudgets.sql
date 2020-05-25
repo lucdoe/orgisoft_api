@@ -1,0 +1,21 @@
+
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (1, 'Microcavia australis', 22504);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (2, 'Actophilornis africanus', 47146);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (3, 'Conolophus subcristatus', 98213);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (4, 'Macropus rufogriseus', 21525);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (5, 'Pedetes capensis', 64867);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (6, 'Aquila chrysaetos', 30696);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (7, 'Gazella granti', 59336);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (8, 'Macropus fuliginosus', 80603);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (9, 'Philetairus socius', 61867);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (10, 'Priodontes maximus', 22336);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (11, 'Panthera tigris', 10842);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (12, 'Phoenicopterus ruber', 60882);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (13, 'Columba livia', 70611);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (14, 'Psittacula krameri', 94273);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (15, 'Egretta thula', 34381);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (16, 'Dicrurus adsimilis', 76142);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (17, 'Lorythaixoides concolor', 64826);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (18, 'Dacelo novaeguineae', 60830);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (19, 'Phaethon aethereus', 72264);
+insert into incomebudgets (incomebudget_id, incomebudget, amount) values (20, 'Boa caninus', 43918);
