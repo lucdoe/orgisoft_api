@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { Memberqualification } from '../../models/Members/Memberqualification'
 
-export const findAllMembers = async (req: Request, res: Response) => {
+export const allMembers = async (req: Request, res: Response) => {
 	const allMembers = await Memberqualification.find({
 		relations: [
 			'qualification',
