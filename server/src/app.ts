@@ -10,16 +10,14 @@ import { createConnection } from 'typeorm'
 
 // Controllers (route handlers)
 import { accessToken } from './helpers/authenticate'
+import { createInventoryitem } from './controllers/inventory/createInventory'
 import {
 	findInventoryitems,
 	findInventoryitemById,
 	findInventoryitemByIdMember,
-} from './controllers/inventory/getInventory'
+} from './controllers/inventory/readInventory'
+import { updateInventoryitemById } from './controllers/inventory/updateInventory'
 import { deleteInventoryitemById } from './controllers/inventory/deleteInventory'
-import {
-	createInventoryitem,
-	updateInventoryitemById,
-} from './controllers/inventory/createInventory'
 
 // set instance of express/ create server
 const app = express()
