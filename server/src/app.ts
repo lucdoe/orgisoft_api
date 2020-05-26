@@ -10,26 +10,10 @@ import { createConnection } from 'typeorm'
 
 // Controllers (route handlers)
 import { accessToken } from './helpers/authenticate'
-import {
-	createInventoryitem,
-	createInventoryGroup,
-	createInventoryPlace,
-} from './controllers/inventory/create'
-import {
-	findAllInventoryitems,
-	findInventoryitem,
-	findInventoryitemOwner,
-} from './controllers/inventory/read'
-import {
-	updateInventoryitem,
-	updateInventoryGroup,
-	updateInventoryPlace,
-} from './controllers/inventory/update'
-import {
-	deleteInventoryitem,
-	deleteInventorygroup,
-	deleteInventoryplace,
-} from './controllers/inventory/delete'
+import * as create from './controllers/inventory/create'
+import * as read from './controllers/inventory/read'
+import * as update from './controllers/inventory/update'
+import * as deletes from './controllers/inventory/delete'
 
 // set instance of express/ create server
 const app = express()
@@ -46,21 +30,21 @@ app.use(logger(customLogMsg))
 app.use(json())
 
 // create
-app.post('/inventoryitems', accessToken, createInventoryitem)
-app.post('/inventoryitems/groups', accessToken, createInventoryGroup)
-app.post('/inventoryitems/places', accessToken, createInventoryPlace)
+app.post('/inventoryitems', accessToken, create.newInventoryitem)
+app.post('/inventoryitems/groups', accessToken, create.newInventoryGroup)
+app.post('/inventoryitems/places', accessToken, create.newInventoryPlace)
 // read
-app.get('/inventoryitems', accessToken, findAllInventoryitems)
-app.get('/inventoryitems/:id', accessToken, findInventoryitem)
-app.get('/inventoryitems/:id/members', accessToken, findInventoryitemOwner)
+app.get('/inventoryitems', accessToken, read.allInventoryitems)
+app.get('/inventoryitems/:id', accessToken, read.oneInventoryitem)
+app.get('/inventoryitems/:id/members', accessToken, read.inventoryitemOwner)
 // update
-app.put('/inventoryitems/:id', accessToken, updateInventoryitem)
-app.put('/inventoryitems/groups/:id', accessToken, updateInventoryGroup)
-app.put('/inventoryitems/places/:id', accessToken, updateInventoryPlace)
+app.put('/inventoryitems/:id', accessToken, update.oneInventoryitem)
+app.put('/inventoryitems/groups/:id', accessToken, update.oneInventoryGroup)
+app.put('/inventoryitems/places/:id', accessToken, update.oneInventoryPlace)
 // delete
-app.delete('/inventoryitems/:id', accessToken, deleteInventoryitem)
-app.delete('/inventoryitems/groups/:id', accessToken, deleteInventorygroup)
-app.delete('/inventoryitems/places/:id', accessToken, deleteInventoryplace)
+app.delete('/inventoryitems/:id', accessToken, deletes.oneInventoryitem)
+app.delete('/inventoryitems/groups/:id', accessToken, deletes.oneInventorygroup)
+app.delete('/inventoryitems/places/:id', accessToken, deletes.oneInventoryplace)
 
 // start db connection
 createConnection()

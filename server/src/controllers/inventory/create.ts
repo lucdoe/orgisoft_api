@@ -4,7 +4,7 @@ import { Inventoryitem } from '../../models/Inventory/Inventoryitem'
 import { Inventorygroup } from '../../models/Inventory/Inventorygroup'
 import { Inventoryplace } from '../../models/Inventory/Inventoryplace'
 
-export const createInventoryitem = async (req: Request, res: Response) => {
+export const newInventoryitem = async (req: Request, res: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
 	const newItem = {
@@ -20,7 +20,7 @@ export const createInventoryitem = async (req: Request, res: Response) => {
 	res.status(201).json(`Succesfully inserted item: ${newItem.inventoryitem}`)
 }
 
-export const createInventoryGroup = async (req: Request, res: Response) => {
+export const newInventoryGroup = async (req: Request, res: Response) => {
 	const manager = getManager()
 	const newInventoryGroup = {
 		inventorygroup: req.body.inventorygroup,
@@ -31,7 +31,7 @@ export const createInventoryGroup = async (req: Request, res: Response) => {
 	)
 }
 
-export const createInventoryPlace = async (req: Request, res: Response) => {
+export const newInventoryPlace = async (req: Request, res: Response) => {
 	const manager = getManager()
 	const newInventoryPlace = {
 		inventoryplace: req.body.inventoryplace,
