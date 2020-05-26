@@ -7,7 +7,6 @@ import {
 	ManyToOne,
 } from 'typeorm'
 import { Inventorygroup } from '../Inventory/Inventorygroup'
-import { Expense } from '../Finance/Expenses/Expense'
 import { Inventoryplace } from './Inventoryplace'
 import { Member } from '../Members/Member'
 

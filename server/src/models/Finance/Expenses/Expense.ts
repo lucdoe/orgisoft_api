@@ -5,7 +5,7 @@ import {
 	JoinColumn,
 	BaseEntity,
 	ManyToOne,
-	OneToMany,
+	OneToOne,
 } from 'typeorm'
 import { Member } from '../../Members/Member'
 import { Expensetype } from './Expensetype'
@@ -30,6 +30,10 @@ export class Expense extends BaseEntity {
 	@ManyToOne((type) => Currency, (currency) => currency.expenses)
 	@JoinColumn()
 	currency!: Currency
+
+	@OneToOne((type) => Inventoryitem)
+	@JoinColumn()
+	inventoryitem!: Inventoryitem
 
 	@Column({
 		type: 'varchar',
