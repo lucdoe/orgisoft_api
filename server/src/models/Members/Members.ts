@@ -1,11 +1,4 @@
-import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	OneToMany,
-	BaseEntity,
-	ManyToOne,
-} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, ManyToOne } from 'typeorm'
 import { Address } from './Address'
 import { Position } from './Position'
 import { Status } from './Status'
@@ -16,13 +9,13 @@ import { Income } from '../Finance/Incomes/Income'
 import { Inventoryitem } from '../Inventory/Inventoryitem'
 
 @Entity()
-export class Member extends BaseEntity {
+export class Members extends BaseEntity {
 	@PrimaryGeneratedColumn({
 		type: 'int',
 	})
 	id!: Number
 
-	@ManyToOne((type) => Address, (address) => address.member)
+	@ManyToOne((type) => Address, (address) => address.members)
 	address!: Address
 
 	@ManyToOne((type) => Position, (position) => position.members)
@@ -93,16 +86,13 @@ export class Member extends BaseEntity {
 	})
 	updatedAt!: Date
 
-	@OneToMany(
-		(type) => Memberqualification,
-		(memberqualification) => memberqualification.member
-	)
+	@OneToMany((type) => Memberqualification, (memberqualification) => memberqualification.members)
 	memberqualifications!: Memberqualification
 
-	@OneToMany((type) => Expense, (expense) => expense.member)
+	@OneToMany((type) => Expense, (expense) => expense.members)
 	expenses!: Expense
 
-	@OneToMany((type) => Income, (income) => income.member)
+	@OneToMany((type) => Income, (income) => income.members)
 	incomes!: Income
 
 	@OneToMany((type) => Inventoryitem, (inventoryitem) => inventoryitem.member)

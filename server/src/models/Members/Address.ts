@@ -1,14 +1,6 @@
-import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	OneToOne,
-	BaseEntity,
-	ManyToOne,
-	OneToMany,
-} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, BaseEntity, ManyToOne, OneToMany } from 'typeorm'
 import { City } from './City'
-import { Member } from './Member'
+import { Members } from './Members'
 
 @Entity()
 export class Address extends BaseEntity {
@@ -46,6 +38,6 @@ export class Address extends BaseEntity {
 	})
 	updatedAt!: Date
 
-	@OneToMany((type) => Member, (member) => member.address)
-	member!: Member
+	@OneToMany((type) => Members, (members) => members.address)
+	members!: Members
 }

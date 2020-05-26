@@ -1,11 +1,5 @@
-import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	BaseEntity,
-	OneToMany,
-} from 'typeorm'
-import { Member } from './Member'
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
+import { Members } from './Members'
 
 @Entity()
 export class Membergroup extends BaseEntity {
@@ -18,6 +12,6 @@ export class Membergroup extends BaseEntity {
 	})
 	membergroup!: string
 
-	@OneToMany((type) => Member, (member) => member.membergroup)
-	members!: Member
+	@OneToMany((type) => Members, (members) => members.membergroup)
+	members!: Members
 }

@@ -1,11 +1,5 @@
-import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	BaseEntity,
-	OneToMany,
-} from 'typeorm'
-import { Member } from './Member'
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
+import { Members } from './Members'
 @Entity()
 export class Status extends BaseEntity {
 	@PrimaryGeneratedColumn()
@@ -17,6 +11,6 @@ export class Status extends BaseEntity {
 	})
 	status!: string
 
-	@OneToMany((type) => Member, (member) => member.status)
-	members!: Member
+	@OneToMany((type) => Members, (members) => members.status)
+	members!: Members
 }

@@ -1,13 +1,5 @@
-import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	JoinColumn,
-	BaseEntity,
-	ManyToOne,
-	OneToOne,
-} from 'typeorm'
-import { Member } from '../../Members/Member'
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, BaseEntity, ManyToOne, OneToOne } from 'typeorm'
+import { Members } from '../../Members/Members'
 import { Expensetype } from './Expensetype'
 import { Currency } from '../Currency'
 import { Inventoryitem } from '../../Inventory/Inventoryitem'
@@ -19,9 +11,9 @@ export class Expense extends BaseEntity {
 	})
 	id!: Number
 
-	@ManyToOne((type) => Member, (member) => member.expenses)
+	@ManyToOne((type) => Members, (members) => members.expenses)
 	@JoinColumn()
-	member!: Member
+	members!: Members
 
 	@ManyToOne((type) => Expensetype, (expensetype) => expensetype.expenses)
 	@JoinColumn()

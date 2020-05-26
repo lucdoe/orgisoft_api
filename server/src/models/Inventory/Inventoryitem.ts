@@ -1,14 +1,7 @@
-import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	OneToOne,
-	BaseEntity,
-	ManyToOne,
-} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, BaseEntity, ManyToOne } from 'typeorm'
 import { Inventorygroup } from '../Inventory/Inventorygroup'
 import { Inventoryplace } from './Inventoryplace'
-import { Member } from '../Members/Member'
+import { Members } from '../Members/Members'
 
 @Entity()
 export class Inventoryitem extends BaseEntity {
@@ -17,19 +10,13 @@ export class Inventoryitem extends BaseEntity {
 	})
 	id!: Number
 
-	@ManyToOne(
-		(type) => Inventorygroup,
-		(inventorygroup) => inventorygroup.inventoryitems
-	)
+	@ManyToOne((type) => Inventorygroup, (inventorygroup) => inventorygroup.inventoryitems)
 	inventorygroup!: Inventorygroup
 
-	@ManyToOne((type) => Member, (member) => member.inventoryitems)
-	member!: Member
+	@ManyToOne((type) => Members, (members) => members.inventoryitems)
+	member!: Members
 
-	@ManyToOne(
-		(type) => Inventoryplace,
-		(inventoryplace) => inventoryplace.inventoryitems
-	)
+	@ManyToOne((type) => Inventoryplace, (inventoryplace) => inventoryplace.inventoryitems)
 	inventoryplace!: Inventoryplace
 
 	@Column({

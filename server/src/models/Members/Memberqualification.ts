@@ -1,25 +1,16 @@
-import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	BaseEntity,
-	ManyToOne,
-} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from 'typeorm'
 import { Qualification } from './Qualification'
-import { Member } from './Member'
+import { Members } from './Members'
 
 @Entity()
 export class Memberqualification extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id!: number
 
-	@ManyToOne((type) => Member, (member) => member.memberqualifications)
-	member!: Member
+	@ManyToOne((type) => Members, (members) => members.memberqualifications)
+	members!: Members
 
-	@ManyToOne(
-		(type) => Qualification,
-		(qualification) => qualification.memberqualifications
-	)
+	@ManyToOne((type) => Qualification, (qualification) => qualification.memberqualifications)
 	qualification!: Qualification
 
 	@Column({ type: 'date' })
