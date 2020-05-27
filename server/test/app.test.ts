@@ -1,4 +1,4 @@
-import app from '../src/app'
+import members from '../src/routers/router.members'
 import request from 'supertest'
 import { createConnection } from 'typeorm'
 
@@ -8,11 +8,11 @@ describe('Testing app ', () => {
 		expect(connection).toEqual(expect.any(Object))
 	})
 	it('/GET should response 200', async () => {
-		const response = await request(app).get('/')
+		const response = await request(members).get('/1')
 		expect(response.status).toBe(200)
 	})
 	it('/GET should response 404', async () => {
-		const response = await request(app).get('/dhsgklhjfg')
+		const response = await request(members).get('/dhsgklhjfg')
 		expect(response.status).toBe(404)
 	})
 })
