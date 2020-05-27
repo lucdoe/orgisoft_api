@@ -34,7 +34,7 @@ export const createInventoryGroup = async (req: Request, res: Response) => {
 		inventorygroup: req.body.inventorygroup,
 	}
 	await manager.insert(Inventorygroup, inventorygroup)
-	res.status(201).json(`Succesfully inserted Inventorygroup: ${inventorygroup}`)
+	res.status(201).json(`Succesfully inserted Inventorygroup: ${inventorygroup.inventorygroup}`)
 }
 
 /*
@@ -47,7 +47,7 @@ export const createInventoryPlace = async (req: Request, res: Response) => {
 		inventoryplace: req.body.inventoryplace,
 	}
 	await manager.insert(Inventoryplace, inventoryplace)
-	res.status(201).json(`Succesfully inserted Inventoryplace: ${inventoryplace}`)
+	res.status(201).json(`Succesfully inserted Inventoryplace: ${inventoryplace.inventoryplace}`)
 }
 
 /*
@@ -57,7 +57,6 @@ export const createInventoryPlace = async (req: Request, res: Response) => {
 export const readInventoryitems = async (req: Request, res: Response) => {
 	const allInventoryitems = await Inventoryitem.find({
 		relations: ['member', 'inventorygroup', 'inventoryplace'],
-		select: ['id'],
 	})
 	res.status(200).json(allInventoryitems)
 }
@@ -69,7 +68,7 @@ export const readInventoryitems = async (req: Request, res: Response) => {
 export const readInventoryitem = async (req: Request, res: Response) => {
 	const itemId = req.params.id
 	const inventoryitem = await Inventoryitem.find({
-		relations: ['inventorygroup', 'inventoryplace'],
+		relations: ['member', 'inventorygroup', 'inventoryplace'],
 		where: {
 			id: itemId,
 		},

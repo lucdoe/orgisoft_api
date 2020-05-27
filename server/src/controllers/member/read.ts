@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { MoreThan, getRepository } from 'typeorm'
+import { getRepository } from 'typeorm'
 import { Memberqualification } from '../../models/Members/Memberqualification'
 import { Members } from '../../models/Members/Members'
 import { Position } from '../../models/Members/Position'
@@ -109,6 +109,7 @@ export const readMemberGroup = async (req: Request, res: Response) => {
 	/GET - read
 	read member qualification
 */
+// TODO
 export const readMemberQualification = async (req: Request, res: Response) => {
 	const qualifications = await getRepository(Qualification).createQueryBuilder().getMany()
 	res.status(200).json(qualifications)
