@@ -7,7 +7,7 @@ import { createConnection } from 'typeorm'
 import helmet from 'helmet'
 import cors from 'cors'
 import logger from 'morgan'
-import { loggerMsgTemplate } from './middlewares/middleware.logger'
+import { loggerMsgTemplate } from './helpers/helper.logger'
 
 // importing routes / controllers
 import members from './routers/router.members'
