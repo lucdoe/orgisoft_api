@@ -1,12 +1,13 @@
 // importing third party middleware
+import express, { Request, Response, NextFunction, json } from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 import 'reflect-metadata'
-import express, { Request, Response, NextFunction, json } from 'express'
+import { createConnection } from 'typeorm'
 import helmet from 'helmet'
 import cors from 'cors'
 import logger from 'morgan'
-import { createConnection } from 'typeorm'
+import { loggerMsgTemplate } from './helpers/logger'
 
 // importing routes / controllers
 import members from './routers/members/members'
@@ -16,12 +17,8 @@ import status from './routers/members/status'
 import qualification from './routers/members/qualification'
 import membergroup from './routers/members/membergroup'
 
-// set instance of express/ app server
+// set instance of express
 const app = express()
-
-// logger
-const customLogMsg =
-	'\n===== Begin Log =====\n\n  Method:  :method,\nEndpoint:  :url,\n  Status:  :status,\n  Lenght:  :res[content-length],\n      In:  :response-time ms\n\n====== End Log ======\n'
 
 // set app port
 app.set('port', process.env.PORT || 3000)
@@ -29,8 +26,8 @@ app.set('port', process.env.PORT || 3000)
 // mounting third party middleware
 app.use(helmet())
 app.use(cors())
-app.use(logger(customLogMsg))
 app.use(json())
+app.use(logger(loggerMsgTemplate))
 
 // mounting routes / controllers
 app.use('/members', members)
@@ -40,22 +37,11 @@ app.use('/statuses', status)
 app.use('/qualifications', qualification)
 app.use('/membergroups', membergroup)
 
-// start db connection
+// db connection
 createConnection()
 	.then(async (connection) => {
 		return connection
 	})
 	.catch((error) => console.log(error))
-
-// not found handler
-app.use((req: Request, res: Response, next: NextFunction) => {
-	res.status(404).json('Not found. (4XX)')
-})
-
-// error handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-	console.error(err.stack)
-	res.status(500).json('Internal Server error. (5XX)')
-})
 
 export default app
