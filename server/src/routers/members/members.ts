@@ -1,6 +1,6 @@
 import express from 'express'
-import { accessToken } from '../helpers/authenticate'
-import * as memberReadContrls from '../controllers/member/read'
+import { accessToken } from '../../helpers/authenticate'
+import * as memberReadContrls from '../../controllers/member/read'
 
 const router = express.Router()
 

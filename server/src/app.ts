@@ -1,3 +1,4 @@
+// importing third party middleware
 import dotenv from 'dotenv'
 dotenv.config()
 import 'reflect-metadata'
@@ -7,13 +8,13 @@ import cors from 'cors'
 import logger from 'morgan'
 import { createConnection } from 'typeorm'
 
-// controllers
-import { accessToken } from './helpers/authenticate'
-import * as memberReadContrls from './controllers/member/read'
-
-//routers
-import members from './routers/members'
+// importing routes / controllers
+import members from './routers/members/members'
 import inventory from './routers/inventory'
+import position from './routers/members/position'
+import status from './routers/members/status'
+import qualification from './routers/members/qualification'
+import membergroup from './routers/members/membergroup'
 
 // set instance of express/ app server
 const app = express()
@@ -22,24 +23,22 @@ const app = express()
 const customLogMsg =
 	'\n===== Begin Log =====\n\n  Method:  :method,\nEndpoint:  :url,\n  Status:  :status,\n  Lenght:  :res[content-length],\n      In:  :response-time ms\n\n====== End Log ======\n'
 
-// middleware
+// set app port
 app.set('port', process.env.PORT || 3000)
+
+// mounting third party middleware
 app.use(helmet())
 app.use(cors())
 app.use(logger(customLogMsg))
 app.use(json())
+
+// mounting routes / controllers
 app.use('/members', members)
 app.use('/inventoryitems', inventory)
-
-// mount controllers to routes
-app.get('/positions', accessToken, memberReadContrls.readPositions)
-app.get('/positions/:id', accessToken, memberReadContrls.readPostion)
-app.get('/statuses', accessToken, memberReadContrls.readStatuses)
-app.get('/statuses/:id', accessToken, memberReadContrls.readStatus)
-app.get('/qualifications', accessToken, memberReadContrls.readQualifications)
-app.get('/qualifications/:id', accessToken, memberReadContrls.readQualification)
-app.get('/membergroups', accessToken, memberReadContrls.readMembergroups)
-app.get('/membergroups/:id', accessToken, memberReadContrls.readMembergroup)
+app.use('/positions', position)
+app.use('/statuses', status)
+app.use('/qualifications', qualification)
+app.use('/membergroups', membergroup)
 
 // start db connection
 createConnection()
