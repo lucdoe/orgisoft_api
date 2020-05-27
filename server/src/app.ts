@@ -10,7 +10,7 @@ import { createConnection } from 'typeorm'
 
 // Controllers (route handlers)
 import { accessToken } from './helpers/authenticate'
-import * as invContrls from './controllers/controllers.inventory'
+import * as invContrls from './controllers/inventory'
 import * as memberReadContrls from './controllers/member/read'
 
 // set instance of express/ inventory server
