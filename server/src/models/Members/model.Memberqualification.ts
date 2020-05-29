@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from 'typeorm'
-import { Qualifications } from './model.Qualifications'
-import { Members } from './model.Members'
+import { Qualifications } from './model.Qualification'
+import { Members } from './model.Member'
 
 @Entity()
 export class Memberqualifications extends BaseEntity {

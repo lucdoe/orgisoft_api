@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
-import { Addresses } from './model.Addresses'
+import { Addresses } from './model.Address'
 
 @Entity()
 export class Citys extends BaseEntity {

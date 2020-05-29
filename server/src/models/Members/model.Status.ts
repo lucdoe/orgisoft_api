@@ -1,8 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
-import { Members } from './model.Members'
-
+import { Members } from './model.Member'
 @Entity()
-export class Membergroups extends BaseEntity {
+export class Statuses extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id!: number
 
@@ -10,8 +9,8 @@ export class Membergroups extends BaseEntity {
 		type: 'varchar',
 		length: '50',
 	})
-	membergroup!: string
+	status!: string
 
-	@OneToMany((type) => Members, (members) => members.membergroups)
+	@OneToMany((type) => Members, (members) => members.statuses)
 	members!: Members
 }

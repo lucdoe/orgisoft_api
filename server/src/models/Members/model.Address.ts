@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany } from 'typeorm'
-import { Citys } from './model.Citys'
-import { Members } from './model.Members'
+import { Citys } from './model.City'
+import { Members } from './model.Member'
 
 @Entity()
 export class Addresses extends BaseEntity {

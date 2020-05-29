@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
-import { Memberqualifications } from './model.Memberqualifications'
+import { Memberqualifications } from './model.Memberqualification'
 
 @Entity()
 export class Qualifications extends BaseEntity {

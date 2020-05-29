@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
-import { Incomes } from './model.Incomes'
+import { Incomes } from './model.Income'
 @Entity()
 export class Incometypes extends BaseEntity {
 	@PrimaryGeneratedColumn({

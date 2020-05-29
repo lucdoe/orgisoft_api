@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, BaseEntity, ManyToOne } from 'typeorm'
-import { Members } from '../Members/model.Members'
-import { Incometypes } from './model.Incometypes'
-import { Currencys } from './model.Currencys'
+import { Members } from '../Members/model.Member'
+import { Incometypes } from './model.Incometype'
+import { Currencys } from './model.Currency'
 
 @Entity()
 export class Incomes extends BaseEntity {

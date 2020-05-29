@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
-import { Expenses } from './model.Expenses'
-import { Incomes } from './model.Incomes'
+import { Expenses } from './model.Expense'
+import { Incomes } from './model.Income'
 
 @Entity()
 export class Currencys extends BaseEntity {

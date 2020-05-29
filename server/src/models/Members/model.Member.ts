@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, ManyToOne } from 'typeorm'
-import { Addresses } from './model.Addresses'
-import { Positions } from './model.Positions'
-import { Statuses } from './model.Statuses'
-import { Membergroups } from './model.Membergroups'
-import { Memberqualifications } from './model.Memberqualifications'
-import { Expenses } from '../Finance/model.Expenses'
-import { Incomes } from '../Finance/model.Incomes'
-import { Inventoryitems } from '../Inventory/model.Inventoryitems'
+import { Addresses } from './model.Address'
+import { Positions } from './model.Position'
+import { Statuses } from './model.Status'
+import { Membergroups } from './model.Membergroup'
+import { Memberqualifications } from './model.Memberqualification'
+import { Expenses } from '../Finance/model.Expense'
+import { Incomes } from '../Finance/model.Income'
+import { Inventoryitems } from '../Inventory/model.Inventoryitem'
 
 @Entity()
 export class Members extends BaseEntity {
