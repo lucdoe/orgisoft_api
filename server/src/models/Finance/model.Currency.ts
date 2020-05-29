@@ -4,7 +4,9 @@ import { Incomes } from './model.Income'
 
 @Entity()
 export class Currencys extends BaseEntity {
-	@PrimaryGeneratedColumn({ type: 'int' })
+	@PrimaryGeneratedColumn({
+		type: 'int',
+	})
 	id!: number
 
 	@Column({

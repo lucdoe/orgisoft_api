@@ -3,7 +3,9 @@ import { Inventoryitems } from './model.Inventoryitem'
 
 @Entity()
 export class Inventoryplaces extends BaseEntity {
-	@PrimaryGeneratedColumn()
+	@PrimaryGeneratedColumn({
+		type: 'int',
+	})
 	id!: number
 
 	@Column({
