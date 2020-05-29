@@ -4,7 +4,9 @@ import { Members } from './model.Member'
 
 @Entity()
 export class Memberqualifications extends BaseEntity {
-	@PrimaryGeneratedColumn()
+	@PrimaryGeneratedColumn({
+		type: 'int',
+	})
 	id!: number
 
 	@ManyToOne((type) => Members, (members) => members.memberqualifications)

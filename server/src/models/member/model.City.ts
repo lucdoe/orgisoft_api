@@ -3,7 +3,9 @@ import { Addresses } from './model.Address'
 
 @Entity()
 export class Citys extends BaseEntity {
-	@PrimaryGeneratedColumn({ type: 'int' })
+	@PrimaryGeneratedColumn({
+		type: 'int',
+	})
 	id!: number
 
 	@Column({

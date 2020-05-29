@@ -31,7 +31,7 @@ export const createInventoryitem = async (req: Request, res: Response) => {
 export const createInventoryGroup = async (req: Request, res: Response) => {
 	const manager = getManager()
 	const inventorygroup = {
-		inventorygroup: req.body.inventorygroups,
+		inventorygroup: req.body.inventorygroup,
 	}
 	await manager.insert(Inventorygroups, inventorygroup)
 	res.status(201).json(`Succesfully inserted Inventorygroup: ${inventorygroup.inventorygroup}`)

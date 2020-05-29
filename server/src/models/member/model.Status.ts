@@ -2,7 +2,9 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 't
 import { Members } from './model.Member'
 @Entity()
 export class Statuses extends BaseEntity {
-	@PrimaryGeneratedColumn()
+	@PrimaryGeneratedColumn({
+		type: 'int',
+	})
 	id!: number
 
 	@Column({

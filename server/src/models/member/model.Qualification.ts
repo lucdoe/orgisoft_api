@@ -3,7 +3,9 @@ import { Memberqualifications } from './model.Memberqualification'
 
 @Entity()
 export class Qualifications extends BaseEntity {
-	@PrimaryGeneratedColumn()
+	@PrimaryGeneratedColumn({
+		type: 'int',
+	})
 	id!: number
 
 	@Column({

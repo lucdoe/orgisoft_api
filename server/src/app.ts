@@ -11,11 +11,12 @@ import { loggerMsgTemplate } from './helpers/helper.logger'
 
 // importing routes / controllers
 import members from './routers/router.members'
-import inventorys from './routers/router.inventorys'
+import inventorys from './routers/router.inventoryitems'
 import positions from './routers/router.positions'
 import statuses from './routers/router.statuses'
 import qualifications from './routers/router.qualifications'
 import membergroups from './routers/router.membergroups'
+import memberqualifications from './routers/router.memberqualifications'
 
 // set instance of express
 const app = express()
@@ -36,6 +37,7 @@ app.use('/positions', positions)
 app.use('/statuses', statuses)
 app.use('/qualifications', qualifications)
 app.use('/membergroups', membergroups)
+app.use('/memberqualifications', memberqualifications)
 
 // db connection
 createConnection()

@@ -3,7 +3,9 @@ import { Members } from './model.Member'
 
 @Entity()
 export class Positions extends BaseEntity {
-	@PrimaryGeneratedColumn()
+	@PrimaryGeneratedColumn({
+		type: 'int',
+	})
 	id!: number
 
 	@Column({
