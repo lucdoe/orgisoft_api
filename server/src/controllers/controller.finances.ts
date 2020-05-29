@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
-import { Incomes } from '../models/Finance/model.Income'
-import { Incomebudgets } from '../models/Finance/model.Incomebudget'
-import { Expenses } from '../models/Finance/model.Expense'
-import { Expensebudgets } from '../models/Finance/model.Expensebudget'
+import { Incomes } from '../models/finance/model.Income'
+import { Incomebudgets } from '../models/finance/model.Incomebudget'
+import { Expenses } from '../models/finance/model.Expense'
+import { Expensebudgets } from '../models/finance/model.Expensebudget'
 
 export const findIncomes = async (req: Request, res: Response) => {
 	const allIncomes = await Incomes.find({

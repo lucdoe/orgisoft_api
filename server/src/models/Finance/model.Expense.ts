@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, BaseEntity, ManyToOne, OneToOne } from 'typeorm'
-import { Members } from '../Members/model.Member'
+import { Members } from '../member/model.Member'
 import { Expensetypes } from './model.Expensetype'
 import { Currencys } from './model.Currency'
-import { Inventoryitems } from '../Inventory/model.Inventoryitem'
+import { Inventoryitems } from '../inventory/model.Inventoryitem'
 
 @Entity()
 export class Expenses extends BaseEntity {

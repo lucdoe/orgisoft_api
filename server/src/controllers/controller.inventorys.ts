@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import { getManager } from 'typeorm'
-import { Inventoryitems } from '../models/Inventory/model.Inventoryitem'
-import { Inventorygroups } from '../models/Inventory/model.Inventorygroup'
-import { Inventoryplaces } from '../models/Inventory/model.Inventoryplace'
+import { Inventoryitems } from '../models/inventory/model.Inventoryitem'
+import { Inventorygroups } from '../models/inventory/model.Inventorygroup'
+import { Inventoryplaces } from '../models/inventory/model.Inventoryplace'
 
 /*
 	/POST - create

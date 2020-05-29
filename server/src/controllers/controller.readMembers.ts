@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
-import { Memberqualifications } from '../models/Members/model.Memberqualification'
-import { Members } from '../models/Members/model.Member'
-import { Positions } from '../models/Members/model.Position'
-import { Statuses } from '../models/Members/model.Status'
-import { Qualifications } from '../models/Members/model.Qualification'
-import { Membergroups } from '../models/Members/model.Membergroup'
+import { Memberqualifications } from '../models/member/model.Memberqualification'
+import { Members } from '../models/member/model.Member'
+import { Positions } from '../models/member/model.Position'
+import { Statuses } from '../models/member/model.Status'
+import { Qualifications } from '../models/member/model.Qualification'
+import { Membergroups } from '../models/member/model.Membergroup'
 
 /*
 	/GET - read

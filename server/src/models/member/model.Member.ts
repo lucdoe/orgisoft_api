@@ -4,9 +4,9 @@ import { Positions } from './model.Position'
 import { Statuses } from './model.Status'
 import { Membergroups } from './model.Membergroup'
 import { Memberqualifications } from './model.Memberqualification'
-import { Expenses } from '../Finance/model.Expense'
-import { Incomes } from '../Finance/model.Income'
-import { Inventoryitems } from '../Inventory/model.Inventoryitem'
+import { Expenses } from '../finance/model.Expense'
+import { Incomes } from '../finance/model.Income'
+import { Inventoryitems } from '../inventory/model.Inventoryitem'
 
 @Entity()
 export class Members extends BaseEntity {
