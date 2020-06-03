@@ -16,7 +16,7 @@ router.get('/:id/statuses', accessToken, memberReadContrls.readMemberStatus)
 router.get('/:id/positions', accessToken, memberReadContrls.readMemberPosition)
 router.get('/:id/groups', accessToken, memberReadContrls.readMemberGroup)
 // TODO
-router.get('/:id/qualifications', accessToken, memberReadContrls.readMemberqualification)
+router.get('/:id/qualifications', accessToken, memberReadContrls.readMemberqualifications)
 router.get('/:id/addresses', accessToken, memberReadContrls.readMemberAddress)
 // TODO
 router.get('/:id/inventoryitems', accessToken, memberReadContrls.readMemberinventoryitem)

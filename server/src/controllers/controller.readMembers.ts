@@ -111,7 +111,13 @@ export const readMemberGroup = async (request: Request, response: Response) => {
 */
 // TODO
 export const readMemberqualifications = async (request: Request, response: Response) => {
-	const memberqualifications = await getRepository(Memberqualifications).createQueryBuilder().getMany()
+	const membersId = request.params.id
+	const memberqualifications = await Memberqualifications.find({
+		relations: ['qualifications'],
+		where: {
+			members: membersId,
+		},
+	})
 	response.status(200).json(memberqualifications)
 }
 
