@@ -1,5 +1,5 @@
 // importing third party middleware
-import express, { json } from 'express'
+import express, { json, Application } from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 import 'reflect-metadata'
@@ -19,7 +19,7 @@ import membergroups from './routers/router.membergroups'
 import memberqualifications from './routers/router.memberqualifications'
 
 // set instance of express
-const app = express()
+const app: Application = express()
 
 // set app port
 app.set('port', process.env.PORT || 3000)

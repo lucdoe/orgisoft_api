@@ -5,14 +5,14 @@ dotenv.config()
 
 const accessTokenSecret: any = process.env.ACCESS_TOKEN_SECRET
 
-export const accessToken = async (req: Request, res: Response, next: NextFunction) => {
+export const accessToken = async (request: Request, response: Response, next: NextFunction) => {
 	try {
-		const authHeader: string | undefined = req.headers['authorization']
+		const authHeader: string | undefined = request.headers['authorization']
 		const token: string | undefined = authHeader && authHeader.split(' ')[1]
-		if (token == undefined) return res.status(401).json(' Unauthorized access! Please log in. ')
+		if (token == undefined) return response.status(401).json(' Unauthorized access! Please log in. ')
 
 		jwt.verify(token, accessTokenSecret, (err: any, user: any) => {
-			if (err) return res.status(403).json(' Unvalid access! Please try again.')
+			if (err) return response.status(403).json(' Unvalid access! Please try again.')
 			next()
 		})
 	} catch (err) {

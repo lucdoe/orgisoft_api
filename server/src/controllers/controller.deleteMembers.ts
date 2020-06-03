@@ -7,84 +7,84 @@ import { Statuses } from '../models/member/model.Status'
 import { Qualifications } from '../models/member/model.Qualification'
 import { Membergroups } from '../models/member/model.Membergroup'
 
-export const deleteMember = async (req: Request, res: Response) => {
-	const memberId = req.params.id
+export const deleteMember = async (request: Request, response: Response) => {
+	const memberId = request.params.id
 	const manager = getManager()
 	await manager.delete(Members, memberId)
-	res.status(200).json(`Succesfully deleted Member.`)
+	response.status(200).json(`Succesfully deleted Member.`)
 }
 
-export const deleteMemberAddress = async (req: Request, res: Response) => {
-	const memberId = req.params.id
+export const deleteMemberAddress = async (request: Request, response: Response) => {
+	const memberId = request.params.id
 	const manager = getManager()
 	const deleteMemberAddress = {
 		addresses: undefined,
 	}
 	await manager.update(Members, memberId, deleteMemberAddress)
-	res.status(200).json(`Succesfully deleted Members Address.`)
+	response.status(200).json(`Succesfully deleted Members Address.`)
 }
 
-export const deleteMemberPosition = async (req: Request, res: Response) => {
-	const memberId = req.params.id
+export const deleteMemberPosition = async (request: Request, response: Response) => {
+	const memberId = request.params.id
 	const manager = getManager()
 	const deleteMemberPosition = {
 		positions: undefined,
 	}
 	await manager.update(Members, memberId, deleteMemberPosition)
-	res.status(200).json(`Succesfully deleted Members Position.`)
+	response.status(200).json(`Succesfully deleted Members Position.`)
 }
 
-export const deleteMemberStatus = async (req: Request, res: Response) => {
-	const memberId = req.params.id
+export const deleteMemberStatus = async (request: Request, response: Response) => {
+	const memberId = request.params.id
 	const manager = getManager()
 	const deleteMemberStatus = {
 		statuses: undefined,
 	}
 	await manager.update(Members, memberId, deleteMemberStatus)
-	res.status(200).json(`Succesfully deleted Members Status.`)
+	response.status(200).json(`Succesfully deleted Members Status.`)
 }
 
-export const deleteMemberMembergroup = async (req: Request, res: Response) => {
-	const memberId = req.params.id
+export const deleteMemberMembergroup = async (request: Request, response: Response) => {
+	const memberId = request.params.id
 	const manager = getManager()
 	const deleteMemberMembergroup = {
 		membergroups: undefined,
 	}
 	await manager.update(Members, memberId, deleteMemberMembergroup)
-	res.status(200).json(`Succesfully deleted Members Membergroup.`)
+	response.status(200).json(`Succesfully deleted Members Membergroup.`)
 }
 
-export const deleteMemberqualification = async (req: Request, res: Response) => {
+export const deleteMemberqualification = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const memberQualificationId = req.params.id
+	const memberQualificationId = request.params.id
 	await manager.delete(Memberqualifications, memberQualificationId)
-	res.status(200).json(`Succesfully deleted Memberqualification.`)
+	response.status(200).json(`Succesfully deleted Memberqualification.`)
 }
 
-export const deletePosition = async (req: Request, res: Response) => {
+export const deletePosition = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const memberPositionId = req.params.id
+	const memberPositionId = request.params.id
 	await manager.delete(Positions, memberPositionId)
-	res.status(200).json(`Succesfully deleted Position.`)
+	response.status(200).json(`Succesfully deleted Position.`)
 }
 
-export const deleteStatus = async (req: Request, res: Response) => {
+export const deleteStatus = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const memberStatusId = req.params.id
+	const memberStatusId = request.params.id
 	await manager.delete(Statuses, memberStatusId)
-	res.status(200).json(`Succesfully deleted Status.`)
+	response.status(200).json(`Succesfully deleted Status.`)
 }
 
-export const deleteQualification = async (req: Request, res: Response) => {
+export const deleteQualification = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const qualificationId = req.params.id
+	const qualificationId = request.params.id
 	await manager.delete(Qualifications, qualificationId)
-	res.status(200).json(`Succesfully deleted Qualification.`)
+	response.status(200).json(`Succesfully deleted Qualification.`)
 }
 
-export const deleteMembergroup = async (req: Request, res: Response) => {
+export const deleteMembergroup = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const memberMembergroupId = req.params.id
+	const memberMembergroupId = request.params.id
 	await manager.delete(Membergroups, memberMembergroupId)
-	res.status(200).json(`Succesfully deleted Membergroup.`)
+	response.status(200).json(`Succesfully deleted Membergroup.`)
 }

@@ -7,75 +7,75 @@ import { Statuses } from '../models/member/model.Status'
 import { Qualifications } from '../models/member/model.Qualification'
 import { Membergroups } from '../models/member/model.Membergroup'
 
-export const createMember = async (req: Request, res: Response) => {
+export const createMember = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
 	const newMember = {
-		addressesId: req.body.addressesId,
-		positionsId: req.body.positionsId,
-		statusesId: req.body.statusesId,
-		membergroupsId: req.body.membergroupsId,
-		title: req.body.title,
-		firstName: req.body.firstName,
-		lastName: req.body.lastName,
-		phoneMobile: req.body.phoneMobile,
-		phoneHome: req.body.phoneHome,
-		email: req.body.email,
-		gender: req.body.gender,
-		birthday: req.body.birthday,
-		note: req.body.note,
+		addressesId: request.body.addressesId,
+		positionsId: request.body.positionsId,
+		statusesId: request.body.statusesId,
+		membergroupsId: request.body.membergroupsId,
+		title: request.body.title,
+		firstName: request.body.firstName,
+		lastName: request.body.lastName,
+		phoneMobile: request.body.phoneMobile,
+		phoneHome: request.body.phoneHome,
+		email: request.body.email,
+		gender: request.body.gender,
+		birthday: request.body.birthday,
+		note: request.body.note,
 		createdAt: currentDate,
 		updatedAt: currentDate,
 	}
 	await manager.insert(Members, newMember)
-	res.status(201).json(`Succesfully inserted Member: ${newMember.firstName} ${newMember.lastName}`)
+	response.status(201).json(`Succesfully inserted Member: ${newMember.firstName} ${newMember.lastName}`)
 }
 
-export const createPosition = async (req: Request, res: Response) => {
+export const createPosition = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newPosition = {
-		position: req.body.position,
+		position: request.body.position,
 	}
 	await manager.insert(Positions, newPosition)
-	res.status(201).json(`Succesfully inserted Position: ${newPosition.position}`)
+	response.status(201).json(`Succesfully inserted Position: ${newPosition.position}`)
 }
 
-export const createStatus = async (req: Request, res: Response) => {
+export const createStatus = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newStatus = {
-		status: req.body.status,
+		status: request.body.status,
 	}
 	await manager.insert(Statuses, newStatus)
-	res.status(201).json(`Succesfully inserted Status: ${newStatus.status}`)
+	response.status(201).json(`Succesfully inserted Status: ${newStatus.status}`)
 }
 
-export const createQualification = async (req: Request, res: Response) => {
+export const createQualification = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newQualification = {
-		qualification: req.body.qualification,
-		description: req.body.description,
+		qualification: request.body.qualification,
+		description: request.body.description,
 	}
 	await manager.insert(Qualifications, newQualification)
-	res.status(201).json(`Succesfully inserted Qualification: ${newQualification.qualification}`)
+	response.status(201).json(`Succesfully inserted Qualification: ${newQualification.qualification}`)
 }
 
-export const createMemberqualification = async (req: Request, res: Response) => {
+export const createMemberqualification = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newMemberQualification = {
-		membersId: req.body.membersId,
-		qualificationsId: req.body.qualificationsId,
-		date: req.body.date,
-		passed: req.body.passed,
+		membersId: request.body.membersId,
+		qualificationsId: request.body.qualificationsId,
+		date: request.body.date,
+		passed: request.body.passed,
 	}
 	await manager.insert(Memberqualifications, newMemberQualification)
-	res.status(201).json(`Succesfully inserted Memberqualification.`)
+	response.status(201).json(`Succesfully inserted Memberqualification.`)
 }
 
-export const createMembergroup = async (req: Request, res: Response) => {
+export const createMembergroup = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newMembergroup = {
-		membergroup: req.body.membergroup,
+		membergroup: request.body.membergroup,
 	}
 	await manager.insert(Membergroups, newMembergroup)
-	res.status(201).json(`Succesfully inserted Membergroup: ${newMembergroup.membergroup}`)
+	response.status(201).json(`Succesfully inserted Membergroup: ${newMembergroup.membergroup}`)
 }

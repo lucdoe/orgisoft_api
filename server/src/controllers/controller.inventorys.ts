@@ -8,80 +8,80 @@ import { Inventoryplaces } from '../models/inventory/model.Inventoryplace'
 	/POST - create
 	create new inventoryitem 
 */
-export const createInventoryitem = async (req: Request, res: Response) => {
+export const createInventoryitem = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
 	const newItem = {
-		inventorygroups: req.body.inventorygroupsId,
-		members: req.body.membersId,
-		inventoryplaces: req.body.inventoryplacesId,
-		inventoryitem: req.body.inventoryitem,
-		descriptionText: req.body.description,
+		inventorygroups: request.body.inventorygroupsId,
+		members: request.body.membersId,
+		inventoryplaces: request.body.inventoryplacesId,
+		inventoryitem: request.body.inventoryitem,
+		descriptionText: request.body.description,
 		createdAt: currentDate,
 		updatedAt: currentDate,
 	}
 	await manager.insert(Inventoryitems, newItem)
-	res.status(201).json(`Succesfully inserted item: ${newItem.inventoryitem}`)
+	response.status(201).json(`Succesfully inserted item: ${newItem.inventoryitem}`)
 }
 
 /*
 	/POST - create
 	create new inventoryitem group
 */
-export const createInventoryGroup = async (req: Request, res: Response) => {
+export const createInventoryGroup = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const inventorygroup = {
-		inventorygroup: req.body.inventorygroup,
+		inventorygroup: request.body.inventorygroup,
 	}
 	await manager.insert(Inventorygroups, inventorygroup)
-	res.status(201).json(`Succesfully inserted Inventorygroup: ${inventorygroup.inventorygroup}`)
+	response.status(201).json(`Succesfully inserted Inventorygroup: ${inventorygroup.inventorygroup}`)
 }
 
 /*
 	/POST - create
 	create new inventoryitem place
 */
-export const createInventoryPlace = async (req: Request, res: Response) => {
+export const createInventoryPlace = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const inventoryplace = {
-		inventoryplace: req.body.inventoryplace,
+		inventoryplace: request.body.inventoryplace,
 	}
 	await manager.insert(Inventoryplaces, inventoryplace)
-	res.status(201).json(`Succesfully inserted Inventoryplace: ${inventoryplace.inventoryplace}`)
+	response.status(201).json(`Succesfully inserted Inventoryplace: ${inventoryplace.inventoryplace}`)
 }
 
 /*
 	/GET - read
 	read all inventoryitems
 */
-export const readInventoryitems = async (req: Request, res: Response) => {
+export const readInventoryitems = async (request: Request, response: Response) => {
 	const allInventoryitems = await Inventoryitems.find({
 		relations: ['members', 'inventorygroups', 'inventoryplaces'],
 	})
-	res.status(200).json(allInventoryitems)
+	response.status(200).json(allInventoryitems)
 }
 
 /*
 	/GET - read
 	read one inventoryitem
 */
-export const readInventoryitem = async (req: Request, res: Response) => {
-	const itemsId = req.params.id
+export const readInventoryitem = async (request: Request, response: Response) => {
+	const itemsId = request.params.id
 	const inventoryitem = await Inventoryitems.find({
 		relations: ['members', 'inventorygroups', 'inventoryplaces'],
 		where: {
 			id: itemsId,
 		},
 	})
-	res.status(200).json(inventoryitem)
+	response.status(200).json(inventoryitem)
 }
 
 /*
 	/GET - read
 	read inventoryitem owner
 */
-export const readItemOwner = async (req: Request, res: Response) => {
-	const itemsId = req.params.id
+export const readItemOwner = async (request: Request, response: Response) => {
+	const itemsId = request.params.id
 	const inventoryitem = await Inventoryitems.find({
 		select: ['id'],
 		relations: ['members'],
@@ -89,83 +89,83 @@ export const readItemOwner = async (req: Request, res: Response) => {
 			id: itemsId,
 		},
 	})
-	res.status(200).json(inventoryitem)
+	response.status(200).json(inventoryitem)
 }
 
 /*
 	/PUT - update
 	update inventoryitem
 */
-export const updateInventoryitem = async (req: Request, res: Response) => {
-	const itemId = req.params.id
+export const updateInventoryitem = async (request: Request, response: Response) => {
+	const itemId = request.params.id
 	const manager = getManager()
 	const currentDate = new Date()
 	const updateItem = {
-		inventorygroups: req.body.inventorygroupsId,
-		members: req.body.membersId,
-		inventoryplaces: req.body.inventoryplacesId,
-		inventoryitem: req.body.inventoryitem,
-		descriptionText: req.body.description,
+		inventorygroups: request.body.inventorygroupsId,
+		members: request.body.membersId,
+		inventoryplaces: request.body.inventoryplacesId,
+		inventoryitem: request.body.inventoryitem,
+		descriptionText: request.body.description,
 		updatedAt: currentDate,
 	}
 	await manager.update(Inventoryitems, itemId, updateItem)
-	res.status(200).json(`Succesfully updated item: ${updateItem.inventoryitem}`)
+	response.status(200).json(`Succesfully updated item: ${updateItem.inventoryitem}`)
 }
 
 /*
 	/PUT - update
 	update inventoryitem group
 */
-export const updateInventoryGroup = async (req: Request, res: Response) => {
-	const groupsId = req.params.id
+export const updateInventoryGroup = async (request: Request, response: Response) => {
+	const groupsId = request.params.id
 	const manager = getManager()
 	const updateGroup = {
-		inventorygroup: req.body.inventorygroup,
+		inventorygroup: request.body.inventorygroup,
 	}
 	await manager.update(Inventorygroups, groupsId, updateGroup)
-	res.status(200).json(`Succesfully updated Group: ${updateGroup.inventorygroup}`)
+	response.status(200).json(`Succesfully updated Group: ${updateGroup.inventorygroup}`)
 }
 
 /*
 	/PUT - update
 	update inventoryitem place
 */
-export const updateInventoryPlace = async (req: Request, res: Response) => {
-	const placesId = req.params.id
+export const updateInventoryPlace = async (request: Request, response: Response) => {
+	const placesId = request.params.id
 	const manager = getManager()
 	const updatePlace = {
-		inventoryplace: req.body.inventoryplace,
+		inventoryplace: request.body.inventoryplace,
 	}
 	await manager.update(Inventoryplaces, placesId, updatePlace)
-	res.status(200).json(`Succesfully updated Group: ${updatePlace.inventoryplace}`)
+	response.status(200).json(`Succesfully updated Group: ${updatePlace.inventoryplace}`)
 }
 
 /*
 	/DELETE - delete
 	delete inventoryitem 
 */
-export const deleteInventoryitem = async (req: Request, res: Response) => {
-	const itemsId = req.params.id
+export const deleteInventoryitem = async (request: Request, response: Response) => {
+	const itemsId = request.params.id
 	await Inventoryitems.delete(itemsId)
-	res.status(200).json(`Delete executed with id: ${itemsId}`)
+	response.status(200).json(`Delete executed with id: ${itemsId}`)
 }
 
 /*
 	/DELETE - delete
 	delete inventoryitem group
 */
-export const deleteInventorygroup = async (req: Request, res: Response) => {
-	const groupsId = req.params.id
+export const deleteInventorygroup = async (request: Request, response: Response) => {
+	const groupsId = request.params.id
 	await Inventorygroups.delete(groupsId)
-	res.status(200).json(`Deleted Group with id: ${groupsId}`)
+	response.status(200).json(`Deleted Group with id: ${groupsId}`)
 }
 
 /*
 	/DELETE - delete
 	delete inventoryitem place
 */
-export const deleteInventoryplace = async (req: Request, res: Response) => {
-	const placesId = req.params.id
+export const deleteInventoryplace = async (request: Request, response: Response) => {
+	const placesId = request.params.id
 	await Inventoryplaces.delete(placesId)
-	res.status(200).json(`Deleted Place with id: ${placesId}`)
+	response.status(200).json(`Deleted Place with id: ${placesId}`)
 }

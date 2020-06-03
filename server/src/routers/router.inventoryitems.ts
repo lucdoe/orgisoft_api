@@ -1,9 +1,9 @@
-import express from 'express'
+import express, { Router } from 'express'
 // Controllers (route handlers)
 import { accessToken } from '../middlewares/middleware.authenticate'
 import * as invContrls from '../controllers/controller.inventorys'
 
-const router = express.Router()
+const router: Router = Router()
 
 // create
 router.post('/', accessToken, invContrls.createInventoryitem)

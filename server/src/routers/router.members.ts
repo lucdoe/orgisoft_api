@@ -1,12 +1,11 @@
-import express from 'express'
+import { Router } from 'express'
 import { accessToken } from '../middlewares/middleware.authenticate'
 import * as memberReadContrls from '../controllers/controller.readMembers'
 import * as memberCreateContrls from '../controllers/controller.createMembers'
 import * as memberUpdateContrls from '../controllers/controller.updateMembers'
 import * as memberDeleteContrls from '../controllers/controller.deleteMembers'
 
-const router = express.Router()
-
+const router: Router = Router()
 // create
 router.post('/', accessToken, memberCreateContrls.createMember)
 

@@ -1,12 +1,11 @@
-import express from 'express'
+import { Router } from 'express'
 import { accessToken } from '../middlewares/middleware.authenticate'
 import { createMembergroup } from '../controllers/controller.createMembers'
 import { readMembergroups, readMembergroup } from '../controllers/controller.readMembers'
 import { updateMembergroups } from '../controllers/controller.updateMembers'
 import { deleteMembergroup } from '../controllers/controller.deleteMembers'
 
-const router = express.Router()
-
+const router: Router = Router()
 // create
 router.post('/', accessToken, createMembergroup)
 
