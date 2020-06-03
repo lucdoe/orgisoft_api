@@ -65,15 +65,15 @@ export const updateMemberQualification = async (request: Request, response: Resp
 	const memberQualificationId = request.params.id
 	const manager = getManager()
 	const updateMemberQualification = {
-		membersId: request.body.member,
-		qualificationsId: request.body.qualification,
+		members: request.body.member,
+		qualifications: request.body.qualification,
 		date: request.body.date,
 		passed: request.body.passed,
 	}
 	await manager.update(Memberqualifications, memberQualificationId, updateMemberQualification)
 	response
 		.status(200)
-		.json(`Succesfully updated Members Qualification: ${updateMemberQualification.qualificationsId}`)
+		.json(`Succesfully updated Members Qualification: ${updateMemberQualification.qualifications}`)
 }
 
 export const updateMemberMembergroup = async (request: Request, response: Response) => {
