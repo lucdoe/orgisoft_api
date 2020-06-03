@@ -110,9 +110,19 @@ export const readMemberGroup = async (req: Request, res: Response) => {
 	read member qualification
 */
 // TODO
-export const readMemberQualification = async (req: Request, res: Response) => {
-	const qualifications = await getRepository(Qualifications).createQueryBuilder().getMany()
-	res.status(200).json(qualifications)
+export const readMemberqualifications = async (req: Request, res: Response) => {
+	const memberqualifications = await getRepository(Memberqualifications).createQueryBuilder().getMany()
+	res.status(200).json(memberqualifications)
+}
+
+export const readMemberqualification = async (req: Request, res: Response) => {
+	const memberqualificationId = req.params.id
+	const memberqualification = await Memberqualifications.find({
+		where: {
+			id: memberqualificationId,
+		},
+	})
+	res.status(200).json(memberqualification)
 }
 
 /*
@@ -192,7 +202,7 @@ export const readQualifications = async (req: Request, res: Response) => {
 */
 export const readQualification = async (req: Request, res: Response) => {
 	const qualificationsId = req.params.id
-	const qualification = await Statuses.find({
+	const qualification = await Qualifications.find({
 		where: {
 			id: qualificationsId,
 		},

@@ -59,7 +59,7 @@ export const createQualification = async (req: Request, res: Response) => {
 	res.status(201).json(`Succesfully inserted Qualification: ${newQualification.qualification}`)
 }
 
-export const createMemberQualification = async (req: Request, res: Response) => {
+export const createMemberqualification = async (req: Request, res: Response) => {
 	const manager = getManager()
 	const newMemberQualification = {
 		membersId: req.body.membersId,
