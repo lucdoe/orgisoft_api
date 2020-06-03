@@ -8,7 +8,7 @@ import { Expensetypes } from '../models/finance/model.Expensetype'
 
 export const findIncomes = async (request: Request, response: Response) => {
 	const allIncomes = await Incomes.find({
-		relations: ['member', 'incometype', 'currency'],
+		relations: ['members', 'incometypes', 'currencys'],
 	})
 	response.status(200).json(allIncomes)
 }
@@ -16,7 +16,7 @@ export const findIncomes = async (request: Request, response: Response) => {
 export const findIncome = async (request: Request, response: Response) => {
 	const incomeId = request.params.id
 	const income = await Incomes.find({
-		relations: ['member', 'incometype', 'currency'],
+		relations: ['members', 'incometypes', 'currencys'],
 		where: {
 			id: incomeId,
 		},
@@ -56,7 +56,7 @@ export const findIncomeType = async (request: Request, response: Response) => {
 
 export const findExpenses = async (request: Request, response: Response) => {
 	const allExpenses = await Expenses.find({
-		relations: ['member', 'expensetype', 'currency'],
+		relations: ['members', 'expensetypes', 'currencys'],
 	})
 	response.status(200).json(allExpenses)
 }
@@ -64,7 +64,7 @@ export const findExpenses = async (request: Request, response: Response) => {
 export const findExpense = async (request: Request, response: Response) => {
 	const expenseId = request.params.id
 	const expense = await Expenses.find({
-		relations: ['member', 'expensetype', 'currency'],
+		relations: ['members', 'expensetypes', 'currencys'],
 		where: {
 			id: expenseId,
 		},

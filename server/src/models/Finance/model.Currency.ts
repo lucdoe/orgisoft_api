@@ -13,7 +13,7 @@ export class Currencys extends BaseEntity {
 		type: 'varchar',
 		length: 50,
 	})
-	currencys!: string
+	currency!: string
 
 	@Column('float')
 	exchangeRate!: number
