@@ -27,6 +27,16 @@ export const updateMember = async (req: Request, res: Response) => {
 	res.status(200).json(`Succesfully updated Member: ${updateMember.firstName} ${updateMember.lastName}`)
 }
 
+export const updateMemberAddress = async (req: Request, res: Response) => {
+	const memberId = req.params.id
+	const manager = getManager()
+	const updateMemberAddress = {
+		addresses: req.body.address,
+	}
+	await manager.update(Members, memberId, updateMemberAddress)
+	res.status(200).json(`Succesfully updated Members Address: ${updateMemberAddress.addresses}`)
+}
+
 export const updateMemberPosition = async (req: Request, res: Response) => {
 	const memberId = req.params.id
 	const manager = getManager()
