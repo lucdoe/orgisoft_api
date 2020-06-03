@@ -2,10 +2,6 @@ import { Request, Response } from 'express'
 import { getManager } from 'typeorm'
 import { Memberqualifications } from '../models/member/model.Memberqualification'
 import { Members } from '../models/member/model.Member'
-import { Positions } from '../models/member/model.Position'
-import { Statuses } from '../models/member/model.Status'
-import { Qualifications } from '../models/member/model.Qualification'
-import { Membergroups } from '../models/member/model.Membergroup'
 
 export const updateMember = async (req: Request, res: Response) => {
 	const memberId = req.params.id
@@ -32,29 +28,46 @@ export const updateMember = async (req: Request, res: Response) => {
 }
 
 export const updateMemberPosition = async (req: Request, res: Response) => {
+	const memberId = req.params.id
 	const manager = getManager()
-	const newMemberPosition = {}
-	await manager.insert(Positions, newMemberPosition)
-	res.status(200).json(`Succesfully updated Position: ${newMemberPosition}`)
+	const updateMemberPosition = {
+		positions: req.body.positionsId,
+	}
+	await manager.update(Members, memberId, updateMemberPosition)
+	res.status(200).json(`Succesfully updated Members Position: ${updateMemberPosition.positions}`)
 }
 
 export const updateMemberStatus = async (req: Request, res: Response) => {
+	const memberId = req.params.id
 	const manager = getManager()
-	const newMemberStatus = {}
-	await manager.insert(Statuses, newMemberStatus)
-	res.status(200).json(`Succesfully updated Status: ${newMemberStatus}`)
+	const updateMemberStatus = {
+		statuses: req.body.statusesId,
+	}
+	await manager.update(Members, memberId, updateMemberStatus)
+	res.status(200).json(`Succesfully updated Members Status: ${updateMemberStatus.statuses}`)
 }
 
 export const updateMemberQualification = async (req: Request, res: Response) => {
+	const memberQualificationId = req.params.id
 	const manager = getManager()
-	const newMemberQualification = {}
-	await manager.insert(Qualifications, newMemberQualification)
-	res.status(200).json(`Succesfully updated Qualification: ${newMemberQualification}`)
+	const updateMemberQualification = {
+		membersId: req.body.member,
+		qualificationsId: req.body.qualification,
+		date: req.body.date,
+		passed: req.body.passed,
+	}
+	await manager.update(Memberqualifications, memberQualificationId, updateMemberQualification)
+	res.status(200).json(
+		`Succesfully updated Members Qualification: ${updateMemberQualification.qualificationsId}`
+	)
 }
 
 export const updateMemberMembergroup = async (req: Request, res: Response) => {
+	const memberId = req.params.id
 	const manager = getManager()
-	const newMembergroup = {}
-	await manager.insert(Membergroups, newMembergroup)
-	res.status(200).json(`Succesfully updated Membergroup: ${newMembergroup}`)
+	const updateMemberMembergroup = {
+		membergroups: req.body.membergroup,
+	}
+	await manager.update(Members, memberId, updateMemberMembergroup)
+	res.status(200).json(`Succesfully updated Members Membergroup: ${updateMemberMembergroup.membergroups}`)
 }
