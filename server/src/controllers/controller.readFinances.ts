@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { getRepository } from 'typeorm'
 import { Incomes } from '../models/finance/model.Income'
 import { Incomebudgets } from '../models/finance/model.Incomebudget'
 import { Expenses } from '../models/finance/model.Expense'
@@ -25,7 +26,7 @@ export const findIncome = async (request: Request, response: Response) => {
 }
 
 export const findIncomeBudgets = async (request: Request, response: Response) => {
-	const allIncomeBudgets = await Incomebudgets.find()
+	const allIncomeBudgets = await getRepository(Incomebudgets).createQueryBuilder().getMany()
 	response.status(200).json(allIncomeBudgets)
 }
 

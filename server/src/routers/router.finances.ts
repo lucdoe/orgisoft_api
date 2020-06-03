@@ -7,6 +7,7 @@ const router: Router = Router()
 
 router.get('/expenses', accessToken, finContrls.findExpenses)
 router.get('/expenses/:id', accessToken, finContrls.findExpense)
+
 router.get('/incomes/:id', accessToken, finContrls.findIncome)
 router.get('/incomes', accessToken, finContrls.findIncomes)
 

@@ -18,6 +18,7 @@ import qualifications from './routers/router.qualifications'
 import membergroups from './routers/router.membergroups'
 import memberqualifications from './routers/router.memberqualifications'
 import finances from './routers/router.finances'
+import budgets from './routers/router.budgets'
 
 // set instance of express
 const app: Application = express()
@@ -40,6 +41,7 @@ app.use('/qualifications', qualifications)
 app.use('/membergroups', membergroups)
 app.use('/memberqualifications', memberqualifications)
 app.use('/finances', finances)
+app.use('/budgets', budgets)
 
 // db connection
 createConnection()
