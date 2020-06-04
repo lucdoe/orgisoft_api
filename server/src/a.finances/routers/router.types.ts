@@ -1,15 +1,14 @@
 import { Router } from 'express'
-
-import { accessToken } from '../../middlewares/middleware.authenticate'
-import { createIncometype, createExpensetype } from '../../controllers/finances/controller.createFinances'
+import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import { createIncometype, createExpensetype } from '../controllers/controller.createFinances'
 import {
 	findIncomeTypes,
 	findIncomeType,
 	findExpenseTypes,
 	findExpenseType,
-} from '../../controllers/finances/controller.readFinances'
-import { updateIncometype, updateExpensetype } from '../../controllers/finances/controller.updateFinances'
-import { deleteIncometype, deleteExpensetype } from '../../controllers/finances/controller.deleteFinances'
+} from '../controllers/controller.readFinances'
+import { updateIncometype, updateExpensetype } from '../controllers/controller.updateFinances'
+import { deleteIncometype, deleteExpensetype } from '../controllers/controller.deleteFinances'
 
 // route: /types
 const router: Router = Router()

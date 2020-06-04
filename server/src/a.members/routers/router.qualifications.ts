@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { accessToken } from '../../middlewares/middleware.authenticate'
-import { createQualification } from '../../controllers/members/controller.createMembers'
-import { readQualifications, readQualification } from '../../controllers/members/controller.readMembers'
-import { updateQualification } from '../../controllers/members/controller.updateMembers'
-import { deleteQualification } from '../../controllers/members/controller.deleteMembers'
+import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import { createQualification } from '../controllers/controller.createMembers'
+import { readQualifications, readQualification } from '../controllers/controller.readMembers'
+import { updateQualification } from '../controllers/controller.updateMembers'
+import { deleteQualification } from '../controllers/controller.deleteMembers'
 
 // route: /qualifications
 const router: Router = Router()

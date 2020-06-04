@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { accessToken } from '../../middlewares/middleware.authenticate'
-import * as memberCreateContrls from '../../controllers/members/controller.createMembers'
-import * as memberReadContrls from '../../controllers/members/controller.readMembers'
-import * as memberUpdateContrls from '../../controllers/members/controller.updateMembers'
-import * as memberDeleteContrls from '../../controllers/members/controller.deleteMembers'
+import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import * as memberCreateContrls from '../controllers/controller.createMembers'
+import * as memberReadContrls from '../controllers/controller.readMembers'
+import * as memberUpdateContrls from '../controllers/controller.updateMembers'
+import * as memberDeleteContrls from '../controllers/controller.deleteMembers'
 
 // route: /members
 const router: Router = Router()

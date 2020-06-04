@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { accessToken } from '../../middlewares/middleware.authenticate'
-import { createMembergroup } from '../../controllers/members/controller.createMembers'
-import { readMembergroups, readMembergroup } from '../../controllers/members/controller.readMembers'
-import { updateMembergroups } from '../../controllers/members/controller.updateMembers'
-import { deleteMembergroup } from '../../controllers/members/controller.deleteMembers'
+import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import { createMembergroup } from '../controllers/controller.createMembers'
+import { readMembergroups, readMembergroup } from '../controllers/controller.readMembers'
+import { updateMembergroups } from '../controllers/controller.updateMembers'
+import { deleteMembergroup } from '../controllers/controller.deleteMembers'
 
 // route: /membergroups
 const router: Router = Router()

@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { accessToken } from '../../middlewares/middleware.authenticate'
-import * as createContrls from '../../controllers/inventoryitems/controller.createInventorys'
-import * as readContrls from '../../controllers/inventoryitems/controller.readInventorys'
-import * as updateContrls from '../../controllers/inventoryitems/controller.updateInventorys'
-import * as deleteContrls from '../../controllers/inventoryitems/controller.deleteInventorys'
+import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import * as createContrls from '../controllers/controller.createInventorys'
+import * as readContrls from '../controllers/controller.readInventorys'
+import * as updateContrls from '../controllers/controller.updateInventorys'
+import * as deleteContrls from '../controllers/controller.deleteInventorys'
 
 // route: /inventoryitems
 const router: Router = Router()

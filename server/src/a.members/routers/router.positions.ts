@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { accessToken } from '../../middlewares/middleware.authenticate'
-import { createPosition } from '../../controllers/members/controller.createMembers'
-import { readPositions, readPostion } from '../../controllers/members/controller.readMembers'
-import { updatePosition } from '../../controllers/members/controller.updateMembers'
-import { deletePosition } from '../../controllers/members/controller.deleteMembers'
+import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import { createPosition } from '../controllers/controller.createMembers'
+import { readPositions, readPostion } from '../controllers/controller.readMembers'
+import { updatePosition } from '../controllers/controller.updateMembers'
+import { deletePosition } from '../controllers/controller.deleteMembers'
 
 // route: /positions
 const router: Router = Router()

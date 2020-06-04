@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
 import { getManager } from 'typeorm'
-import { Memberqualifications } from '../../models/members/model.Memberqualification'
-import { Members } from '../../models/members/model.Member'
-import { Positions } from '../../models/members/model.Position'
-import { Statuses } from '../../models/members/model.Status'
-import { Qualifications } from '../../models/members/model.Qualification'
-import { Membergroups } from '../../models/members/model.Membergroup'
+import { Memberqualifications } from '../models/model.Memberqualification'
+import { Members } from '../models/model.Member'
+import { Positions } from '../models/model.Position'
+import { Statuses } from '../models/model.Status'
+import { Qualifications } from '../models/model.Qualification'
+import { Membergroups } from '../models/model.Membergroup'
 
 export const deleteMember = async (request: Request, response: Response) => {
 	const memberId = request.params.id

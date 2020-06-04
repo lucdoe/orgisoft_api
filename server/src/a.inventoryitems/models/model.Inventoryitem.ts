@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, BaseEntity, ManyToOne } from 'typeorm'
 import { Inventorygroups } from './model.Inventorygroup'
 import { Inventoryplaces } from './model.Inventoryplace'
-import { Members } from '../members/model.Member'
+import { Members } from '../../a.members/models/model.Member'
 
 @Entity()
 export class Inventoryitems extends BaseEntity {

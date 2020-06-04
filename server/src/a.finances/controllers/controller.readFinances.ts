@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
-import { Incomes } from '../../models/finances/model.Income'
-import { Incomebudgets } from '../../models/finances/model.Incomebudget'
-import { Expenses } from '../../models/finances/model.Expense'
-import { Expensebudgets } from '../../models/finances/model.Expensebudget'
-import { Incometypes } from '../../models/finances/model.Incometype'
-import { Expensetypes } from '../../models/finances/model.Expensetype'
+import { Incomes } from '../models/model.Income'
+import { Incomebudgets } from '../models/model.Incomebudget'
+import { Expenses } from '../models/model.Expense'
+import { Expensebudgets } from '../models/model.Expensebudget'
+import { Incometypes } from '../models/model.Incometype'
+import { Expensetypes } from '../models/model.Expensetype'
 
 export const findIncomes = async (request: Request, response: Response) => {
 	const allIncomes = await Incomes.find({
