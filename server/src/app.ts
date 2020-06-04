@@ -19,6 +19,7 @@ import membergroups from './routers/router.membergroups'
 import memberqualifications from './routers/router.memberqualifications'
 import finances from './routers/router.finances'
 import budgets from './routers/router.budgets'
+import types from './routers/router.types'
 
 // set instance of express
 const app: Application = express()
@@ -32,7 +33,7 @@ app.use(cors())
 app.use(json())
 app.use(logger(loggerMsgTemplate))
 
-// mounting routes / controllers
+// mounting routes / controllers to app
 app.use('/members', members)
 app.use('/inventoryitems', inventorys)
 app.use('/positions', positions)
@@ -42,6 +43,7 @@ app.use('/membergroups', membergroups)
 app.use('/memberqualifications', memberqualifications)
 app.use('/finances', finances)
 app.use('/budgets', budgets)
+app.use('/types', types)
 
 // db connection
 createConnection()
