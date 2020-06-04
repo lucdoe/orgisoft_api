@@ -1,28 +1,29 @@
 import { Router } from 'express'
 import { accessToken } from '../middlewares/middleware.authenticate'
-import * as readContrls from '../controllers/controller.readFinances'
-import * as createContrls from '../controllers/controller.createFinances'
-import * as updateContrls from '../controllers/controller.updateFinances'
-import * as deleteContrls from '../controllers/controller.deleteFinances'
+import { createIncome, createExpense } from '../controllers/controller.createFinances'
+import { findIncomes, findIncome, findExpenses, findExpense } from '../controllers/controller.readFinances'
+import { updateIncome, updateExpense } from '../controllers/controller.updateFinances'
+import { deleteIncome, deleteExpense } from '../controllers/controller.deleteFinances'
 
+// route: /finances
 const router: Router = Router()
 
 // create
-router.post('/incomes', accessToken, createContrls.createIncome)
-router.post('/expenses', accessToken, createContrls.createExpense)
+router.post('/incomes', accessToken, createIncome)
+router.post('/expenses', accessToken, createExpense)
 
 // read
-router.get('/expenses', accessToken, readContrls.findExpenses)
-router.get('/expenses/:id', accessToken, readContrls.findExpense)
-router.get('/incomes/:id', accessToken, readContrls.findIncome)
-router.get('/incomes', accessToken, readContrls.findIncomes)
+router.get('/incomes/:id', accessToken, findIncome)
+router.get('/incomes', accessToken, findIncomes)
+router.get('/expenses', accessToken, findExpenses)
+router.get('/expenses/:id', accessToken, findExpense)
 
 // update
-router.put('/incomes/:id', accessToken, updateContrls.updateIncome)
-router.put('/expenses/:id', accessToken, updateContrls.updateExpense)
+router.put('/incomes/:id', accessToken, updateIncome)
+router.put('/expenses/:id', accessToken, updateExpense)
 
 // delete
-router.delete('/expenses/:id', accessToken, deleteContrls.deleteExpense)
-router.delete('/incomes/:id', accessToken, deleteContrls.deleteIncome)
+router.delete('/incomes/:id', accessToken, deleteIncome)
+router.delete('/expenses/:id', accessToken, deleteExpense)
 
 export default router

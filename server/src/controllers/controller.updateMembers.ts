@@ -61,7 +61,7 @@ export const updateMemberStatus = async (request: Request, response: Response) =
 	response.status(200).json(`Succesfully updated Members Status: ${updateMemberStatus.statuses}`)
 }
 
-export const updateMemberQualification = async (request: Request, response: Response) => {
+export const updateMemberqualification = async (request: Request, response: Response) => {
 	const memberQualificationId = request.params.id
 	const manager = getManager()
 	const updateMemberQualification = {

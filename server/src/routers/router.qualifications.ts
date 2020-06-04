@@ -5,7 +5,9 @@ import { readQualifications, readQualification } from '../controllers/controller
 import { updateQualification } from '../controllers/controller.updateMembers'
 import { deleteQualification } from '../controllers/controller.deleteMembers'
 
+// route: /qualifications
 const router: Router = Router()
+
 // create
 router.post('/', accessToken, createQualification)
 

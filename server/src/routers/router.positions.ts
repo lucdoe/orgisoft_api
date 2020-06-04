@@ -1,11 +1,13 @@
 import { Router } from 'express'
 import { accessToken } from '../middlewares/middleware.authenticate'
-import { readPositions, readPostion } from '../controllers/controller.readMembers'
 import { createPosition } from '../controllers/controller.createMembers'
-import { deletePosition } from '../controllers/controller.deleteMembers'
+import { readPositions, readPostion } from '../controllers/controller.readMembers'
 import { updatePosition } from '../controllers/controller.updateMembers'
+import { deletePosition } from '../controllers/controller.deleteMembers'
 
+// route: /positions
 const router: Router = Router()
+
 // create
 router.post('/', accessToken, createPosition)
 

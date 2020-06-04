@@ -1,8 +1,8 @@
 import express, { Router } from 'express'
-// Controllers (route handlers)
 import { accessToken } from '../middlewares/middleware.authenticate'
 import * as invContrls from '../controllers/controller.inventorys'
 
+// route: /inventoryitems
 const router: Router = Router()
 
 // create

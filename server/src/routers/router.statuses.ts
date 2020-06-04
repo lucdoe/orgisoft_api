@@ -1,11 +1,13 @@
 import { Router } from 'express'
 import { accessToken } from '../middlewares/middleware.authenticate'
-import { readStatuses, readStatus } from '../controllers/controller.readMembers'
 import { createStatus } from '../controllers/controller.createMembers'
+import { readStatuses, readStatus } from '../controllers/controller.readMembers'
 import { updateStatus } from '../controllers/controller.updateMembers'
 import { deleteStatus } from '../controllers/controller.deleteMembers'
 
+// route: /statuses
 const router: Router = Router()
+
 // create
 router.post('/', accessToken, createStatus)
 

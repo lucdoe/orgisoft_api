@@ -5,7 +5,9 @@ import { readMembergroups, readMembergroup } from '../controllers/controller.rea
 import { updateMembergroups } from '../controllers/controller.updateMembers'
 import { deleteMembergroup } from '../controllers/controller.deleteMembers'
 
+// route: /membergroups
 const router: Router = Router()
+
 // create
 router.post('/', accessToken, createMembergroup)
 
