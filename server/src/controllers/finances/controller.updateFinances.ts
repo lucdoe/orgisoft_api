@@ -1,10 +1,10 @@
 import { Request, Response, request } from 'express'
 import { getManager } from 'typeorm'
-import { Incomes } from '../models/finance/model.Income'
-import { Expensebudgets } from '../models/finance/model.Expensebudget'
-import { Incomebudgets } from '../models/finance/model.Incomebudget'
-import { Expensetypes } from '../models/finance/model.Expensetype'
-import { Incometypes } from '../models/finance/model.Incometype'
+import { Incomes } from '../../models/finances/model.Income'
+import { Expensebudgets } from '../../models/finances/model.Expensebudget'
+import { Incomebudgets } from '../../models/finances/model.Incomebudget'
+import { Expensetypes } from '../../models/finances/model.Expensetype'
+import { Incometypes } from '../../models/finances/model.Incometype'
 
 export const updateIncome = async (request: Request, response: Response) => {
 	const currentDate = new Date()

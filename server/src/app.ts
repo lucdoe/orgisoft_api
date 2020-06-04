@@ -10,16 +10,16 @@ import logger from 'morgan'
 import { loggerMsgTemplate } from './helpers/helper.logger'
 
 // importing routes / controllers
-import members from './routers/router.members'
-import inventorys from './routers/router.inventoryitems'
-import positions from './routers/router.positions'
-import statuses from './routers/router.statuses'
-import qualifications from './routers/router.qualifications'
-import membergroups from './routers/router.membergroups'
-import memberqualifications from './routers/router.memberqualifications'
-import finances from './routers/router.finances'
-import budgets from './routers/router.budgets'
-import types from './routers/router.types'
+import members from './routers/members/router.members'
+import inventorys from './routers/inventoryitems/router.inventoryitems'
+import positions from './routers/members/router.positions'
+import statuses from './routers/members/router.statuses'
+import qualifications from './routers/members/router.qualifications'
+import membergroups from './routers/members/router.membergroups'
+import memberqualifications from './routers/members/router.memberqualifications'
+import finances from './routers/finances/router.finances'
+import budgets from './routers/finances/router.budgets'
+import types from './routers/finances/router.types'
 
 // set instance of express
 const app: Application = express()

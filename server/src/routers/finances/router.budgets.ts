@@ -1,14 +1,14 @@
 import { Router } from 'express'
-import { accessToken } from '../middlewares/middleware.authenticate'
-import { createIncomebudget, createExpensebudget } from '../controllers/controller.createFinances'
+import { accessToken } from '../../middlewares/middleware.authenticate'
+import { createIncomebudget, createExpensebudget } from '../../controllers/finances/controller.createFinances'
 import {
 	findIncomeBudgets,
 	findIncomeBudget,
 	findExpenseBudgets,
 	findExpenseBudget,
-} from '../controllers/controller.readFinances'
-import { updateIncomebudget, updateExpensebudget } from '../controllers/controller.updateFinances'
-import { deleteIncomebudget, deleteExpensebudget } from '../controllers/controller.deleteFinances'
+} from '../../controllers/finances/controller.readFinances'
+import { updateIncomebudget, updateExpensebudget } from '../../controllers/finances/controller.updateFinances'
+import { deleteIncomebudget, deleteExpensebudget } from '../../controllers/finances/controller.deleteFinances'
 
 // route: /budgets
 const router: Router = Router()

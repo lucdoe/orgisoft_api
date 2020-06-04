@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
-import { Memberqualifications } from '../models/member/model.Memberqualification'
-import { Members } from '../models/member/model.Member'
-import { Positions } from '../models/member/model.Position'
-import { Statuses } from '../models/member/model.Status'
-import { Qualifications } from '../models/member/model.Qualification'
-import { Membergroups } from '../models/member/model.Membergroup'
+import { Memberqualifications } from '../../models/members/model.Memberqualification'
+import { Members } from '../../models/members/model.Member'
+import { Positions } from '../../models/members/model.Position'
+import { Statuses } from '../../models/members/model.Status'
+import { Qualifications } from '../../models/members/model.Qualification'
+import { Membergroups } from '../../models/members/model.Membergroup'
 
 export const readMembers = async (request: Request, response: Response) => {
 	const allMembers = await Memberqualifications.find({

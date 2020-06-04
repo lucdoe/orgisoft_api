@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
 import { getManager } from 'typeorm'
-import { Incomes } from '../models/finance/model.Income'
-import { Expenses } from '../models/finance/model.Expense'
-import { Incometypes } from '../models/finance/model.Incometype'
-import { Incomebudgets } from '../models/finance/model.Incomebudget'
-import { Expensetypes } from '../models/finance/model.Expensetype'
-import { Expensebudgets } from '../models/finance/model.Expensebudget'
+import { Incomes } from '../../models/finances/model.Income'
+import { Expenses } from '../../models/finances/model.Expense'
+import { Incometypes } from '../../models/finances/model.Incometype'
+import { Incomebudgets } from '../../models/finances/model.Incomebudget'
+import { Expensetypes } from '../../models/finances/model.Expensetype'
+import { Expensebudgets } from '../../models/finances/model.Expensebudget'
 
 export const deleteIncome = async (request: Request, response: Response) => {
 	const manager = getManager()
@@ -14,18 +14,18 @@ export const deleteIncome = async (request: Request, response: Response) => {
 	response.status(200).json(`Succesfully deleted Income.`)
 }
 
-export const deleteIncometype = async (request: Request, response: Response) => {
-	const typeId = request.params.id
-	const manager = getManager()
-	await manager.delete(Incometypes, typeId)
-	response.status(200).json(`Succesfully deleted Incometype.`)
-}
-
 export const deleteIncomebudget = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const budgetId = request.body.id
 	await manager.delete(Incomebudgets, budgetId)
 	response.status(200).json(`Succesfully deleted Incomebudget.`)
+}
+
+export const deleteIncometype = async (request: Request, response: Response) => {
+	const typeId = request.params.id
+	const manager = getManager()
+	await manager.delete(Incometypes, typeId)
+	response.status(200).json(`Succesfully deleted Incometype.`)
 }
 
 export const deleteExpense = async (request: Request, response: Response) => {
