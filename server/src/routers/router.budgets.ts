@@ -3,6 +3,7 @@ import { Router } from 'express'
 import { accessToken } from '../middlewares/middleware.authenticate'
 import * as readContrls from '../controllers/controller.readFinances'
 import * as createContrls from '../controllers/controller.createFinances'
+import * as updateContrls from '../controllers/controller.updateFinances'
 
 const router: Router = Router()
 
@@ -15,5 +16,9 @@ router.get('/incomes', accessToken, readContrls.findIncomeBudgets)
 router.get('/incomes/:id', accessToken, readContrls.findIncomeBudget)
 router.get('/expenses', accessToken, readContrls.findExpenseBudgets)
 router.get('/expenses/:id', accessToken, readContrls.findExpenseBudget)
+
+// update
+router.put('/expenses/:id', accessToken, updateContrls.updateExpensebudget)
+router.put('/incomes/:id', accessToken, updateContrls.updateIncomebudget)
 
 export default router
