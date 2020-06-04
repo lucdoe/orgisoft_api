@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, BaseEntity, ManyToOne } from 'typeorm'
-import { Members } from '../../a.members/models/model.Member'
+import { Members } from '../../members/models/model.Member'
 import { Incometypes } from './model.Incometype'
 import { Currencys } from './model.Currency'
 

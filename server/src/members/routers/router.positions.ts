@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import { accessToken } from '../../globals/middlewares/middleware.authenticate'
 import { createPosition } from '../controllers/controller.createMembers'
 import { readPositions, readPostion } from '../controllers/controller.readMembers'
 import { updatePosition } from '../controllers/controller.updateMembers'

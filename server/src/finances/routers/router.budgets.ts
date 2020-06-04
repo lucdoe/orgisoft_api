@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import { accessToken } from '../../globals/middlewares/middleware.authenticate'
 import { createIncomebudget, createExpensebudget } from '../controllers/controller.createFinances'
 import {
 	findIncomeBudgets,

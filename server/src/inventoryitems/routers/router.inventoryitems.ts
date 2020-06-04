@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { accessToken } from '../../b.globals/middlewares/middleware.authenticate'
+import { accessToken } from '../../globals/middlewares/middleware.authenticate'
 import * as createContrls from '../controllers/controller.createInventorys'
 import * as readContrls from '../controllers/controller.readInventorys'
 import * as updateContrls from '../controllers/controller.updateInventorys'
