@@ -17,7 +17,7 @@ export const createInventoryitem = async (request: Request, response: Response) 
 		updatedAt: currentDate,
 	}
 	await manager.insert(Inventoryitems, newItem)
-	response.status(201).json(`Succesfully inserted item: ${newItem.inventoryitem}`)
+	response.status(201).json({ message: `Succesfully inserted item: ${newItem.inventoryitem}` })
 }
 
 export const createInventoryGroup = async (request: Request, response: Response) => {
