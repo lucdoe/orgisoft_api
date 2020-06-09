@@ -3,11 +3,6 @@ import * as bcrypt from 'bcrypt'
 import { Request, Response, NextFunction } from 'express'
 import User from './model.user'
 import jwt from 'jsonwebtoken'
-import mongoose from 'mongoose'
-
-const uri =
-	'mongodb+srv://dev_user:QlvIBCHukX8oh3nB@cluster0-8reyi.mongodb.net/Cluster0?retryWrites=true&w=majority'
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 let refreshTokens: string[] = []
 const refreshTokenSecret: any = process.env.REFRESH_TOKEN_SECRET

@@ -1,9 +1,11 @@
 import express from 'express'
 import { registerUser, loginUser, refreshLoginToken, logoutUser } from './auth.controller'
-
+import { createDbConnection } from './auth.dbConfig'
 const app = express()
 
 app.use(express.json())
+
+createDbConnection()
 
 app.post('/auth/register', registerUser)
 app.post('/auth/login', loginUser)
