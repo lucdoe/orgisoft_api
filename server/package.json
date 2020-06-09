@@ -43,7 +43,7 @@
 	},
 	"scripts": {
 		"start": "nodemon src/server.ts",
-		"auth": "ts-node authServer/auth.app.ts",
+		"auth": "nodemon authServer/auth.app.ts",
 		"test": "jest --detectOpenHandles --watch"
 	},
 	"jest": {
