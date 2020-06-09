@@ -48,7 +48,7 @@ export const registerUser = async (request: Request, response: Response, next: N
 		refreshTokens.push(refreshToken)
 		response.status(200).json({ accessToken, refreshToken })
 	} catch (error) {
-		console.log(error)
+		next()
 	}
 }
 
@@ -57,17 +57,17 @@ export const loginUser = async (request: Request, response: Response, next: Next
 	const email: string = request.body.email
 
 	await User.findOne({ email }, async (error, user) => {
-		if (error) response.status(403).json({ error: 'Unvalid User data try again.', status: 'Unauthorized' })
+		if (error) response.status(403).json({ error: 'Wrong username or password', status: 'Unauthorized' })
 
 		if (!user) {
-			response.status(403).json({ error: 'Unvalid User data try again.', status: 'Unauthorized' })
+			response.status(403).json({ error: 'Wrong username or password', status: 'Unauthorized' })
 		} else {
 			const incomingPassword = user['password']
 
 			await bcrypt.compare(password, incomingPassword, (error, result) => {
 				if (error || !result)
 					response.status(403).json({
-						error: 'Unvalid User data try again.',
+						error: 'Wrong username or password',
 						status: 'Unauthorized',
 					})
 
@@ -97,7 +97,12 @@ export const refreshLoginToken = (request: Request, response: Response, next: Ne
 	if (!refreshTokens) return response.status(403).json({ error: 'Log in required', status: 'Unauthorized' })
 
 	jwt.verify(refreshToken, refreshTokenSecret, (error, user) => {
-		if (error) return response.status(403).json({ error: 'Unvalid credentials!', status: 'Unauthorized' })
+		if (error)
+			return response.status(403).json({
+				error: 'Unvalid access',
+				message: 'Try diffrent username or password',
+				status: 'Unauthorized',
+			})
 		const accessToken: string = generateAccessToken({ user })
 		response.json({ accessToken })
 	})
