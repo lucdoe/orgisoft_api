@@ -8,7 +8,7 @@ import {
 	findExpenseBudget,
 } from '../controllers/controller.readFinances'
 import { updateIncomebudget, updateExpensebudget } from '../controllers/controller.updateFinances'
-import { deleteIncomebudget, deleteExpensebudget } from '../controllers/controller.deleteFinances'
+import { deleteItem } from '../controllers/controller.deleteFinances'
 
 // route: /budgets
 const router: Router = Router()
@@ -28,7 +28,7 @@ router.put('/incomes/:id', accessToken, updateIncomebudget)
 router.put('/expenses/:id', accessToken, updateExpensebudget)
 
 // delete
-router.delete('/incomes/:id', accessToken, deleteIncomebudget)
-router.delete('/expenses/:id', accessToken, deleteExpensebudget)
+router.delete('/incomes/:id', accessToken, deleteItem)
+router.delete('/expenses/:id', accessToken, deleteItem)
 
 export default router

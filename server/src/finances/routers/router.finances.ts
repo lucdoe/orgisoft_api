@@ -3,7 +3,7 @@ import { accessToken } from '../../globals/middlewares/middleware.authenticate'
 import { createIncome, createExpense } from '../controllers/controller.createFinances'
 import { findIncomes, findIncome, findExpenses, findExpense } from '../controllers/controller.readFinances'
 import { updateIncome, updateExpense } from '../controllers/controller.updateFinances'
-import { deleteIncome, deleteExpense } from '../controllers/controller.deleteFinances'
+import { deleteItem } from '../controllers/controller.deleteFinances'
 
 // route: /finances
 const router: Router = Router()
@@ -23,7 +23,7 @@ router.put('/incomes/:id', accessToken, updateIncome)
 router.put('/expenses/:id', accessToken, updateExpense)
 
 // delete
-router.delete('/incomes/:id', accessToken, deleteIncome)
-router.delete('/expenses/:id', accessToken, deleteExpense)
+router.delete('/incomes/:id', accessToken, deleteItem)
+router.delete('/expenses/:id', accessToken, deleteItem)
 
 export default router

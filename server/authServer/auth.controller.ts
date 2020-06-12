@@ -15,15 +15,10 @@ export const registerUser = async (request: Request, response: Response, next: N
 	const emailAlreadyTaken = (user) => {
 		if (user) response.status(401).json({ error: 'This email already exists!' })
 	}
-	const passwordToShort = () => {
-		response.json({ error: 'Password to short.' })
-	}
-	const passwordIsNotEqual = () => {
-		response.json({ error: 'Passwords do not match.' })
-	}
 
-	if (password.length <= 7) passwordToShort()
-	if (password != passwordRepeat) passwordIsNotEqual()
+	// password function
+	if (password.length <= 7) response.json({ error: 'Password to short.' })
+	if (password != passwordRepeat) response.json({ error: 'Passwords do not match.' })
 
 	try {
 		const checkedUser = await User.findOne({ email })

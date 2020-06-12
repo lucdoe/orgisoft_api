@@ -8,7 +8,7 @@ import {
 	findExpenseType,
 } from '../controllers/controller.readFinances'
 import { updateIncometype, updateExpensetype } from '../controllers/controller.updateFinances'
-import { deleteIncometype, deleteExpensetype } from '../controllers/controller.deleteFinances'
+import { deleteItem } from '../controllers/controller.deleteFinances'
 
 // route: /types
 const router: Router = Router()
@@ -28,7 +28,7 @@ router.put('/incomes/:id', accessToken, updateIncometype)
 router.put('/expenses/:id', accessToken, updateExpensetype)
 
 // delete
-router.delete('/incomes/:id', accessToken, deleteIncometype)
-router.delete('/expenses/:id', accessToken, deleteExpensetype)
+router.delete('/incomes/:id', accessToken, deleteItem)
+router.delete('/expenses/:id', accessToken, deleteItem)
 
 export default router
