@@ -4,38 +4,47 @@ import { Inventoryitems } from '../models/model.Inventoryitem'
 import { Inventorygroups } from '../models/model.Inventorygroup'
 import { Inventoryplaces } from '../models/model.Inventoryplace'
 
-export const updateInventoryitem = async (request: Request, response: Response) => {
-	const itemId = request.params.id
-	const manager = getManager()
+export const updateInventory = async (request: Request, response: Response) => {
+	const db = getManager()
 	const currentDate = new Date()
-	const updateItem = {
-		inventorygroups: request.body.inventorygroupsId,
-		members: request.body.membersId,
-		inventoryplaces: request.body.inventoryplacesId,
-		inventoryitem: request.body.inventoryitem,
-		descriptionText: request.body.description,
-		updatedAt: currentDate,
-	}
-	await manager.update(Inventoryitems, itemId, updateItem)
-	response.status(200).json(`Succesfully updated item: ${updateItem.inventoryitem}`)
-}
 
-export const updateInventoryGroup = async (request: Request, response: Response) => {
-	const groupsId = request.params.id
-	const manager = getManager()
-	const updateGroup = {
-		inventorygroup: request.body.inventorygroup,
-	}
-	await manager.update(Inventorygroups, groupsId, updateGroup)
-	response.status(200).json(`Succesfully updated Group: ${updateGroup.inventorygroup}`)
-}
+	const row = request.params.id
+	let path = request.path.split('/')[1]
 
-export const updateInventoryPlace = async (request: Request, response: Response) => {
-	const placesId = request.params.id
-	const manager = getManager()
-	const updatePlace = {
-		inventoryplace: request.body.inventoryplace,
+	if (/\d/.test(path)) path = 'items'
+
+	const body = request.body
+	const { baseUrl } = request
+
+	switch (path) {
+		case 'items':
+			const item = {
+				inventorygroups: body.group,
+				members: body.member,
+				inventoryplaces: body.place,
+				inventoryitem: body.item,
+				descriptionText: body.description,
+				updatedAt: currentDate,
+			}
+			await db.update(Inventoryitems, row, item)
+			break
+
+		case 'groups':
+			const group = {
+				inventorygroup: body.group,
+			}
+			await db.update(Inventorygroups, row, group)
+			break
+
+		case 'places':
+			const place = {
+				inventoryplace: body.place,
+			}
+			await db.update(Inventoryplaces, row, place)
+			break
 	}
-	await manager.update(Inventoryplaces, placesId, updatePlace)
-	response.status(200).json(`Succesfully updated Group: ${updatePlace.inventoryplace}`)
+
+	return response
+		.status(200)
+		.json({ message: `Succesfully updated ${baseUrl + '/' + path} with id: ${row}.` })
 }

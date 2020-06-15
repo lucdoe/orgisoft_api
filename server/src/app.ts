@@ -35,7 +35,7 @@ app.use(logger(loggerMsgTemplate))
 
 // mounting routers / set routes
 app.use('/members', membersRouter)
-app.use('/positions', positionsRouter)
+app.use('/memberpositions', positionsRouter)
 app.use('/statuses', statusesRouter)
 app.use('/memberqualifications', memberqualificationsRouter)
 app.use('/qualifications', qualificationsRouter)

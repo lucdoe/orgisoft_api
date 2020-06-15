@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { accessToken } from '../../globals/middlewares/middleware.authenticate'
 import * as createContrls from '../controllers/controller.createInventorys'
 import * as readContrls from '../controllers/controller.readInventorys'
-import * as updateContrls from '../controllers/controller.updateInventorys'
+import { updateInventory } from '../controllers/controller.updateInventorys'
 import * as deleteContrls from '../controllers/controller.deleteInventorys'
 
 // route: /inventoryitems
@@ -19,9 +19,9 @@ router.get('/:id', accessToken, readContrls.readInventoryitem)
 router.get('/:id/members', accessToken, readContrls.readItemOwner)
 
 // update
-router.put('/:id', accessToken, updateContrls.updateInventoryitem)
-router.put('/groups/:id', accessToken, updateContrls.updateInventoryGroup)
-router.put('/places/:id', accessToken, updateContrls.updateInventoryPlace)
+router.put('/:id', accessToken, updateInventory)
+router.put('/groups/:id', accessToken, updateInventory)
+router.put('/places/:id', accessToken, updateInventory)
 
 // delete
 router.delete('/:id', accessToken, deleteContrls.deleteInventoryitem)

@@ -8,10 +8,10 @@ export const createInventoryitem = async (request: Request, response: Response) 
 	const currentDate = new Date()
 	const manager = getManager()
 	const newItem = {
-		inventorygroups: request.body.inventorygroupsId,
-		members: request.body.membersId,
-		inventoryplaces: request.body.inventoryplacesId,
-		inventoryitem: request.body.inventoryitem,
+		inventorygroups: request.body.group,
+		members: request.body.member,
+		inventoryplaces: request.body.place,
+		inventoryitem: request.body.item,
 		descriptionText: request.body.description,
 		createdAt: currentDate,
 		updatedAt: currentDate,
@@ -23,17 +23,21 @@ export const createInventoryitem = async (request: Request, response: Response) 
 export const createInventoryGroup = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const inventorygroup = {
-		inventorygroup: request.body.inventorygroup,
+		inventorygroup: request.body.group,
 	}
 	await manager.insert(Inventorygroups, inventorygroup)
-	response.status(201).json(`Succesfully inserted Inventorygroup: ${inventorygroup.inventorygroup}`)
+	response
+		.status(201)
+		.json({ message: `Succesfully inserted Inventorygroup: ${inventorygroup.inventorygroup}` })
 }
 
 export const createInventoryPlace = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const inventoryplace = {
-		inventoryplace: request.body.inventoryplace,
+		inventoryplace: request.body.place,
 	}
 	await manager.insert(Inventoryplaces, inventoryplace)
-	response.status(201).json(`Succesfully inserted Inventoryplace: ${inventoryplace.inventoryplace}`)
+	response
+		.status(201)
+		.json({ message: `Succesfully inserted Inventoryplace: ${inventoryplace.inventoryplace}` })
 }
