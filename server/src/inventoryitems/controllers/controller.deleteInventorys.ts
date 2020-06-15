@@ -3,20 +3,30 @@ import { Inventoryitems } from '../models/model.Inventoryitem'
 import { Inventorygroups } from '../models/model.Inventorygroup'
 import { Inventoryplaces } from '../models/model.Inventoryplace'
 
-export const deleteInventoryitem = async (request: Request, response: Response) => {
-	const itemsId = request.params.id
-	await Inventoryitems.delete(itemsId)
-	response.status(200).json({ message: `Delete executed with id: ${itemsId}` })
-}
+export const deleteInventory = async (request: Request, response: Response) => {
+	const row = request.params.id
 
-export const deleteInventorygroup = async (request: Request, response: Response) => {
-	const groupsId = request.params.id
-	await Inventorygroups.delete(groupsId)
-	response.status(200).json({ message: `Deleted Group with id: ${groupsId}` })
-}
+	let path = request.path.split('/')[1]
+	const pathIsNum = /\d/.test(path)
+	if (pathIsNum) path = 'items'
 
-export const deleteInventoryplace = async (request: Request, response: Response) => {
-	const placesId = request.params.id
-	await Inventoryplaces.delete(placesId)
-	response.status(200).json({ message: `Deleted Place with id: ${placesId}` })
+	const { baseUrl } = request
+
+	switch (path) {
+		case 'items':
+			await Inventoryitems.delete(row)
+			break
+
+		case 'groups':
+			await Inventorygroups.delete(row)
+			break
+
+		case 'places':
+			await Inventoryplaces.delete(row)
+			break
+	}
+
+	return response
+		.status(200)
+		.json({ message: `Succesfully deleted ${baseUrl + '/' + path} with id: ${row}.` })
 }

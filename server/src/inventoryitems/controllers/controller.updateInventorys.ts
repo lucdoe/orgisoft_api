@@ -9,9 +9,10 @@ export const updateInventory = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 
 	const row = request.params.id
-	let path = request.path.split('/')[1]
 
-	if (/\d/.test(path)) path = 'items'
+	let path = request.path.split('/')[1]
+	const pathIsNum = /\d/.test(path)
+	if (pathIsNum) path = 'items'
 
 	const body = request.body
 	const { baseUrl } = request

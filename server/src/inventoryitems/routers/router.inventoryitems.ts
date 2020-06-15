@@ -3,7 +3,7 @@ import { accessToken } from '../../globals/middlewares/middleware.authenticate'
 import * as createContrls from '../controllers/controller.createInventorys'
 import * as readContrls from '../controllers/controller.readInventorys'
 import { updateInventory } from '../controllers/controller.updateInventorys'
-import * as deleteContrls from '../controllers/controller.deleteInventorys'
+import { deleteInventory } from '../controllers/controller.deleteInventorys'
 
 // route: /inventoryitems
 const router: Router = Router()
@@ -24,8 +24,8 @@ router.put('/groups/:id', accessToken, updateInventory)
 router.put('/places/:id', accessToken, updateInventory)
 
 // delete
-router.delete('/:id', accessToken, deleteContrls.deleteInventoryitem)
-router.delete('/groups/:id', accessToken, deleteContrls.deleteInventorygroup)
-router.delete('/places/:id', accessToken, deleteContrls.deleteInventoryplace)
+router.delete('/:id', accessToken, deleteInventory)
+router.delete('/groups/:id', accessToken, deleteInventory)
+router.delete('/places/:id', accessToken, deleteInventory)
 
 export default router
