@@ -1,29 +1,45 @@
 import { Router } from 'express'
 import { accessToken } from '../../globals/middlewares/middleware.authenticate'
-import { createIncome, createExpense } from '../controllers/controller.createFinances'
-import { findIncomes, findIncome, findExpenses, findExpense } from '../controllers/controller.readFinances'
-import { updateIncome, updateExpense } from '../controllers/controller.updateFinances'
-import { deleteItem } from '../controllers/controller.deleteFinances'
+import * as create from '../controllers/controller.createFinances'
+import * as read from '../controllers/controller.readFinances'
+import * as update from '../controllers/controller.updateFinances'
+import * as remove from '../controllers/controller.deleteFinances'
 
 // route: /finances
 const router: Router = Router()
 
-// create
-router.post('/incomes', accessToken, createIncome)
-router.post('/expenses', accessToken, createExpense)
+router.post('/incomes', accessToken, create.income)
+router.post('/expenses', accessToken, create.expense)
+router.post('/types/incomes', accessToken, create.incomeType)
+router.post('/types/expenses', accessToken, create.expenseType)
+router.post('/budgets/incomes', accessToken, create.incomeBudget)
+router.post('/budgets/expenses', accessToken, create.expenseBudget)
 
-// read
-router.get('/incomes/:id', accessToken, findIncome)
-router.get('/incomes', accessToken, findIncomes)
-router.get('/expenses', accessToken, findExpenses)
-router.get('/expenses/:id', accessToken, findExpense)
+router.get('/budgets/incomes', accessToken, read.allIncomeBudgets)
+router.get('/budgets/incomes/:id', accessToken, read.oneIncomeBudget)
+router.get('/budgets/expenses', accessToken, read.allExpenseBudgets)
+router.get('/budgets/expenses/:id', accessToken, read.oneExpenseBudget)
+router.get('/types/incomes', accessToken, read.allIncomeTypes)
+router.get('/types/incomes/:id', accessToken, read.oneIncomeType)
+router.get('/types/expenses', accessToken, read.allExpenseTypes)
+router.get('/types/expenses/:id', accessToken, read.oneExpenseType)
+router.get('/incomes', accessToken, read.allIncomes)
+router.get('/incomes/:id', accessToken, read.oneIncome)
+router.get('/expenses', accessToken, read.allExpenses)
+router.get('/expenses/:id', accessToken, read.oneExpense)
 
-// update
-router.put('/incomes/:id', accessToken, updateIncome)
-router.put('/expenses/:id', accessToken, updateExpense)
+router.put('/budgets/incomes/:id', accessToken, update.incomeBudget)
+router.put('/budgets/expenses/:id', accessToken, update.expenseBudget)
+router.put('/types/incomes/:id', accessToken, update.incomeType)
+router.put('/types/expenses/:id', accessToken, update.expenseType)
+router.put('/incomes/:id', accessToken, update.income)
+router.put('/expenses/:id', accessToken, update.expense)
 
-// delete
-router.delete('/incomes/:id', accessToken, deleteItem)
-router.delete('/expenses/:id', accessToken, deleteItem)
+router.delete('/budgets/incomes/:id', accessToken, remove.inventoryitems)
+router.delete('/budgets/expenses/:id', accessToken, remove.inventoryitems)
+router.delete('/types/incomes/:id', accessToken, remove.inventoryitems)
+router.delete('/types/expenses/:id', accessToken, remove.inventoryitems)
+router.delete('/incomes/:id', accessToken, remove.inventoryitems)
+router.delete('/expenses/:id', accessToken, remove.inventoryitems)
 
 export default router

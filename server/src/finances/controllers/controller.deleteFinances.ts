@@ -6,7 +6,7 @@ import { Incomebudgets } from '../models/model.Incomebudget'
 import { Expensetypes } from '../models/model.Expensetype'
 import { Expensebudgets } from '../models/model.Expensebudget'
 
-export const deleteItem = async (request: Request, response: Response) => {
+export const inventoryitems = async (request: Request, response: Response) => {
 	const row = request.params.id
 
 	const path = request.path.split('/')[1]
