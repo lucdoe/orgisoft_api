@@ -11,11 +11,6 @@ import { loggerMsgTemplate } from './globals/helpers/helper.logger'
 
 // importing routes / controllers
 import membersRouter from './members/routers/router.members'
-import positionsRouter from './members/routers/router.positions'
-import statusesRouter from './members/routers/router.statuses'
-import qualificationsRouter from './members/routers/router.qualifications'
-import membergroupsRouter from './members/routers/router.membergroups'
-import memberqualificationsRouter from './members/routers/router.memberqualifications'
 import financesRouter from './finances/routers/router.finances'
 import budgetsRouter from './finances/routers/router.budgets'
 import typesRouter from './finances/routers/router.types'
@@ -35,11 +30,6 @@ app.use(logger(loggerMsgTemplate))
 
 // mounting routers / set routes
 app.use('/members', membersRouter)
-app.use('/memberpositions', positionsRouter)
-app.use('/statuses', statusesRouter)
-app.use('/memberqualifications', memberqualificationsRouter)
-app.use('/qualifications', qualificationsRouter)
-app.use('/membergroups', membergroupsRouter)
 app.use('/finances', financesRouter)
 app.use('/budgets', budgetsRouter)
 app.use('/types', typesRouter)

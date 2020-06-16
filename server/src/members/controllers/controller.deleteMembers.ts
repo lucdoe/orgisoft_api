@@ -10,13 +10,13 @@ const responseWith = (data: { row: number | string; type: string }, response: Re
 	return response.status(200).json({ message: `Succesfully deleted ${data.type} with id of: ${data.row}` })
 }
 
-export const deleteMember = async (request: Request, response: Response) => {
+export const oneMember = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Member' }
 	await Members.delete(data.row)
 	responseWith(data, response)
 }
 
-export const deleteMemberAddress = async (request: Request, response: Response) => {
+export const memberAddress = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Member Address' }
 	const update = {
 		addresses: undefined,
@@ -25,7 +25,7 @@ export const deleteMemberAddress = async (request: Request, response: Response) 
 	responseWith(data, response)
 }
 
-export const deleteMemberPosition = async (request: Request, response: Response) => {
+export const memberPosition = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Member Position' }
 	const update = {
 		positions: undefined,
@@ -34,7 +34,7 @@ export const deleteMemberPosition = async (request: Request, response: Response)
 	responseWith(data, response)
 }
 
-export const deleteMemberStatus = async (request: Request, response: Response) => {
+export const memberStatus = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Member Status' }
 	const update = {
 		statuses: undefined,
@@ -43,7 +43,7 @@ export const deleteMemberStatus = async (request: Request, response: Response) =
 	responseWith(data, response)
 }
 
-export const deleteMemberMembergroup = async (request: Request, response: Response) => {
+export const memberGroup = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Member Group' }
 	const update = {
 		membergroups: undefined,
@@ -52,31 +52,31 @@ export const deleteMemberMembergroup = async (request: Request, response: Respon
 	responseWith(data, response)
 }
 
-export const deleteMemberqualification = async (request: Request, response: Response) => {
+export const memberQualification = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Member Qualification' }
 	await Memberqualifications.delete(data.row)
 	responseWith(data, response)
 }
 
-export const deletePosition = async (request: Request, response: Response) => {
+export const position = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Position' }
 	await Positions.delete(data.row)
 	responseWith(data, response)
 }
 
-export const deleteStatus = async (request: Request, response: Response) => {
+export const status = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Status' }
 	await Statuses.delete(data.row)
 	responseWith(data, response)
 }
 
-export const deleteQualification = async (request: Request, response: Response) => {
+export const qualification = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Qualification' }
 	await Qualifications.delete(data.row)
 	responseWith(data, response)
 }
 
-export const deleteMembergroup = async (request: Request, response: Response) => {
+export const group = async (request: Request, response: Response) => {
 	const data = { row: request.params.id, type: 'Member Group' }
 	await Membergroups.delete(data.row)
 	responseWith(data, response)

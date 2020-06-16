@@ -7,7 +7,7 @@ import { Statuses } from '../models/model.Status'
 import { Qualifications } from '../models/model.Qualification'
 import { Membergroups } from '../models/model.Membergroup'
 
-export const createMember = async (request: Request, response: Response) => {
+export const newMember = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
 	const newMember = {
@@ -31,7 +31,7 @@ export const createMember = async (request: Request, response: Response) => {
 	response.status(201).json(`Succesfully inserted Member: ${newMember.firstName} ${newMember.lastName}`)
 }
 
-export const createPosition = async (request: Request, response: Response) => {
+export const newPosition = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newPosition = {
 		position: request.body.position,
@@ -40,7 +40,7 @@ export const createPosition = async (request: Request, response: Response) => {
 	response.status(201).json(`Succesfully inserted Position: ${newPosition.position}`)
 }
 
-export const createStatus = async (request: Request, response: Response) => {
+export const newStatus = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newStatus = {
 		status: request.body.status,
@@ -49,7 +49,7 @@ export const createStatus = async (request: Request, response: Response) => {
 	response.status(201).json(`Succesfully inserted Status: ${newStatus.status}`)
 }
 
-export const createQualification = async (request: Request, response: Response) => {
+export const newQualification = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newQualification = {
 		qualification: request.body.qualification,
@@ -59,7 +59,7 @@ export const createQualification = async (request: Request, response: Response) 
 	response.status(201).json(`Succesfully inserted Qualification: ${newQualification.qualification}`)
 }
 
-export const createMemberqualification = async (request: Request, response: Response) => {
+export const newMemberqualification = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newMemberQualification = {
 		membersId: request.body.membersId,
@@ -71,7 +71,7 @@ export const createMemberqualification = async (request: Request, response: Resp
 	response.status(201).json(`Succesfully inserted Memberqualification.`)
 }
 
-export const createMembergroup = async (request: Request, response: Response) => {
+export const newMembergroup = async (request: Request, response: Response) => {
 	const manager = getManager()
 	const newMembergroup = {
 		membergroup: request.body.membergroup,

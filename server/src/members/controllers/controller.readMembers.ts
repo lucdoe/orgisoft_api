@@ -7,7 +7,7 @@ import { Statuses } from '../models/model.Status'
 import { Qualifications } from '../models/model.Qualification'
 import { Membergroups } from '../models/model.Membergroup'
 
-export const readMembers = async (request: Request, response: Response) => {
+export const allMembers = async (request: Request, response: Response) => {
 	const allMembers = await Memberqualifications.find({
 		relations: [
 			'qualifications',
@@ -22,7 +22,7 @@ export const readMembers = async (request: Request, response: Response) => {
 	response.status(200).json(allMembers)
 }
 
-export const readMember = async (request: Request, response: Response) => {
+export const oneMember = async (request: Request, response: Response) => {
 	const membersId = request.params.id
 	const member = await Members.find({
 		relations: ['addresses', 'addresses.citys', 'positions', 'statuses', 'membergroups', 'inventoryitems'],
@@ -33,7 +33,7 @@ export const readMember = async (request: Request, response: Response) => {
 	response.status(200).json(member)
 }
 
-export const readMemberAddress = async (request: Request, response: Response) => {
+export const memberAddress = async (request: Request, response: Response) => {
 	const membersId = request.params.id
 	const address = await Members.find({
 		select: ['id'],
@@ -45,7 +45,7 @@ export const readMemberAddress = async (request: Request, response: Response) =>
 	response.status(200).json(address)
 }
 
-export const readMemberPosition = async (request: Request, response: Response) => {
+export const memberPosition = async (request: Request, response: Response) => {
 	const membersId = request.params.id
 	const position = await Members.find({
 		select: ['id'],
@@ -57,7 +57,7 @@ export const readMemberPosition = async (request: Request, response: Response) =
 	response.status(200).json(position)
 }
 
-export const readMemberStatus = async (request: Request, response: Response) => {
+export const memberStatus = async (request: Request, response: Response) => {
 	const membersId = request.params.id
 	const status = await Members.find({
 		select: ['id'],
@@ -69,7 +69,7 @@ export const readMemberStatus = async (request: Request, response: Response) => 
 	response.status(200).json(status)
 }
 
-export const readMemberGroup = async (request: Request, response: Response) => {
+export const memberGroup = async (request: Request, response: Response) => {
 	const membersId = request.params.id
 	const group = await Members.find({
 		select: ['id'],
@@ -81,7 +81,7 @@ export const readMemberGroup = async (request: Request, response: Response) => {
 	response.status(200).json(group)
 }
 
-export const readMemberqualifications = async (request: Request, response: Response) => {
+export const memberQualification = async (request: Request, response: Response) => {
 	const membersId = request.params.id
 	const memberqualifications = await Memberqualifications.find({
 		relations: ['members', 'qualifications'],
@@ -92,7 +92,7 @@ export const readMemberqualifications = async (request: Request, response: Respo
 	response.status(200).json(memberqualifications)
 }
 
-export const readMemberqualification = async (request: Request, response: Response) => {
+export const qualification = async (request: Request, response: Response) => {
 	const memberqualificationId = request.params.id
 	const memberqualification = await Memberqualifications.find({
 		where: {
@@ -102,7 +102,7 @@ export const readMemberqualification = async (request: Request, response: Respon
 	response.status(200).json(memberqualification)
 }
 
-export const readMemberinventoryitem = async (request: Request, response: Response) => {
+export const memberInventoryitems = async (request: Request, response: Response) => {
 	const membersId = request.params.id
 	const items = await Members.find({
 		select: ['id'],
@@ -114,12 +114,12 @@ export const readMemberinventoryitem = async (request: Request, response: Respon
 	response.status(200).json(items)
 }
 
-export const readPositions = async (request: Request, response: Response) => {
+export const allPositions = async (request: Request, response: Response) => {
 	const positions = await getRepository(Positions).createQueryBuilder().getMany()
 	response.status(200).json(positions)
 }
 
-export const readPostion = async (request: Request, response: Response) => {
+export const onePosition = async (request: Request, response: Response) => {
 	const positionsId = request.params.id
 	const position = await Positions.find({
 		where: {
@@ -129,12 +129,12 @@ export const readPostion = async (request: Request, response: Response) => {
 	response.status(200).json(position)
 }
 
-export const readStatuses = async (request: Request, response: Response) => {
+export const allStatuses = async (request: Request, response: Response) => {
 	const statuses = await getRepository(Statuses).createQueryBuilder().getMany()
 	response.status(200).json(statuses)
 }
 
-export const readStatus = async (request: Request, response: Response) => {
+export const oneStatus = async (request: Request, response: Response) => {
 	const statusesId = request.params.id
 	const status = await Statuses.find({
 		where: {
@@ -144,12 +144,12 @@ export const readStatus = async (request: Request, response: Response) => {
 	response.status(200).json(status)
 }
 
-export const readQualifications = async (request: Request, response: Response) => {
+export const allQualifications = async (request: Request, response: Response) => {
 	const qualifications = await getRepository(Qualifications).createQueryBuilder().getMany()
 	response.status(200).json(qualifications)
 }
 
-export const readQualification = async (request: Request, response: Response) => {
+export const oneQualification = async (request: Request, response: Response) => {
 	const qualificationsId = request.params.id
 	const qualification = await Qualifications.find({
 		where: {
@@ -159,12 +159,12 @@ export const readQualification = async (request: Request, response: Response) =>
 	response.status(200).json(qualification)
 }
 
-export const readMembergroups = async (request: Request, response: Response) => {
+export const allGroups = async (request: Request, response: Response) => {
 	const membergroups = await getRepository(Membergroups).createQueryBuilder().getMany()
 	response.status(200).json(membergroups)
 }
 
-export const readMembergroup = async (request: Request, response: Response) => {
+export const oneGroup = async (request: Request, response: Response) => {
 	const membergroupsId = request.params.id
 	const membergroup = await Membergroups.find({
 		where: {

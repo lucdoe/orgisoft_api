@@ -7,7 +7,7 @@ import { Statuses } from '../models/model.Status'
 import { Qualifications } from '../models/model.Qualification'
 import { Membergroups } from '../models/model.Membergroup'
 
-export const updateMember = async (request: Request, response: Response) => {
+export const members = async (request: Request, response: Response) => {
 	const memberId = request.params.id
 	const manager = getManager()
 	const currentDate = new Date()
@@ -31,7 +31,7 @@ export const updateMember = async (request: Request, response: Response) => {
 	response.status(200).json(`Succesfully updated Member: ${updateMember.firstName} ${updateMember.lastName}`)
 }
 
-export const updateMemberAddress = async (request: Request, response: Response) => {
+export const memberAddresses = async (request: Request, response: Response) => {
 	const memberId = request.params.id
 	const manager = getManager()
 	const updateMemberAddress = {
@@ -41,7 +41,7 @@ export const updateMemberAddress = async (request: Request, response: Response) 
 	response.status(200).json(`Succesfully updated Members Address: ${updateMemberAddress.addresses}`)
 }
 
-export const updateMemberPosition = async (request: Request, response: Response) => {
+export const memberPositions = async (request: Request, response: Response) => {
 	const memberId = request.params.id
 	const manager = getManager()
 	const updateMemberPosition = {
@@ -51,7 +51,7 @@ export const updateMemberPosition = async (request: Request, response: Response)
 	response.status(200).json(`Succesfully updated Members Position: ${updateMemberPosition.positions}`)
 }
 
-export const updateMemberStatus = async (request: Request, response: Response) => {
+export const memberStatuses = async (request: Request, response: Response) => {
 	const memberId = request.params.id
 	const manager = getManager()
 	const updateMemberStatus = {
@@ -61,7 +61,7 @@ export const updateMemberStatus = async (request: Request, response: Response) =
 	response.status(200).json(`Succesfully updated Members Status: ${updateMemberStatus.statuses}`)
 }
 
-export const updateMemberqualification = async (request: Request, response: Response) => {
+export const memberQualifications = async (request: Request, response: Response) => {
 	const memberQualificationId = request.params.id
 	const manager = getManager()
 	const updateMemberQualification = {
@@ -76,7 +76,7 @@ export const updateMemberqualification = async (request: Request, response: Resp
 		.json(`Succesfully updated Members Qualification: ${updateMemberQualification.qualifications}`)
 }
 
-export const updateMemberMembergroup = async (request: Request, response: Response) => {
+export const memberGroups = async (request: Request, response: Response) => {
 	const memberId = request.params.id
 	const manager = getManager()
 	const updateMemberMembergroup = {
@@ -88,7 +88,7 @@ export const updateMemberMembergroup = async (request: Request, response: Respon
 		.json(`Succesfully updated Members Membergroup: ${updateMemberMembergroup.membergroups}`)
 }
 
-export const updatePosition = async (request: Request, response: Response) => {
+export const positions = async (request: Request, response: Response) => {
 	const positionId = request.params.id
 	const manager = getManager()
 	const updatePosition = {
@@ -98,7 +98,7 @@ export const updatePosition = async (request: Request, response: Response) => {
 	response.status(200).json(`Succesfully updated Position: ${updatePosition.position}`)
 }
 
-export const updateStatus = async (request: Request, response: Response) => {
+export const statuses = async (request: Request, response: Response) => {
 	const statusId = request.params.id
 	const manager = getManager()
 	const updateStatus = {
@@ -108,7 +108,7 @@ export const updateStatus = async (request: Request, response: Response) => {
 	response.status(200).json(`Succesfully updated Status: ${updateStatus.status}`)
 }
 
-export const updateMembergroups = async (request: Request, response: Response) => {
+export const groups = async (request: Request, response: Response) => {
 	const membergroupId = request.params.id
 	const manager = getManager()
 	const updateMembergroups = {
@@ -118,7 +118,7 @@ export const updateMembergroups = async (request: Request, response: Response) =
 	response.status(200).json(`Succesfully updated Membergroup: ${updateMembergroups.membergroup}`)
 }
 
-export const updateQualification = async (request: Request, response: Response) => {
+export const qualifications = async (request: Request, response: Response) => {
 	const qualificationId = request.params.id
 	const manager = getManager()
 	const updateQualification = {
