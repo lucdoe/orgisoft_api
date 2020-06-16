@@ -41,7 +41,7 @@ router.put('/:id/positions', accessToken, update.memberPositions)
 router.put('/:id/groups', accessToken, update.memberGroups)
 router.put('/:id/qualifications', accessToken, update.memberQualifications)
 router.put('/:id/statuses', accessToken, update.memberStatuses)
-// redo
+// n.e.w.
 router.put('/:id/addresses', accessToken, update.memberAddresses)
 
 router.delete('/positions/:id', accessToken, remove.position)

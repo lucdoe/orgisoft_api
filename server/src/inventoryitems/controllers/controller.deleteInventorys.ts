@@ -3,7 +3,7 @@ import { Inventoryitems } from '../models/model.Inventoryitem'
 import { Inventorygroups } from '../models/model.Inventorygroup'
 import { Inventoryplaces } from '../models/model.Inventoryplace'
 
-export const deleteInventory = async (request: Request, response: Response) => {
+export const inventoryItems = async (request: Request, response: Response) => {
 	const row = request.params.id
 
 	let path = request.path.split('/')[1]

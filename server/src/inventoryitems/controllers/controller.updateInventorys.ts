@@ -4,7 +4,7 @@ import { Inventoryitems } from '../models/model.Inventoryitem'
 import { Inventorygroups } from '../models/model.Inventorygroup'
 import { Inventoryplaces } from '../models/model.Inventoryplace'
 
-export const updateInventory = async (request: Request, response: Response) => {
+export const inventoryItems = async (request: Request, response: Response) => {
 	const db = getManager()
 	const currentDate = new Date()
 

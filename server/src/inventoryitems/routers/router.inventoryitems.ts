@@ -1,31 +1,27 @@
 import { Router } from 'express'
 import { accessToken } from '../../globals/middlewares/middleware.authenticate'
-import * as createContrls from '../controllers/controller.createInventorys'
-import * as readContrls from '../controllers/controller.readInventorys'
-import { updateInventory } from '../controllers/controller.updateInventorys'
-import { deleteInventory } from '../controllers/controller.deleteInventorys'
+import * as create from '../controllers/controller.createInventorys'
+import * as read from '../controllers/controller.readInventorys'
+import * as update from '../controllers/controller.updateInventorys'
+import * as remove from '../controllers/controller.deleteInventorys'
 
 // route: /inventoryitems
 const router: Router = Router()
 
-// create
-router.post('/', accessToken, createContrls.createInventoryitem)
-router.post('/groups', accessToken, createContrls.createInventoryGroup)
-router.post('/places', accessToken, createContrls.createInventoryPlace)
+router.post('/', accessToken, create.newInventoryitem)
+router.post('/groups', accessToken, create.newGroup)
+router.post('/places', accessToken, create.newPlace)
 
-// read
-router.get('/', accessToken, readContrls.readInventoryitems)
-router.get('/:id', accessToken, readContrls.readInventoryitem)
-router.get('/:id/members', accessToken, readContrls.readItemOwner)
+router.get('/', accessToken, read.allInventoryitems)
+router.get('/:id', accessToken, read.oneInventoryitem)
+router.get('/:id/members', accessToken, read.itemMember)
 
-// update
-router.put('/:id', accessToken, updateInventory)
-router.put('/groups/:id', accessToken, updateInventory)
-router.put('/places/:id', accessToken, updateInventory)
+router.put('/:id', accessToken, update.inventoryItems)
+router.put('/groups/:id', accessToken, update.inventoryItems)
+router.put('/places/:id', accessToken, update.inventoryItems)
 
-// delete
-router.delete('/:id', accessToken, deleteInventory)
-router.delete('/groups/:id', accessToken, deleteInventory)
-router.delete('/places/:id', accessToken, deleteInventory)
+router.delete('/:id', accessToken, remove.inventoryItems)
+router.delete('/groups/:id', accessToken, remove.inventoryItems)
+router.delete('/places/:id', accessToken, remove.inventoryItems)
 
 export default router
