@@ -6,13 +6,13 @@ import User from './auth.model.user'
 import jwt from 'jsonwebtoken'
 
 let refreshTokens: string[] = []
-const refreshTokenSecret: any = process.env.REFRESH_TOKEN_SECRET
-const accessTokenSecret: any = process.env.TOKEN_KEY
+const refreshSecret: any = process.env.REFRESH_TOKEN_SECRET
+const secret: any = process.env.TOKEN_KEY
 
 export const registerUser = async (request: Request, response: Response, next: NextFunction) => {
 	const { firstName, lastName, email, password, passwordRepeat } = request.body
 
-	const emailAlreadyTaken = (user) => {
+	const emailTaken = (user) => {
 		if (user) response.status(401).json({ error: 'This email already exists!' })
 	}
 
@@ -21,8 +21,8 @@ export const registerUser = async (request: Request, response: Response, next: N
 	if (password != passwordRepeat) response.json({ error: 'Passwords do not match.' })
 
 	try {
-		const checkedUser = await User.findOne({ email })
-		if (checkedUser) emailAlreadyTaken(checkedUser)
+		const emailFound = await User.findOne({ email })
+		if (emailFound) emailTaken(emailFound)
 		const hashedPassword = await bcrypt.hash(password, 10)
 
 		await User.create({
@@ -32,16 +32,16 @@ export const registerUser = async (request: Request, response: Response, next: N
 			password: hashedPassword,
 		})
 
-		const userObject: object = {
+		const userData: object = {
 			firstName,
 			email,
 		}
 
-		const accessToken = generateAccessToken(userObject)
-		const refreshToken: string = jwt.sign(userObject, refreshTokenSecret)
+		const token = generateAccessToken(userData)
+		const refreshToken: string = jwt.sign(userData, refreshSecret)
 
 		refreshTokens.push(refreshToken)
-		response.status(200).json({ accessToken, refreshToken })
+		response.status(200).json({ token, refreshToken })
 	} catch (error) {
 		next()
 	}
@@ -67,17 +67,17 @@ export const loginUser = async (request: Request, response: Response, next: Next
 					})
 
 				if (result) {
-					const userObject = {
+					const userData = {
 						firstName: user['firstName'],
 						email: user['email'],
 						password: user['password'],
 					}
 
-					const accessToken = generateAccessToken(userObject)
-					const refreshToken: string = jwt.sign(userObject, refreshTokenSecret)
+					const token = generateAccessToken(userData)
+					const refreshToken: string = jwt.sign(userData, refreshSecret)
 
 					refreshTokens.push(refreshToken)
-					response.status(200).json({ accessToken, refreshToken })
+					response.status(200).json({ token, refreshToken })
 				}
 			})
 		}
@@ -91,15 +91,15 @@ export const refreshLoginToken = (request: Request, response: Response, next: Ne
 		return response.status(401).json({ error: 'Log in required', status: 'Unauthorized' })
 	if (!refreshTokens) return response.status(403).json({ error: 'Log in required', status: 'Unauthorized' })
 
-	jwt.verify(refreshToken, refreshTokenSecret, (error, user) => {
+	jwt.verify(refreshToken, refreshSecret, (error, user) => {
 		if (error)
 			return response.status(403).json({
 				error: 'Unvalid access',
 				message: 'Try diffrent username or password',
 				status: 'Unauthorized',
 			})
-		const accessToken: string = generateAccessToken({ user })
-		response.json({ accessToken })
+		const token: string = generateAccessToken({ user })
+		response.json({ token })
 	})
 }
 
@@ -109,5 +109,5 @@ export const logoutUser = (request: Request, response: Response, next: NextFunct
 }
 
 const generateAccessToken = (user: string | object | Buffer): string => {
-	return jwt.sign(user, accessTokenSecret)
+	return jwt.sign(user, secret)
 }
