@@ -6,7 +6,7 @@ import { createConnection } from 'typeorm'
 import helmet from 'helmet'
 import cors from 'cors'
 import logger from 'morgan'
-import { loggerMsgTemplate } from './globals/helpers/helper.logger'
+import { loggerMsg } from './globals/helpers/helper.logger'
 
 import membersRouter from './members/routers/router.members'
 import financesRouter from './finances/routers/router.finances'
@@ -19,7 +19,7 @@ app.set('port', process.env.PORT || 3000)
 app.use(helmet())
 app.use(cors())
 app.use(json())
-app.use(logger(loggerMsgTemplate))
+app.use(logger(loggerMsg))
 
 app.use('/members', membersRouter)
 app.use('/finances', financesRouter)
