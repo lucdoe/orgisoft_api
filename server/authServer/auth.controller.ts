@@ -7,44 +7,41 @@ import jwt from 'jsonwebtoken'
 
 let refreshTokens: string[] = []
 const refreshSecret: any = process.env.REFRESH_TOKEN_SECRET
-const secret: any = process.env.TOKEN_KEY
+const accessTokenSecret: any = process.env.TOKEN_KEY
 
 export const registerUser = async (request: Request, response: Response, next: NextFunction) => {
 	const { firstName, lastName, email, password, passwordRepeat } = request.body
 
-	const emailTaken = (user) => {
-		if (user) response.status(401).json({ error: 'This email already exists!' })
+	const userCheck = async () => {
+		const checkedUser = await User.findOne({ email })
+		if (checkedUser) response.status(401).json({ error: 'This email already exists!' })
 	}
 
-	// password function
-	if (password.length <= 7) response.json({ error: 'Password to short.' })
-	if (password != passwordRepeat) response.json({ error: 'Passwords do not match.' })
+	const passwordCheck = () => {
+		if (password.length <= 7) response.json({ error: 'Password to short.' })
+		if (password != passwordRepeat) response.json({ error: 'Passwords do not match.' })
+	}
 
-	try {
-		const emailFound = await User.findOne({ email })
-		if (emailFound) emailTaken(emailFound)
-		const hashedPassword = await bcrypt.hash(password, 10)
+	const createUser = async () => {
+		userCheck()
+		passwordCheck()
 
 		await User.create({
 			firstName,
 			lastName,
 			email,
-			password: hashedPassword,
+			password: await bcrypt.hash(password, 10),
 		})
 
-		const userData: object = {
+		const userObject: object = {
 			firstName,
 			email,
 		}
 
-		const token = generateAccessToken(userData)
-		const refreshToken: string = jwt.sign(userData, refreshSecret)
-
-		refreshTokens.push(refreshToken)
-		response.status(200).json({ token, refreshToken })
-	} catch (error) {
-		next()
+		response.status(200).json(generateTokens(userObject))
 	}
+
+	createUser()
 }
 
 export const loginUser = async (request: Request, response: Response, next: NextFunction) => {
@@ -57,9 +54,7 @@ export const loginUser = async (request: Request, response: Response, next: Next
 		if (!user) {
 			response.status(403).json({ error: 'Wrong username or password', status: 'Unauthorized' })
 		} else {
-			const incomingPassword = user['password']
-
-			await bcrypt.compare(password, incomingPassword, (error, result) => {
+			await bcrypt.compare(password, user['password'], (error, result) => {
 				if (error || !result)
 					response.status(403).json({
 						error: 'Wrong username or password',
@@ -67,17 +62,13 @@ export const loginUser = async (request: Request, response: Response, next: Next
 					})
 
 				if (result) {
-					const userData = {
+					const userObject = {
 						firstName: user['firstName'],
 						email: user['email'],
 						password: user['password'],
 					}
 
-					const token = generateAccessToken(userData)
-					const refreshToken: string = jwt.sign(userData, refreshSecret)
-
-					refreshTokens.push(refreshToken)
-					response.status(200).json({ token, refreshToken })
+					response.status(200).json(generateTokens(userObject))
 				}
 			})
 		}
@@ -85,7 +76,7 @@ export const loginUser = async (request: Request, response: Response, next: Next
 }
 
 export const refreshLoginToken = (request: Request, response: Response, next: NextFunction) => {
-	const refreshToken: string = request.body.token
+	const refreshToken: string = request.body.refreshToken
 
 	if (refreshToken == null)
 		return response.status(401).json({ error: 'Log in required', status: 'Unauthorized' })
@@ -98,7 +89,7 @@ export const refreshLoginToken = (request: Request, response: Response, next: Ne
 				message: 'Try diffrent username or password',
 				status: 'Unauthorized',
 			})
-		const token: string = generateAccessToken({ user })
+		const token: string = accessToken(user)
 		response.json({ token })
 	})
 }
@@ -108,6 +99,20 @@ export const logoutUser = (request: Request, response: Response, next: NextFunct
 	response.status(403).json({ message: 'Loged out', status: 'Unauthorized' })
 }
 
-const generateAccessToken = (user: string | object | Buffer): string => {
-	return jwt.sign(user, secret)
+const accessToken = (user: string | object | Buffer): string => {
+	return jwt.sign(user, accessTokenSecret)
+}
+
+const refreshToken = (user: string | object | Buffer): string => {
+	const refershToken = jwt.sign(user, refreshSecret)
+	refreshTokens.push(refreshToken(user))
+	return refershToken
+}
+
+const generateTokens = (userData: object) => {
+	const tokens = {
+		token: accessToken(userData),
+		refreshToken: refreshToken(userData),
+	}
+	return tokens
 }

@@ -5,7 +5,7 @@ dotenv.config()
 
 const secret: any = process.env.ACCESS_TOKEN_SECRET
 
-export const accessToken = (request: Request, response: Response, next: NextFunction) => {
+export const verifyToken = (request: Request, response: Response, next: NextFunction) => {
 	try {
 		const header: string | undefined = request.headers['authorization']
 		const token: string | undefined = header && header.split(' ')[1]
