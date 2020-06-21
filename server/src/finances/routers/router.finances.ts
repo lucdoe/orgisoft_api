@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { verifyToken } from '../../globals/middlewares/middleware.authenticate'
+import { getOneCacheItem, getAllCacheItems } from '../../globals/middlewares/middleware.cache'
 import * as create from '../controllers/controller.createFinances'
 import * as read from '../controllers/controller.readFinances'
 import * as update from '../controllers/controller.updateFinances'
@@ -15,7 +16,7 @@ router.post('/types/expenses', verifyToken, create.expenseType)
 router.post('/budgets/incomes', verifyToken, create.incomeBudget)
 router.post('/budgets/expenses', verifyToken, create.expenseBudget)
 
-router.get('/budgets/incomes', verifyToken, read.allIncomeBudgets)
+router.get('/budgets/incomes', verifyToken, getAllCacheItems, read.allIncomeBudgets)
 router.get('/budgets/incomes/:id', verifyToken, read.oneIncomeBudget)
 router.get('/budgets/expenses', verifyToken, read.allExpenseBudgets)
 router.get('/budgets/expenses/:id', verifyToken, read.oneExpenseBudget)
@@ -23,8 +24,8 @@ router.get('/types/incomes', verifyToken, read.allIncomeTypes)
 router.get('/types/incomes/:id', verifyToken, read.oneIncomeType)
 router.get('/types/expenses', verifyToken, read.allExpenseTypes)
 router.get('/types/expenses/:id', verifyToken, read.oneExpenseType)
-router.get('/incomes', verifyToken, read.allIncomes)
-router.get('/incomes/:id', verifyToken, read.oneIncome)
+router.get('/incomes', verifyToken, getAllCacheItems, read.allIncomes)
+router.get('/incomes/:id', verifyToken, getOneCacheItem, read.oneIncome)
 router.get('/expenses', verifyToken, read.allExpenses)
 router.get('/expenses/:id', verifyToken, read.oneExpense)
 

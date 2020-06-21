@@ -6,6 +6,7 @@
 	"dependencies": {
 		"@types/bcrypt": "^3.0.0",
 		"@types/mongoose": "^5.7.23",
+		"@types/redis": "^2.8.22",
 		"bcrypt": "^5.0.0",
 		"body-parser": "^1.19.0",
 		"cors": "^2.8.5",
@@ -15,6 +16,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.9.18",
 		"mysql": "^2.18.1",
+		"redis": "^3.0.2",
 		"reflect-metadata": "^0.1.13",
 		"typeorm": "^0.2.24"
 	},
@@ -42,7 +44,7 @@
 		"typescript": "^3.8.3"
 	},
 	"scripts": {
-		"start": "nodemon src/server.ts",
+		"start": "set DEBUG=express:* DEBUG_DEPTH & nodemon src/server.ts",
 		"auth": "nodemon authServer/auth.app.ts",
 		"test": "jest --detectOpenHandles --watch"
 	},

@@ -6,27 +6,49 @@ import { Expenses } from '../models/model.Expense'
 import { Expensebudgets } from '../models/model.Expensebudget'
 import { Incometypes } from '../models/model.Incometype'
 import { Expensetypes } from '../models/model.Expensetype'
+import { setCache } from '../../globals/middlewares/middleware.cache'
 
 export const allIncomes = async (request: Request, response: Response) => {
 	const allIncomes = await Incomes.find({
 		relations: ['members', 'incometypes', 'currencys'],
 	})
-	response.status(200).json(allIncomes)
+	const data = {
+		path: request.path.split('/')[1],
+		id: 'all',
+		cache: allIncomes,
+	}
+	setCache(data)
+	response.status(200).json({ server: allIncomes })
 }
 
 export const oneIncome = async (request: Request, response: Response) => {
 	const incomeId = request.params.id
+
 	const income = await Incomes.find({
 		relations: ['members', 'incometypes', 'currencys'],
 		where: {
 			id: incomeId,
 		},
 	})
-	response.status(200).json(income)
+	const data = {
+		path: request.path.split('/')[1],
+		id: incomeId,
+		cache: income,
+	}
+
+	setCache(data)
+
+	response.status(200).json({ server: income })
 }
 
 export const allIncomeBudgets = async (request: Request, response: Response) => {
-	const allIncomeBudgets = await getRepository(Incomebudgets).createQueryBuilder().getMany()
+	const allIncomeBudgets = await Incomebudgets.find()
+	const data = {
+		path: request.path.split('/')[1],
+		id: 'all',
+		cache: allIncomeBudgets,
+	}
+	setCache(data)
 	response.status(200).json(allIncomeBudgets)
 }
 
