@@ -5,7 +5,7 @@ export const allInventoryitems = async (request: Request, response: Response) =>
 	const allInventoryitems = await Inventoryitems.find({
 		relations: ['members', 'inventorygroups', 'inventoryplaces'],
 	})
-	response.status(200).json({ message: `${allInventoryitems}` })
+	response.status(200).json({ message: allInventoryitems })
 }
 
 export const oneInventoryitem = async (request: Request, response: Response) => {
