@@ -8,16 +8,36 @@ import { Qualifications } from '../models/model.Qualification'
 import { Membergroups } from '../models/model.Membergroup'
 
 export const allMembers = async (request: Request, response: Response) => {
-	const allMembers = await Memberqualifications.find({
-		relations: [
-			'qualifications',
-			'members',
-			'members.addresses',
-			'members.addresses.citys',
-			'members.positions',
-			'members.statuses',
-			'members.membergroups',
-		],
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc, select } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+
+	const allMembers = await Members.find({
+		relations: ['addresses', 'addresses.citys', 'positions', 'statuses', 'membergroups'],
+		order: {
+			lastName: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
+	response.status(200).json(allMembers)
+}
+
+export const allMembersLimited = async (request: Request, response: Response) => {
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+
+	const allMembers = await Members.find({
+		relations: ['positions', 'statuses', 'membergroups'],
+		order: {
+			lastName: orderDirection,
+		},
+		skip: skip,
+		take: take,
+		select: ['id', 'firstName', 'lastName', 'email'],
 	})
 	response.status(200).json(allMembers)
 }
