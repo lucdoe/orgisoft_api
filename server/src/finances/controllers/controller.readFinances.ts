@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import { getRepository } from 'typeorm'
 import { Incomes } from '../models/model.Income'
 import { Incomebudgets } from '../models/model.Incomebudget'
 import { Expenses } from '../models/model.Expense'
@@ -7,6 +6,25 @@ import { Expensebudgets } from '../models/model.Expensebudget'
 import { Incometypes } from '../models/model.Incometype'
 import { Expensetypes } from '../models/model.Expensetype'
 import { setCache } from '../../globals/middlewares/middleware.cache'
+
+export const instruction = async (request: Request, response: Response) => {
+	const data = {
+		location: '/finances' + request.path,
+		links: {
+			self: {
+				href: '/',
+			},
+			expenses: {
+				href: '/finances/expenses',
+			},
+			incomes: {
+				href: '/finances/incomes',
+			},
+		},
+		welcome: 'Welcome to the orgisoft server.',
+	}
+	response.status(200).json(data)
+}
 
 export const allIncomes = async (request: Request, response: Response) => {
 	const allIncomes = await Incomes.find({

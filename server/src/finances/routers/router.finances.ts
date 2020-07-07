@@ -28,6 +28,7 @@ router.get('/incomes', verifyToken, getAllCacheItems, read.allIncomes)
 router.get('/incomes/:id', verifyToken, getOneCacheItem, read.oneIncome)
 router.get('/expenses', verifyToken, read.allExpenses)
 router.get('/expenses/:id', verifyToken, read.oneExpense)
+router.get('/', verifyToken, read.instruction)
 
 router.put('/budgets/incomes/:id', verifyToken, update.incomeBudget)
 router.put('/budgets/expenses/:id', verifyToken, update.expenseBudget)
