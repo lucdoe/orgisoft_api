@@ -9,7 +9,7 @@ export class Incometypes extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: 50,
+		length: 255,
 	})
 	incometype!: string
 

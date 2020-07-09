@@ -14,14 +14,30 @@ export class Addresses extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
+		length: 255,
 	})
 	street!: String
 
 	@Column({
-		type: 'varchar',
-		length: 20,
+		type: 'int',
 	})
-	streetNumber!: String
+	streetNumber!: number
+
+	@Column({
+		type: 'varchar',
+		length: 5,
+	})
+	streetNumberSuffix!: String
+
+	@Column({
+		type: 'int',
+	})
+	unit!: String
+
+	@Column({
+		type: 'int',
+	})
+	appartmentNumber!: String
 
 	@Column({
 		type: 'text',
@@ -39,5 +55,5 @@ export class Addresses extends BaseEntity {
 	updatedAt!: Date
 
 	@OneToMany((type) => Members, (members) => members.addresses)
-	members!: Members
+	members!: Members[]
 }

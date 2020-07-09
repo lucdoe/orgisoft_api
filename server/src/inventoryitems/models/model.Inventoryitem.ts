@@ -21,6 +21,7 @@ export class Inventoryitems extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
+		length: 255,
 	})
 	inventoryitem!: string
 

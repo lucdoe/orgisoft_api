@@ -10,7 +10,7 @@ export class Qualifications extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: 50,
+		length: 255,
 	})
 	qualification!: string
 
@@ -18,5 +18,5 @@ export class Qualifications extends BaseEntity {
 	description!: string
 
 	@OneToMany((type) => Memberqualifications, (memberqualifications) => memberqualifications.qualifications)
-	memberqualifications!: Memberqualifications
+	memberqualifications!: Memberqualifications[]
 }

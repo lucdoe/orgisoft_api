@@ -10,10 +10,10 @@ export class Positions extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: '50',
+		length: 255,
 	})
 	position!: string
 
 	@OneToMany((type) => Members, (members) => members.positions)
-	members!: Members
+	members!: Members[]
 }

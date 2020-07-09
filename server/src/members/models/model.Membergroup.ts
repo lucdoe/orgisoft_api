@@ -10,10 +10,10 @@ export class Membergroups extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: '50',
+		length: 255,
 	})
 	membergroup!: string
 
 	@OneToMany((type) => Members, (members) => members.membergroups)
-	members!: Members
+	members!: Members[]
 }

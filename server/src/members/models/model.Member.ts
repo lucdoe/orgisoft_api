@@ -35,13 +35,33 @@ export class Members extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
+		length: 4,
+	})
+	namePrefix1!: string
+
+	@Column({
+		type: 'varchar',
+		length: 4,
+	})
+	namePrefix2!: string
+
+	@Column({
+		type: 'varchar',
+		length: 255,
 	})
 	firstName!: string
 
 	@Column({
 		type: 'varchar',
+		length: 255,
 	})
 	lastName!: string
+
+	@Column({
+		type: 'varchar',
+		length: 255,
+	})
+	followingNames!: string
 
 	@Column({
 		type: 'varchar',
@@ -87,14 +107,14 @@ export class Members extends BaseEntity {
 	updatedAt!: Date
 
 	@OneToMany((type) => Memberqualifications, (memberqualifications) => memberqualifications.members)
-	memberqualifications!: Memberqualifications
+	memberqualifications!: Memberqualifications[]
 
 	@OneToMany((type) => Expenses, (expenses) => expenses.members)
-	expenses!: Expenses
+	expenses!: Expenses[]
 
 	@OneToMany((type) => Incomes, (incomes) => incomes.members)
-	incomes!: Incomes
+	incomes!: Incomes[]
 
 	@OneToMany((type) => Inventoryitems, (inventoryitems) => inventoryitems.members)
-	inventoryitems!: Inventoryitems
+	inventoryitems!: Inventoryitems[]
 }

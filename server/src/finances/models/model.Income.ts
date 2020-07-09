@@ -24,14 +24,14 @@ export class Incomes extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: 50,
+		length: 255,
 	})
 	income!: String
 
 	@Column({
 		type: 'float',
 	})
-	amount!: number
+	incomeAmount!: number
 
 	@Column({
 		type: 'date',

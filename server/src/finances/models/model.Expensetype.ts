@@ -9,7 +9,7 @@ export class Expensetypes extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: 50,
+		length: 255,
 	})
 	expensetype!: string
 

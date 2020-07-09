@@ -9,12 +9,12 @@ export class Expensebudgets extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: 50,
+		length: 255,
 	})
 	expensebudget!: string
 
 	@Column({
-		type: 'float',
+		type: 'int',
 	})
 	amount!: number
 }

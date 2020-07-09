@@ -10,7 +10,7 @@ export class Inventoryplaces extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: '50',
+		length: 255,
 	})
 	inventoryplace!: string
 

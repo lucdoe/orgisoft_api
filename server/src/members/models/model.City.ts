@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, ManyToOne } from 'typeorm'
 import { Addresses } from './model.Address'
+import { Countries } from './model.Countries'
 
 @Entity()
 export class Citys extends BaseEntity {
@@ -8,36 +9,27 @@ export class Citys extends BaseEntity {
 	})
 	id!: number
 
+	@ManyToOne((type) => Countries)
+	country!: Countries
+
 	@Column({
 		type: 'varchar',
-		length: 150,
+		length: 255,
 	})
 	city!: string
 
 	@Column({
 		type: 'varchar',
-		length: 30,
+		length: 10,
 	})
 	postcode!: string
 
 	@Column({
 		type: 'varchar',
-		length: 150,
+		length: 255,
 	})
 	state!: string
 
-	@Column({
-		type: 'varchar',
-		length: 150,
-	})
-	country!: string
-
-	@Column({
-		type: 'varchar',
-		length: 10,
-	})
-	countryCode!: string
-
 	@OneToMany((type) => Addresses, (addresses) => addresses.citys)
-	addresses!: Addresses
+	addresses!: Addresses[]
 }

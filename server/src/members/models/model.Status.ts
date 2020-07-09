@@ -9,10 +9,10 @@ export class Statuses extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: '50',
+		length: 255,
 	})
 	status!: string
 
 	@OneToMany((type) => Members, (members) => members.statuses)
-	members!: Members
+	members!: Members[]
 }

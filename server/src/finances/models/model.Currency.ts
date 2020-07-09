@@ -11,18 +11,20 @@ export class Currencys extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: 50,
+		length: 255,
 	})
 	currency!: string
 
-	@Column('float')
-	exchangeRate!: number
-
 	@Column({
 		type: 'varchar',
-		length: 10,
+		length: 3,
 	})
 	currencyCode!: string
+
+	@Column({
+		type: 'smallint',
+	})
+	currencyNumber!: number
 
 	@OneToMany((type) => Expenses, (expenses) => expenses.currencys)
 	expenses!: Expenses[]

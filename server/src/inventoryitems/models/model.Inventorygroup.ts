@@ -10,7 +10,7 @@ export class Inventorygroups extends BaseEntity {
 
 	@Column({
 		type: 'varchar',
-		length: 50,
+		length: 255,
 	})
 	inventorygroup!: string
 
