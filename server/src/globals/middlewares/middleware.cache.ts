@@ -12,7 +12,7 @@ export const getOneCacheItem = (request: Request, response: Response, next: Next
 
 		if (data !== null) {
 			const result = convertStringToJSON(data)
-			response.status(200).json({ cache: result })
+			response.status(200).json(result)
 		} else {
 			next()
 		}
@@ -25,7 +25,7 @@ export const getAllCacheItems = (request: Request, response: Response, next: Nex
 
 		if (data !== null) {
 			const result = convertStringToJSON(data)
-			response.status(200).json({ cache: result })
+			response.status(200).json(result)
 		} else {
 			next()
 		}

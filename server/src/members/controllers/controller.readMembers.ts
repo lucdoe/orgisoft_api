@@ -13,7 +13,7 @@ export const allMembers = async (request: Request, response: Response) => {
 	const { desc, select } = request.query
 	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
 
-	const allMembers = await Members.find({
+	const result = await Members.find({
 		relations: ['addresses', 'addresses.citys', 'positions', 'statuses', 'membergroups'],
 		order: {
 			lastName: orderDirection,
@@ -21,7 +21,7 @@ export const allMembers = async (request: Request, response: Response) => {
 		skip: skip,
 		take: take,
 	})
-	response.status(200).json(allMembers)
+	response.status(200).json(result)
 }
 
 export const allMembersLimited = async (request: Request, response: Response) => {
@@ -30,7 +30,7 @@ export const allMembersLimited = async (request: Request, response: Response) =>
 	const { desc } = request.query
 	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
 
-	const allMembers = await Members.find({
+	const result = await Members.find({
 		relations: ['positions', 'statuses', 'membergroups'],
 		order: {
 			lastName: orderDirection,
@@ -39,161 +39,151 @@ export const allMembersLimited = async (request: Request, response: Response) =>
 		take: take,
 		select: ['id', 'firstName', 'lastName', 'email'],
 	})
-	response.status(200).json(allMembers)
+	response.status(200).json(result)
 }
 
 export const oneMember = async (request: Request, response: Response) => {
-	const membersId = request.params.id
-	const member = await Members.find({
+	const id = request.params.id
+	const result = await Members.find({
 		relations: ['addresses', 'addresses.citys', 'positions', 'statuses', 'membergroups', 'inventoryitems'],
 		where: {
-			id: membersId,
+			id: id,
 		},
 	})
-	response.status(200).json(member)
+	response.status(200).json(result)
 }
 
 export const memberAddress = async (request: Request, response: Response) => {
-	const membersId = request.params.id
-	const address = await Members.find({
+	const id = request.params.id
+	const result = await Members.find({
 		select: ['id'],
 		relations: ['addresses', 'addresses.citys'],
 		where: {
-			id: membersId,
+			id: id,
 		},
 	})
-	response.status(200).json(address)
+	response.status(200).json(result)
 }
 
 export const memberPosition = async (request: Request, response: Response) => {
-	const membersId = request.params.id
-	const position = await Members.find({
+	const id = request.params.id
+	const result = await Members.find({
 		select: ['id'],
 		relations: ['positions'],
 		where: {
-			id: membersId,
+			id: id,
 		},
 	})
-	response.status(200).json(position)
+	response.status(200).json(result)
 }
 
 export const memberStatus = async (request: Request, response: Response) => {
-	const membersId = request.params.id
-	const status = await Members.find({
+	const id = request.params.id
+	const result = await Members.find({
 		select: ['id'],
 		relations: ['statuses'],
 		where: {
-			id: membersId,
+			id: id,
 		},
 	})
-	response.status(200).json(status)
+	response.status(200).json(result)
 }
 
 export const memberGroup = async (request: Request, response: Response) => {
-	const membersId = request.params.id
-	const group = await Members.find({
+	const id = request.params.id
+	const result = await Members.find({
 		select: ['id'],
 		relations: ['membergroups'],
 		where: {
-			id: membersId,
+			id: id,
 		},
 	})
-	response.status(200).json(group)
+	response.status(200).json(result)
 }
 
 export const memberQualification = async (request: Request, response: Response) => {
-	const membersId = request.params.id
-	const memberqualifications = await Memberqualifications.find({
+	const id = request.params.id
+	const preResult = await Memberqualifications.find({
 		relations: ['qualifications'],
 		where: {
-			members: membersId,
+			members: id,
 		},
 	})
 	const result = {
-		id: membersId,
-		memberqualifications,
+		id: id,
+		preResult,
 	}
 	response.status(200).json(result)
 }
 
-export const qualification = async (request: Request, response: Response) => {
-	const memberqualificationId = request.params.id
-	const memberqualification = await Memberqualifications.find({
-		where: {
-			id: memberqualificationId,
-		},
-	})
-	response.status(200).json(memberqualification)
-}
-
 export const memberInventoryitems = async (request: Request, response: Response) => {
-	const membersId = request.params.id
-	const items = await Members.find({
+	const id = request.params.id
+	const result = await Members.find({
 		select: ['id'],
 		relations: ['inventoryitems'],
 		where: {
-			id: membersId,
+			id,
 		},
 	})
-	response.status(200).json(items)
+	response.status(200).json(result)
 }
 
 export const allPositions = async (request: Request, response: Response) => {
-	const positions = await getRepository(Positions).createQueryBuilder().getMany()
-	response.status(200).json(positions)
+	const result = await getRepository(Positions).createQueryBuilder().getMany()
+	response.status(200).json(result)
 }
 
 export const onePosition = async (request: Request, response: Response) => {
-	const positionsId = request.params.id
-	const position = await Positions.find({
+	const id = request.params.id
+	const result = await Positions.find({
 		where: {
-			id: positionsId,
+			id,
 		},
 	})
-	response.status(200).json(position)
+	response.status(200).json(result)
 }
 
 export const allStatuses = async (request: Request, response: Response) => {
-	const statuses = await getRepository(Statuses).createQueryBuilder().getMany()
-	response.status(200).json(statuses)
+	const result = await getRepository(Statuses).createQueryBuilder().getMany()
+	response.status(200).json(result)
 }
 
 export const oneStatus = async (request: Request, response: Response) => {
-	const statusesId = request.params.id
-	const status = await Statuses.find({
+	const id = request.params.id
+	const result = await Statuses.find({
 		where: {
-			id: statusesId,
+			id,
 		},
 	})
-	response.status(200).json(status)
+	response.status(200).json(result)
 }
 
 export const allQualifications = async (request: Request, response: Response) => {
-	const qualifications = await getRepository(Qualifications).createQueryBuilder().getMany()
-	response.status(200).json(qualifications)
+	const result = await getRepository(Qualifications).createQueryBuilder().getMany()
+	response.status(200).json(result)
 }
 
 export const oneQualification = async (request: Request, response: Response) => {
-	const qualificationsId = request.params.id
-	const qualification = await Qualifications.find({
+	const id = request.params.id
+	const result = await Qualifications.find({
 		where: {
-			id: qualificationsId,
+			id,
 		},
 	})
-	response.status(200).json(qualification)
+	response.status(200).json(result)
 }
 
 export const allGroups = async (request: Request, response: Response) => {
-	const membergroups = await getRepository(Membergroups).createQueryBuilder().getMany()
-	response.status(200).json(membergroups)
+	const result = await getRepository(Membergroups).createQueryBuilder().getMany()
+	response.status(200).json(result)
 }
 
 export const oneGroup = async (request: Request, response: Response) => {
-	const membergroupsId = request.params.id
-	const membergroup = await Membergroups.find({
+	const id = request.params.id
+	const result = await Membergroups.find({
 		where: {
-			id: membergroupsId,
+			id,
 		},
 	})
-	response.status(200).json(membergroup)
+	response.status(200).json(result)
 }
