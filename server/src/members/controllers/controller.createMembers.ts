@@ -6,6 +6,7 @@ import { Positions } from '../models/model.Position'
 import { Statuses } from '../models/model.Status'
 import { Qualifications } from '../models/model.Qualification'
 import { Membergroups } from '../models/model.Membergroup'
+import { Addresses } from '../models/model.Address'
 
 export const newMember = async (request: Request, response: Response) => {
 	const currentDate = new Date()
@@ -78,4 +79,21 @@ export const newMembergroup = async (request: Request, response: Response) => {
 	}
 	await manager.insert(Membergroups, newMembergroup)
 	response.status(201).json(`Succesfully inserted Membergroup: ${newMembergroup.membergroup}`)
+}
+
+export const newAddress = async (request: Request, response: Response) => {
+	const manager = getManager()
+	const newAddress = {
+		citysId: request.body.city,
+		street: request.body.street,
+		streetNumber: request.body.number,
+		streetNumberSuffix: request.body.suffix,
+		unit: request.body.unit,
+		appartmentNumber: request.body.aNumber,
+		note: request.body.note,
+		createdAt: request.body.created,
+		updatedAt: request.body.updated,
+	}
+	await manager.insert(Addresses, newAddress)
+	response.status(201).json(`Succesfully inserted Address: ${newAddress.street}`)
 }

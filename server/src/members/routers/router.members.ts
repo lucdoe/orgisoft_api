@@ -14,6 +14,7 @@ router.post('/groups', verifyToken, create.newMembergroup)
 router.post('/qualifications', verifyToken, create.newQualification)
 router.post('/:id/qualifications', verifyToken, create.newMemberqualification)
 router.post('/statuses', verifyToken, create.newStatus)
+router.post('/addresses', verifyToken, create.newAddress)
 
 router.get('/positions', verifyToken, read.allPositions)
 router.get('/positions/:id', verifyToken, read.onePosition)
