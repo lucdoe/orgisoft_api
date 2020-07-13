@@ -10,7 +10,7 @@ import { Expensetypes } from '../models/model.Expensetype'
 export const income = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
-	const newIncome = {
+	const result = {
 		members: request.body.member,
 		currencys: request.body.currency,
 		incometypes: request.body.incometype,
@@ -20,33 +20,33 @@ export const income = async (request: Request, response: Response) => {
 		createdAt: currentDate,
 		updatedAt: currentDate,
 	}
-	await manager.insert(Incomes, newIncome)
-	response.status(201).json(`Succesfully inserted Income: ${newIncome.income}`)
+	await manager.insert(Incomes, result)
+	response.status(201).json(`Succesfully inserted Income: ${result.income}`)
 }
 
 export const incomeBudget = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newIncomebudget = {
+	const result = {
 		incomebudget: request.body.budget,
 		amount: request.body.amount,
 	}
-	await manager.insert(Incomebudgets, newIncomebudget)
-	response.status(201).json(`Succesfully inserted Incomebudget: ${newIncomebudget.incomebudget}`)
+	await manager.insert(Incomebudgets, result)
+	response.status(201).json(`Succesfully inserted Incomebudget: ${result.incomebudget}`)
 }
 
 export const incomeType = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newIncometype = {
+	const result = {
 		incometype: request.body.type,
 	}
-	await manager.insert(Incometypes, newIncometype)
-	response.status(201).json(`Succesfully inserted Incometype: ${newIncometype.incometype}`)
+	await manager.insert(Incometypes, result)
+	response.status(201).json(`Succesfully inserted Incometype: ${result.incometype}`)
 }
 
 export const expense = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
-	const newExpense = {
+	const result = {
 		members: request.body.member,
 		currencys: request.body.currency,
 		expensetypes: request.body.expensetype,
@@ -56,25 +56,25 @@ export const expense = async (request: Request, response: Response) => {
 		createdAt: currentDate,
 		updatedAt: currentDate,
 	}
-	await manager.insert(Expenses, newExpense)
-	response.status(201).json(`Succesfully inserted Expense: ${newExpense.expense}`)
+	await manager.insert(Expenses, result)
+	response.status(201).json(`Succesfully inserted Expense: ${result.expense}`)
 }
 
 export const expenseBudget = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newExpensebudget = {
+	const result = {
 		expensebudget: request.body.budget,
 		amount: request.body.amount,
 	}
-	await manager.insert(Expensebudgets, newExpensebudget)
-	response.status(201).json(`Succesfully inserted Expensebudget: ${newExpensebudget.expensebudget}`)
+	await manager.insert(Expensebudgets, result)
+	response.status(201).json(`Succesfully inserted Expensebudget: ${result.expensebudget}`)
 }
 
 export const expenseType = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newExpensetype = {
+	const result = {
 		expensetype: request.body.budget,
 	}
-	await manager.insert(Expensetypes, newExpensetype)
-	response.status(201).json(`Succesfully inserted Expensetype: ${newExpensetype.expensetype}`)
+	await manager.insert(Expensetypes, result)
+	response.status(201).json(`Succesfully inserted Expensetype: ${result.expensetype}`)
 }

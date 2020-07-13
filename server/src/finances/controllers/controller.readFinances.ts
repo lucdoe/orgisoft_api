@@ -23,7 +23,7 @@ export const instruction = async (request: Request, response: Response) => {
 		},
 		welcome: 'Welcome to the orgisoft server.',
 	}
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allIncomes = async (request: Request, response: Response) => {
@@ -36,7 +36,7 @@ export const allIncomes = async (request: Request, response: Response) => {
 		cache: result,
 	}
 	setCache(data)
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneIncome = async (request: Request, response: Response) => {
@@ -56,7 +56,7 @@ export const oneIncome = async (request: Request, response: Response) => {
 
 	setCache(data)
 
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allIncomeBudgets = async (request: Request, response: Response) => {
@@ -67,7 +67,7 @@ export const allIncomeBudgets = async (request: Request, response: Response) => 
 		cache: result,
 	}
 	setCache(data)
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneIncomeBudget = async (request: Request, response: Response) => {
@@ -77,12 +77,12 @@ export const oneIncomeBudget = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allIncomeTypes = async (request: Request, response: Response) => {
 	const result = await Incometypes.find()
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneIncomeType = async (request: Request, response: Response) => {
@@ -92,14 +92,14 @@ export const oneIncomeType = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allExpenses = async (request: Request, response: Response) => {
 	const result = await Expenses.find({
 		relations: ['members', 'expensetypes', 'currencys'],
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneExpense = async (request: Request, response: Response) => {
@@ -110,12 +110,12 @@ export const oneExpense = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allExpenseBudgets = async (request: Request, response: Response) => {
 	const result = await Expensebudgets.find()
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneExpenseBudget = async (request: Request, response: Response) => {
@@ -125,12 +125,12 @@ export const oneExpenseBudget = async (request: Request, response: Response) => 
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allExpenseTypes = async (request: Request, response: Response) => {
 	const result = await Expensetypes.find()
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneExpenseType = async (request: Request, response: Response) => {
@@ -140,5 +140,5 @@ export const oneExpenseType = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }

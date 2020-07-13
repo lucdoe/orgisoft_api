@@ -9,8 +9,8 @@ import { Incometypes } from '../models/model.Incometype'
 export const income = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
-	const incomeId = request.params.id
-	const newIncome = {
+	const id = request.params.id
+	const result = {
 		members: request.body.member,
 		currencys: request.body.currency,
 		incometypes: request.body.incometype,
@@ -19,36 +19,36 @@ export const income = async (request: Request, response: Response) => {
 		dateRecieved: request.body.date,
 		updatedAt: currentDate,
 	}
-	await manager.update(Incomes, incomeId, newIncome)
-	response.status(200).json(`Succesfully updated Income: ${newIncome.income}`)
+	await manager.update(Incomes, id, result)
+	response.status(200).json(`Succesfully updated Income: ${result.income}`)
 }
 
 export const incomeType = async (request: Request, response: Response) => {
-	const typeId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const newIncometype = {
+	const result = {
 		incometype: request.body.type,
 	}
-	await manager.update(Incometypes, typeId, newIncometype)
-	response.status(200).json(`Succesfully updated Incometype: ${newIncometype.incometype}`)
+	await manager.update(Incometypes, id, result)
+	response.status(200).json(`Succesfully updated Incometype: ${result.incometype}`)
 }
 
 export const incomeBudget = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const budgetId = request.body.id
-	const newIncomebudget = {
+	const id = request.body.id
+	const result = {
 		incomebudget: request.body.budget,
 		amount: request.body.amount,
 	}
-	await manager.update(Incomebudgets, budgetId, newIncomebudget)
-	response.status(200).json(`Succesfully updated Incomebudget: ${newIncomebudget.incomebudget}`)
+	await manager.update(Incomebudgets, id, result)
+	response.status(200).json(`Succesfully updated Incomebudget: ${result.incomebudget}`)
 }
 
 export const expense = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
-	const expenseId = request.params.id
-	const newExpense = {
+	const id = request.params.id
+	const result = {
 		members: request.body.member,
 		currencys: request.body.currency,
 		expensetypes: request.body.incometype,
@@ -57,27 +57,27 @@ export const expense = async (request: Request, response: Response) => {
 		dateRecieved: request.body.date,
 		updatedAt: currentDate,
 	}
-	await manager.update(Incomes, expenseId, newExpense)
-	response.status(200).json(`Succesfully updated Expense: ${newExpense.expense}`)
+	await manager.update(Incomes, id, result)
+	response.status(200).json(`Succesfully updated Expense: ${result.expense}`)
 }
 
 export const expenseType = async (request: Request, response: Response) => {
-	const typeId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const newExpensetype = {
+	const result = {
 		expensetype: request.body.type,
 	}
-	await manager.update(Expensetypes, typeId, newExpensetype)
-	response.status(200).json(`Succesfully updated Expensetype: ${newExpensetype.expensetype}`)
+	await manager.update(Expensetypes, id, result)
+	response.status(200).json(`Succesfully updated Expensetype: ${result.expensetype}`)
 }
 
 export const expenseBudget = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const budgetId = request.body.id
-	const newExpensebudget = {
+	const id = request.body.id
+	const result = {
 		expensebudget: request.body.budget,
 		amount: request.body.amount,
 	}
-	await manager.update(Expensebudgets, budgetId, newExpensebudget)
-	response.status(200).json(`Succesfully updated Expensebudget: ${newExpensebudget.expensebudget}`)
+	await manager.update(Expensebudgets, id, result)
+	response.status(200).json(`Succesfully updated Expensebudget: ${result.expensebudget}`)
 }

@@ -102,16 +102,16 @@ export const memberGroup = async (request: Request, response: Response) => {
 }
 
 export const memberQualification = async (request: Request, response: Response) => {
-	const id = request.params.id
-	const preResult = await Memberqualifications.find({
+	const id = +request.params.id
+	const memberqualifications = await Memberqualifications.find({
 		relations: ['qualifications'],
 		where: {
 			members: id,
 		},
 	})
 	const result = {
-		id: id,
-		preResult,
+		id,
+		memberqualifications,
 	}
 	response.status(200).json(result)
 }
