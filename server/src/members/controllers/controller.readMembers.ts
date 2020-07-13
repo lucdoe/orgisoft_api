@@ -21,7 +21,7 @@ export const allMembers = async (request: Request, response: Response) => {
 		skip: skip,
 		take: take,
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allMembersLimited = async (request: Request, response: Response) => {
@@ -39,7 +39,7 @@ export const allMembersLimited = async (request: Request, response: Response) =>
 		take: take,
 		select: ['id', 'firstName', 'lastName', 'email'],
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneMember = async (request: Request, response: Response) => {
@@ -50,7 +50,7 @@ export const oneMember = async (request: Request, response: Response) => {
 			id: id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const memberAddress = async (request: Request, response: Response) => {
@@ -62,7 +62,7 @@ export const memberAddress = async (request: Request, response: Response) => {
 			id: id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const memberPosition = async (request: Request, response: Response) => {
@@ -74,7 +74,7 @@ export const memberPosition = async (request: Request, response: Response) => {
 			id: id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const memberStatus = async (request: Request, response: Response) => {
@@ -86,7 +86,7 @@ export const memberStatus = async (request: Request, response: Response) => {
 			id: id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const memberGroup = async (request: Request, response: Response) => {
@@ -98,7 +98,7 @@ export const memberGroup = async (request: Request, response: Response) => {
 			id: id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const memberQualification = async (request: Request, response: Response) => {
@@ -113,7 +113,7 @@ export const memberQualification = async (request: Request, response: Response) 
 		id,
 		memberqualifications,
 	}
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const memberInventoryitems = async (request: Request, response: Response) => {
@@ -125,12 +125,12 @@ export const memberInventoryitems = async (request: Request, response: Response)
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allPositions = async (request: Request, response: Response) => {
 	const result = await getRepository(Positions).createQueryBuilder().getMany()
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const onePosition = async (request: Request, response: Response) => {
@@ -140,12 +140,12 @@ export const onePosition = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allStatuses = async (request: Request, response: Response) => {
 	const result = await getRepository(Statuses).createQueryBuilder().getMany()
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneStatus = async (request: Request, response: Response) => {
@@ -155,12 +155,12 @@ export const oneStatus = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allQualifications = async (request: Request, response: Response) => {
 	const result = await getRepository(Qualifications).createQueryBuilder().getMany()
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneQualification = async (request: Request, response: Response) => {
@@ -170,12 +170,12 @@ export const oneQualification = async (request: Request, response: Response) => 
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const allGroups = async (request: Request, response: Response) => {
 	const result = await getRepository(Membergroups).createQueryBuilder().getMany()
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneGroup = async (request: Request, response: Response) => {
@@ -185,5 +185,5 @@ export const oneGroup = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }

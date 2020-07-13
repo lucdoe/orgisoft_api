@@ -8,10 +8,10 @@ import { Qualifications } from '../models/model.Qualification'
 import { Membergroups } from '../models/model.Membergroup'
 
 export const members = async (request: Request, response: Response) => {
-	const memberId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
 	const currentDate = new Date()
-	const updateMember = {
+	const result = {
 		addressesId: request.body.addressesId,
 		positionsId: request.body.positionsId,
 		statusesId: request.body.statusesId,
@@ -27,103 +27,99 @@ export const members = async (request: Request, response: Response) => {
 		note: request.body.note,
 		updatedAt: currentDate,
 	}
-	await manager.update(Members, memberId, updateMember)
-	response.status(200).json(`Succesfully updated Member: ${updateMember.firstName} ${updateMember.lastName}`)
+	await manager.update(Members, id, result)
+	return response.status(200).json(`Succesfully updated Member: ${result.firstName} ${result.lastName}`)
 }
 
 export const memberAddresses = async (request: Request, response: Response) => {
-	const memberId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateMemberAddress = {
+	const result = {
 		addresses: request.body.address,
 	}
-	await manager.update(Members, memberId, updateMemberAddress)
-	response.status(200).json(`Succesfully updated Members Address: ${updateMemberAddress.addresses}`)
+	await manager.update(Members, id, result)
+	return response.status(200).json(`Succesfully updated Members Address: ${result.addresses}`)
 }
 
 export const memberPositions = async (request: Request, response: Response) => {
-	const memberId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateMemberPosition = {
+	const result = {
 		positions: request.body.positionsId,
 	}
-	await manager.update(Members, memberId, updateMemberPosition)
-	response.status(200).json(`Succesfully updated Members Position: ${updateMemberPosition.positions}`)
+	await manager.update(Members, id, result)
+	return response.status(200).json(`Succesfully updated Members Position: ${result.positions}`)
 }
 
 export const memberStatuses = async (request: Request, response: Response) => {
-	const memberId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateMemberStatus = {
+	const result = {
 		statuses: request.body.statusesId,
 	}
-	await manager.update(Members, memberId, updateMemberStatus)
-	response.status(200).json(`Succesfully updated Members Status: ${updateMemberStatus.statuses}`)
+	await manager.update(Members, id, result)
+	return response.status(200).json(`Succesfully updated Members Status: ${result.statuses}`)
 }
 
 export const memberQualifications = async (request: Request, response: Response) => {
-	const memberQualificationId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateMemberQualification = {
+	const result = {
 		members: request.body.member,
 		qualifications: request.body.qualification,
 		date: request.body.date,
 		passed: request.body.passed,
 	}
-	await manager.update(Memberqualifications, memberQualificationId, updateMemberQualification)
-	response
-		.status(200)
-		.json(`Succesfully updated Members Qualification: ${updateMemberQualification.qualifications}`)
+	await manager.update(Memberqualifications, id, result)
+	return response.status(200).json(`Succesfully updated Members Qualification: ${result.qualifications}`)
 }
 
 export const memberGroups = async (request: Request, response: Response) => {
-	const memberId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateMemberMembergroup = {
+	const result = {
 		membergroups: request.body.membergroup,
 	}
-	await manager.update(Members, memberId, updateMemberMembergroup)
-	response
-		.status(200)
-		.json(`Succesfully updated Members Membergroup: ${updateMemberMembergroup.membergroups}`)
+	await manager.update(Members, id, result)
+	return response.status(200).json(`Succesfully updated Members Membergroup: ${result.membergroups}`)
 }
 
 export const positions = async (request: Request, response: Response) => {
-	const positionId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updatePosition = {
+	const result = {
 		position: request.body.position,
 	}
-	await manager.update(Positions, positionId, updatePosition)
-	response.status(200).json(`Succesfully updated Position: ${updatePosition.position}`)
+	await manager.update(Positions, id, result)
+	return response.status(200).json(`Succesfully updated Position: ${result.position}`)
 }
 
 export const statuses = async (request: Request, response: Response) => {
-	const statusId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateStatus = {
+	const result = {
 		status: request.body.status,
 	}
-	await manager.update(Statuses, statusId, updateStatus)
-	response.status(200).json(`Succesfully updated Status: ${updateStatus.status}`)
+	await manager.update(Statuses, id, result)
+	return response.status(200).json(`Succesfully updated Status: ${result.status}`)
 }
 
 export const groups = async (request: Request, response: Response) => {
-	const membergroupId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateMembergroups = {
+	const result = {
 		membergroup: request.body.membergroup,
 	}
-	await manager.update(Membergroups, membergroupId, updateMembergroups)
-	response.status(200).json(`Succesfully updated Membergroup: ${updateMembergroups.membergroup}`)
+	await manager.update(Membergroups, id, result)
+	return response.status(200).json(`Succesfully updated Membergroup: ${result.membergroup}`)
 }
 
 export const qualifications = async (request: Request, response: Response) => {
-	const qualificationId = request.params.id
+	const id = request.params.id
 	const manager = getManager()
-	const updateQualification = {
+	const result = {
 		qualification: request.body.qualification,
 	}
-	await manager.update(Qualifications, qualificationId, updateQualification)
-	response.status(200).json(`Succesfully updated Qualification: ${updateQualification.qualification}`)
+	await manager.update(Qualifications, id, result)
+	return response.status(200).json(`Succesfully updated Qualification: ${result.qualification}`)
 }

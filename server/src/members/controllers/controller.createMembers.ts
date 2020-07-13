@@ -11,7 +11,7 @@ import { Addresses } from '../models/model.Address'
 export const newMember = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
-	const newMember = {
+	const result = {
 		addressesId: request.body.addressesId,
 		positionsId: request.body.positionsId,
 		statusesId: request.body.statusesId,
@@ -28,62 +28,62 @@ export const newMember = async (request: Request, response: Response) => {
 		createdAt: currentDate,
 		updatedAt: currentDate,
 	}
-	await manager.insert(Members, newMember)
-	response.status(201).json(`Succesfully inserted Member: ${newMember.firstName} ${newMember.lastName}`)
+	await manager.insert(Members, result)
+	return response.status(201).json(`Succesfully inserted Member: ${result.firstName} ${result.lastName}`)
 }
 
 export const newPosition = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newPosition = {
+	const result = {
 		position: request.body.position,
 	}
-	await manager.insert(Positions, newPosition)
-	response.status(201).json(`Succesfully inserted Position: ${newPosition.position}`)
+	await manager.insert(Positions, result)
+	return response.status(201).json(`Succesfully inserted Position: ${result.position}`)
 }
 
 export const newStatus = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newStatus = {
+	const result = {
 		status: request.body.status,
 	}
-	await manager.insert(Statuses, newStatus)
-	response.status(201).json(`Succesfully inserted Status: ${newStatus.status}`)
+	await manager.insert(Statuses, result)
+	return response.status(201).json(`Succesfully inserted Status: ${result.status}`)
 }
 
 export const newQualification = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newQualification = {
+	const result = {
 		qualification: request.body.qualification,
 		description: request.body.description,
 	}
-	await manager.insert(Qualifications, newQualification)
-	response.status(201).json(`Succesfully inserted Qualification: ${newQualification.qualification}`)
+	await manager.insert(Qualifications, result)
+	return response.status(201).json(`Succesfully inserted Qualification: ${result.qualification}`)
 }
 
 export const newMemberqualification = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newMemberQualification = {
+	const result = {
 		membersId: request.body.membersId,
 		qualificationsId: request.body.qualificationsId,
 		date: request.body.date,
 		passed: request.body.passed,
 	}
-	await manager.insert(Memberqualifications, newMemberQualification)
-	response.status(201).json(`Succesfully inserted Memberqualification.`)
+	await manager.insert(Memberqualifications, result)
+	return response.status(201).json(`Succesfully inserted Memberqualification.`)
 }
 
 export const newMembergroup = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newMembergroup = {
+	const result = {
 		membergroup: request.body.membergroup,
 	}
-	await manager.insert(Membergroups, newMembergroup)
-	response.status(201).json(`Succesfully inserted Membergroup: ${newMembergroup.membergroup}`)
+	await manager.insert(Membergroups, result)
+	return response.status(201).json(`Succesfully inserted Membergroup: ${result.membergroup}`)
 }
 
 export const newAddress = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const newAddress = {
+	const result = {
 		citysId: request.body.city,
 		street: request.body.street,
 		streetNumber: request.body.number,
@@ -94,6 +94,6 @@ export const newAddress = async (request: Request, response: Response) => {
 		createdAt: request.body.created,
 		updatedAt: request.body.updated,
 	}
-	await manager.insert(Addresses, newAddress)
-	response.status(201).json(`Succesfully inserted Address: ${newAddress.street}`)
+	await manager.insert(Addresses, result)
+	return response.status(201).json(`Succesfully inserted Address: ${result.street}`)
 }
