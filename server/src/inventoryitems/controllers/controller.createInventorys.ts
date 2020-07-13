@@ -7,7 +7,7 @@ import { Inventoryplaces } from '../models/model.Inventoryplace'
 export const newInventoryitem = async (request: Request, response: Response) => {
 	const currentDate = new Date()
 	const manager = getManager()
-	const newItem = {
+	const result = {
 		inventorygroups: request.body.group,
 		members: request.body.member,
 		inventoryplaces: request.body.place,
@@ -16,28 +16,28 @@ export const newInventoryitem = async (request: Request, response: Response) => 
 		createdAt: currentDate,
 		updatedAt: currentDate,
 	}
-	await manager.insert(Inventoryitems, newItem)
-	response.status(201).json({ message: `Succesfully inserted item: ${newItem.inventoryitem}` })
+	await manager.insert(Inventoryitems, result)
+	return response.status(201).json({ message: `Succesfully inserted item: ${result.inventoryitem}` })
 }
 
 export const newGroup = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const inventorygroup = {
+	const result = {
 		inventorygroup: request.body.group,
 	}
-	await manager.insert(Inventorygroups, inventorygroup)
-	response
+	await manager.insert(Inventorygroups, result)
+	return response
 		.status(201)
-		.json({ message: `Succesfully inserted Inventorygroup: ${inventorygroup.inventorygroup}` })
+		.json({ message: `Succesfully inserted Inventorygroup: ${result.inventorygroup}` })
 }
 
 export const newPlace = async (request: Request, response: Response) => {
 	const manager = getManager()
-	const inventoryplace = {
+	const result = {
 		inventoryplace: request.body.place,
 	}
-	await manager.insert(Inventoryplaces, inventoryplace)
-	response
+	await manager.insert(Inventoryplaces, result)
+	return response
 		.status(201)
-		.json({ message: `Succesfully inserted Inventoryplace: ${inventoryplace.inventoryplace}` })
+		.json({ message: `Succesfully inserted Inventoryplace: ${result.inventoryplace}` })
 }

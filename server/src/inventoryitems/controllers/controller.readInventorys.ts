@@ -5,7 +5,7 @@ export const allInventoryitems = async (request: Request, response: Response) =>
 	const result = await Inventoryitems.find({
 		relations: ['members', 'inventorygroups', 'inventoryplaces'],
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const oneInventoryitem = async (request: Request, response: Response) => {
@@ -16,7 +16,7 @@ export const oneInventoryitem = async (request: Request, response: Response) => 
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
 
 export const itemMember = async (request: Request, response: Response) => {
@@ -28,5 +28,5 @@ export const itemMember = async (request: Request, response: Response) => {
 			id,
 		},
 	})
-	response.status(200).json(result)
+	return response.status(200).json(result)
 }
