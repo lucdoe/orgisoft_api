@@ -20,7 +20,7 @@ export const income = async (request: Request, response: Response) => {
 		updatedAt: currentDate,
 	}
 	await manager.update(Incomes, id, result)
-	response.status(200).json(`Succesfully updated Income: ${result.income}`)
+	return response.status(200).json(`Succesfully updated Income: ${result.income}`)
 }
 
 export const incomeType = async (request: Request, response: Response) => {
@@ -30,7 +30,7 @@ export const incomeType = async (request: Request, response: Response) => {
 		incometype: request.body.type,
 	}
 	await manager.update(Incometypes, id, result)
-	response.status(200).json(`Succesfully updated Incometype: ${result.incometype}`)
+	return response.status(200).json(`Succesfully updated Incometype: ${result.incometype}`)
 }
 
 export const incomeBudget = async (request: Request, response: Response) => {
@@ -41,7 +41,7 @@ export const incomeBudget = async (request: Request, response: Response) => {
 		amount: request.body.amount,
 	}
 	await manager.update(Incomebudgets, id, result)
-	response.status(200).json(`Succesfully updated Incomebudget: ${result.incomebudget}`)
+	return response.status(200).json(`Succesfully updated Incomebudget: ${result.incomebudget}`)
 }
 
 export const expense = async (request: Request, response: Response) => {
@@ -58,7 +58,7 @@ export const expense = async (request: Request, response: Response) => {
 		updatedAt: currentDate,
 	}
 	await manager.update(Incomes, id, result)
-	response.status(200).json(`Succesfully updated Expense: ${result.expense}`)
+	return response.status(200).json(`Succesfully updated Expense: ${result.expense}`)
 }
 
 export const expenseType = async (request: Request, response: Response) => {
@@ -68,7 +68,7 @@ export const expenseType = async (request: Request, response: Response) => {
 		expensetype: request.body.type,
 	}
 	await manager.update(Expensetypes, id, result)
-	response.status(200).json(`Succesfully updated Expensetype: ${result.expensetype}`)
+	return response.status(200).json(`Succesfully updated Expensetype: ${result.expensetype}`)
 }
 
 export const expenseBudget = async (request: Request, response: Response) => {
@@ -79,5 +79,5 @@ export const expenseBudget = async (request: Request, response: Response) => {
 		amount: request.body.amount,
 	}
 	await manager.update(Expensebudgets, id, result)
-	response.status(200).json(`Succesfully updated Expensebudget: ${result.expensebudget}`)
+	return response.status(200).json(`Succesfully updated Expensebudget: ${result.expensebudget}`)
 }

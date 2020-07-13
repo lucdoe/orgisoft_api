@@ -21,7 +21,7 @@ export const income = async (request: Request, response: Response) => {
 		updatedAt: currentDate,
 	}
 	await manager.insert(Incomes, result)
-	response.status(201).json(`Succesfully inserted Income: ${result.income}`)
+	return response.status(201).json(`Succesfully inserted Income: ${result.income}`)
 }
 
 export const incomeBudget = async (request: Request, response: Response) => {
@@ -31,7 +31,7 @@ export const incomeBudget = async (request: Request, response: Response) => {
 		amount: request.body.amount,
 	}
 	await manager.insert(Incomebudgets, result)
-	response.status(201).json(`Succesfully inserted Incomebudget: ${result.incomebudget}`)
+	return response.status(201).json(`Succesfully inserted Incomebudget: ${result.incomebudget}`)
 }
 
 export const incomeType = async (request: Request, response: Response) => {
@@ -40,7 +40,7 @@ export const incomeType = async (request: Request, response: Response) => {
 		incometype: request.body.type,
 	}
 	await manager.insert(Incometypes, result)
-	response.status(201).json(`Succesfully inserted Incometype: ${result.incometype}`)
+	return response.status(201).json(`Succesfully inserted Incometype: ${result.incometype}`)
 }
 
 export const expense = async (request: Request, response: Response) => {
@@ -57,7 +57,7 @@ export const expense = async (request: Request, response: Response) => {
 		updatedAt: currentDate,
 	}
 	await manager.insert(Expenses, result)
-	response.status(201).json(`Succesfully inserted Expense: ${result.expense}`)
+	return response.status(201).json(`Succesfully inserted Expense: ${result.expense}`)
 }
 
 export const expenseBudget = async (request: Request, response: Response) => {
@@ -67,7 +67,7 @@ export const expenseBudget = async (request: Request, response: Response) => {
 		amount: request.body.amount,
 	}
 	await manager.insert(Expensebudgets, result)
-	response.status(201).json(`Succesfully inserted Expensebudget: ${result.expensebudget}`)
+	return response.status(201).json(`Succesfully inserted Expensebudget: ${result.expensebudget}`)
 }
 
 export const expenseType = async (request: Request, response: Response) => {
@@ -76,5 +76,5 @@ export const expenseType = async (request: Request, response: Response) => {
 		expensetype: request.body.budget,
 	}
 	await manager.insert(Expensetypes, result)
-	response.status(201).json(`Succesfully inserted Expensetype: ${result.expensetype}`)
+	return response.status(201).json(`Succesfully inserted Expensetype: ${result.expensetype}`)
 }
