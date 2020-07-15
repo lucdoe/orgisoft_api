@@ -16,8 +16,8 @@ The database (further described as: db) is the main store for the application da
 
 ## General Information
 
-Under the hood the db runs the MySQL Community Edition (at the moment only locally) and is consumed by the [TypeORM](link to type orm) ORM on the server. While working on the db/ developing the application I used the RDMS MySQL Workbench to execute queries and so on.
-The Entity Relationship Model (ERM/ Schema) of the db can be found [here](link to schema, github). 19 tables represent the core data of the application in combination with some Views to prevent writing complex queries over and over again, plus several stored procedures for saving time writing queries.
+Under the hood the db runs the MySQL Community Edition (at the moment only locally) and is consumed by the [TypeORM](https://typeorm.io/#/) ORM on the server. While working on the db/ developing the application I used the RDMS MySQL Workbench to execute queries and so on.
+The Entity Relationship Model (ERM/ Schema) of the db can be found [here](https://github.com/lucdoe/orgisoft/blob/master/erm_schema.PNG). 19 tables represent the core data of the application in combination with some Views to prevent writing complex queries over and over again, plus several stored procedures for saving time writing queries.
 
 ## Sources:
 
