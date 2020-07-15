@@ -27,8 +27,17 @@ export const instruction = async (request: Request, response: Response) => {
 }
 
 export const allIncomes = async (request: Request, response: Response) => {
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
 	const result = await Incomes.find({
 		relations: ['members', 'incometypes', 'currencys'],
+		order: {
+			income: orderDirection,
+		},
+		skip: skip,
+		take: take,
 	})
 	const data = {
 		path: request.path.split('/')[1],
@@ -60,7 +69,17 @@ export const oneIncome = async (request: Request, response: Response) => {
 }
 
 export const allIncomeBudgets = async (request: Request, response: Response) => {
-	const result = await Incomebudgets.find()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Incomebudgets.find({
+		order: {
+			incomebudget: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	const data = {
 		path: request.path.split('/')[1],
 		id: 'all',
@@ -81,7 +100,17 @@ export const oneIncomeBudget = async (request: Request, response: Response) => {
 }
 
 export const allIncomeTypes = async (request: Request, response: Response) => {
-	const result = await Incometypes.find()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Incometypes.find({
+		order: {
+			incometype: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	return response.status(200).json(result)
 }
 
@@ -96,8 +125,17 @@ export const oneIncomeType = async (request: Request, response: Response) => {
 }
 
 export const allExpenses = async (request: Request, response: Response) => {
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
 	const result = await Expenses.find({
 		relations: ['members', 'expensetypes', 'currencys'],
+		order: {
+			expense: orderDirection,
+		},
+		skip: skip,
+		take: take,
 	})
 	return response.status(200).json(result)
 }
@@ -114,7 +152,17 @@ export const oneExpense = async (request: Request, response: Response) => {
 }
 
 export const allExpenseBudgets = async (request: Request, response: Response) => {
-	const result = await Expensebudgets.find()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Expensebudgets.find({
+		order: {
+			expensebudget: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	return response.status(200).json(result)
 }
 
@@ -129,7 +177,17 @@ export const oneExpenseBudget = async (request: Request, response: Response) => 
 }
 
 export const allExpenseTypes = async (request: Request, response: Response) => {
-	const result = await Expensetypes.find()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Expensetypes.find({
+		order: {
+			expensetype: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	return response.status(200).json(result)
 }
 
