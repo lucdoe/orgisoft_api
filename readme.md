@@ -50,6 +50,6 @@ It has three major endpoints:
 -  /inventorys
 -  /finances
 
-Endpoints accept CRUD operations (POST, GET, PUT, DELETE) and return the specific HTTP Status code on succes or not, the location/ path/ url plus the data (if ask for) in JSON format. GET endpoints who return more than one item have some special filtering on top. Results can be accessed in asscending or descending order with an offset and limit (e.g. /members?skip=0&take=20&desc=1), but a detailed guide on the endpoints can be found in the API documentation attached.
+Endpoints accept CRUD operations (POST, GET, PUT, DELETE) and return the specific HTTP Status code on succes or not, the location/ path/ url plus the data (if ask for) in JSON format. GET endpoints who return more than one item have some special filtering on top. Results can be accessed in asscending or descending order with an offset and limit (e.g. /members?skip=0&take=20&desc=1), but a detailed guide on the endpoints can be found in the [API documentation attached here](https://documenter.getpostman.com/view/10673596/T17Q6QP7?version=latest).
 
 The overall API has 84 possible endpoints to contact with all operations summed up.
