@@ -129,7 +129,17 @@ export const memberInventoryitems = async (request: Request, response: Response)
 }
 
 export const allPositions = async (request: Request, response: Response) => {
-	const result = await getRepository(Positions).createQueryBuilder().getMany()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Positions.find({
+		order: {
+			position: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	return response.status(200).json(result)
 }
 
@@ -144,7 +154,17 @@ export const onePosition = async (request: Request, response: Response) => {
 }
 
 export const allStatuses = async (request: Request, response: Response) => {
-	const result = await getRepository(Statuses).createQueryBuilder().getMany()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Statuses.find({
+		order: {
+			status: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	return response.status(200).json(result)
 }
 
@@ -159,7 +179,17 @@ export const oneStatus = async (request: Request, response: Response) => {
 }
 
 export const allQualifications = async (request: Request, response: Response) => {
-	const result = await getRepository(Qualifications).createQueryBuilder().getMany()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Qualifications.find({
+		order: {
+			qualification: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	return response.status(200).json(result)
 }
 
@@ -174,7 +204,17 @@ export const oneQualification = async (request: Request, response: Response) => 
 }
 
 export const allGroups = async (request: Request, response: Response) => {
-	const result = await getRepository(Membergroups).createQueryBuilder().getMany()
+	const skip = +request.query.skip
+	const take = +request.query.take
+	const { desc } = request.query
+	const orderDirection = desc == '1' ? 'DESC' : 'ASC'
+	const result = await Membergroups.find({
+		order: {
+			membergroup: orderDirection,
+		},
+		skip: skip,
+		take: take,
+	})
 	return response.status(200).json(result)
 }
 
