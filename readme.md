@@ -39,6 +39,7 @@ The decision for a seperate frontend server should save resources for the backen
 -  reflect-metadata (dependecy for typeorm)
 
 The full dependency graph can be found [here](https://github.com/lucdoe/orgisoft/network/dependencies).
+For development purposes logging was used to get a better understanding of what happened and what went wrong if there was an error.
 
 ### 3. Design/ Structure
 
@@ -49,11 +50,6 @@ It has three major endpoints:
 -  /inventorys
 -  /finances
 
-Each endpoint metioned on /GET returns all available data with an offset and limit looking like this e.g.: /members?offset=0&limit=30 starting form the first found member to the 30iest member in this example.
-On top of that the order can be modified either by adding: sort=desc (descending) or sort=asc (ascending).
-If a specific member, inventoryitem or finance entry is needed an ID is appended to the query like this: /members/14, which returns the member with the ID 14 with all its details available on that member. All the returened attributes can also be accessed individually by appending: /members/14/{attribute}.
-An HTTP Status Code 200, the location and the asked for data is returned as JSON.
-In case an admin needs to see all specific attributes for example all inventory groups the API also offres a view of those e.g.: /inventorys/groups. This works for all endpoints as well. This covers the basic /GET operations more detailed information can be found in the docs [here](https://web.postman.co/collections/10673596-8cdcde33-b99b-47b3-91fa-c9ac96c4aa5c?version=latest&workspace=fc1c0f01-1a46-4529-8734-f38a5d0c7e8d).
+Endpoints accept CRUD operations (POST, GET, PUT, DELETE) and return the specific HTTP Status code on succes or not, the location/ path/ url plus the data (if ask for) in JSON format. GET endpoints who return more than one item have some special filtering on top. Results can be accessed in asscending or descending order with an offset and limit (e.g. /members?skip=0&take=20&desc=1), but a detailed guide on the endpoints can be found in the API documentation attached.
 
-The application atm accepts JSON as a request body for creating (/POST) or updating (/PUT or /PATCH) entries, more detailed information can be found in the docs [here](https://web.postman.co/collections/10673596-8cdcde33-b99b-47b3-91fa-c9ac96c4aa5c?version=latest&workspace=fc1c0f01-1a46-4529-8734-f38a5d0c7e8d) regarding the format of the expected body. Images are served as a URL/ string over JSON and then parsed to the frontend.
-If a resource should be deleted the endpoint and the entry id should be mentioned with a /DELETE request e.g.: /members/14 would delete member 14 if existent.
+The overall API has 84 possible endpoints to contact with all operations summed up.
