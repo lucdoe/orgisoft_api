@@ -1,4 +1,4 @@
-# Welcome to orgisoft
+# Welcome to the orgisoft API Repo
 
 The overall goal of Orgisoft aims at making the organisation of clubs/ organisations (Vereine, german word) easier and more accessible.
 Member-, inventory- or finance managment can be performed using the software until now. The finance part for now is very basic covering only incomes and expenses.
